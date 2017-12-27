@@ -28,7 +28,6 @@
             background: no-repeat center center;
             padding: 32px;
         }
-
     </style>
 @endsection
 
@@ -134,20 +133,36 @@
         </h2>
         <br>
         <div class="row">
-            <div class="col-md-6 cover text-left"
-                 style="background-image: url('https://c1.staticflickr.com/8/7163/6519841459_9a17376267_b.jpg');">
+            <div class="cover text-left"
+                 style="width: 50%;
+                 background-image: url('https://c1.staticflickr.com/8/7163/6519841459_9a17376267_b.jpg');">
                 <h3 class="display-5 text-white">TASHKENT</h3>
                 <h4 class="text-white">Starting from $300</h4>
             </div>
-            <div class="col-md-6">
-                <div class="col-md-12 text-left">
+            <div style="width: 50%; height: 100%">
+                <div class="col-md-12 text-left" style="height: 40%;">
                     <div style="position: absolute; margin: 32px;">
-                    <h3 class="display-5 text-white">BUKHARA</h3>
-                    <h4 class="text-white">Starting from $250</h4>
+                        <h3 class="display-5 text-white">BUKHARA</h3>
+                        <h4 class="text-white">Starting from $250</h4>
                     </div>
-                    <img class="img-fluid" src="http://gettingnowhere.net/wp-content/uploads/2012/07/Bukhara-at-night.jpg" alt="bukhara">
+                    <img class="img-fluid"
+                         src="http://gettingnowhere.net/wp-content/uploads/2012/07/Bukhara-at-night.jpg" alt="bukhara">
                 </div>
-            </div>
+                <div style="width: 100%; height: 60%">
+                    <div class="text-left cover"
+                         style="width: 50%; height: 100%;
+                     background-image: url('http://static.panoramio.com/photos/large/46576059.jpg')">
+                        <h3 class="display-5 text-white">BUKHARA</h3>
+                        <h4 class="text-white">Starting from $250</h4>
+                    </div>
+                    <div class="text-left cover"
+                         style="width: 50%; height: 100%;
+                     background-image: url('http://static.panoramio.com/photos/large/46576059.jpg')">
+                        <h3 class="display-5 text-white">BUKHARA</h3>
+                        <h4 class="text-white">Starting from $250</h4>
+                    </div>
+                </div>
+        </div>
         </div>
         <br>
     </div>
