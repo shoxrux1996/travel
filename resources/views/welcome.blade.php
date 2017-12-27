@@ -162,7 +162,7 @@
                         <h4 class="text-white">Starting from $250</h4>
                     </div>
                 </div>
-        </div>
+            </div>
         </div>
         <br>
     </div>
