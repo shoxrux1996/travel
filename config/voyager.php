@@ -209,7 +209,7 @@ return [
     'additional_js' => [
         //'js/custom.js',
     ],
-
+//
     'googlemaps' => [
          'key'    => env('GOOGLE_MAPS_KEY', 'AIzaSyANKHzon4lOXOzzoGxOaiQvf5ZizicxkUE'),
          'center' => [
