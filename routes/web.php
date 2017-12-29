@@ -14,8 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/shox', 'ItemController@index');
-Route::get('/create', 'ItemController@create');
+
 
 Auth::routes();
 
