@@ -28,6 +28,10 @@
             background: no-repeat center center;
             padding: 32px;
         }
+        .card-center{
+            object-fit: none; /* Do not scale the image */
+            object-position: center; /* Center the image within the element */
+        }
     </style>
 @endsection
 
@@ -132,7 +136,7 @@
             TOP DESTINATIONS
         </h2>
         <br>
-        <div class="row">
+        {{--<div class="row">
             <div class="cover text-left"
                  style="width: 50%;
                  background-image: url('https://c1.staticflickr.com/8/7163/6519841459_9a17376267_b.jpg');">
@@ -164,6 +168,30 @@
                 </div>
             </div>
         </div>
-        <br>
+        <br>--}}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-inverse">
+                    <img class="card-center" style="height: 32rem;" src="{{asset('maxresdefault.jpg')}}" alt="Card image">
+                </div>
+            </div>
+
+            <div class="col-md-6" style="">
+                <div class="card card-inverse" style="margin-bottom: 2rem;">
+                    <img style="max-height: 15rem;" class="card-img-top"  src="{{asset('maxresdefault.jpg')}}" alt="Card image">
+                </div>
+                <div class="card-group" >
+                    <div class="card card-inverse" style="">
+                        <img style="height: 15rem; " class="card-img-top " src="{{asset('maxresdefault.jpg')}}" alt="Card image">
+                    </div>
+                    <div class="card card-inverse" style="margin-left: 1rem; border: none;">
+                        <img style="height: 15rem; " class="card-img-top " src="{{asset('registan-ensemble-samarkand-at-night.jpg')}}" alt="Card image">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="height: 300px;">
+
+        </div>
     </div>
 @endsection
