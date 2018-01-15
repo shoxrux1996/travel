@@ -22,19 +22,89 @@
             background-color: #eee;
         }
 
-        .cover {
+      /*  .cover {
             height: 600px;
             background-size: contain;
             background: no-repeat center center;
             padding: 32px;
-        }
-        .card-center{
+        }*/
+
+        .card-center {
             object-fit: none; /* Do not scale the image */
             object-position: center; /* Center the image within the element */
         }
-        .card-text, .card-title{
-            color: white;
 
+        .card-text{
+            color: white;
+        }
+        .card-badge{
+            background: #FF5F49;
+            color:white;
+        }
+        .rating {
+            display: inline-block;
+            position: relative;
+            height: 50px;
+            line-height: 50px;
+            font-size: 35px;
+        }
+
+        .rating label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .rating label:last-child {
+            position: static;
+        }
+
+        .rating label:nth-child(1) {
+            z-index: 5;
+        }
+
+        .rating label:nth-child(2) {
+            z-index: 4;
+        }
+
+        .rating label:nth-child(3) {
+            z-index: 3;
+        }
+
+        .rating label:nth-child(4) {
+            z-index: 2;
+        }
+
+        .rating label:nth-child(5) {
+            z-index: 1;
+        }
+
+        .rating label input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .rating label .icon1 {
+            float: left;
+            color: transparent;
+        }
+
+        .rating label:last-child .icon1 {
+            color: #000;
+        }
+
+        .rating:not(:hover) label input:checked ~ .icon1,
+        .rating:hover label:hover input ~ .icon1 {
+            color: #09f;
+        }
+
+        .rating label input:focus:not(:checked) ~ .icon1:last-child {
+            color: #000;
+            text-shadow: 0 0 5px #09f;
         }
     </style>
 @endsection
@@ -134,7 +204,7 @@
             <br>
         </div>
     </div>
-    <div class="container text-center">
+    <div class="container text-center" style="padding-bottom: 30px;">
         <br>
         <h2 class="text-orange">
             TOP DESTINATIONS
@@ -177,7 +247,8 @@
             <div class="col-md-6">
                 <a href="#">
                     <div class="card card-inverse">
-                        <img class="card-center" style="height: 32rem;" src="{{asset('maxresdefault.jpg')}}" alt="Card image">
+                        <img class="card-center" style="height: 32rem;" src="{{asset('Uzbekistan.jpg')}}"
+                             alt="Card image">
                         <div class="card-img-overlay">
                             <h4 class="card-title">TASHKENT</h4>
                             <p class="card-text">Starting from $300</p>
@@ -189,7 +260,8 @@
             <div class="col-md-6" style="">
                 <a href="#">
                     <div class="card card-inverse" style="margin-bottom: 2rem;">
-                        <img style="max-height: 15rem;" class="card-img-top"  src="{{asset('maxresdefault.jpg')}}" alt="Card image">
+                        <img style="max-height: 15rem;" class="card-img-top" src="{{asset('maxresdefault.jpg')}}"
+                             alt="Card image">
                         <div class="card-img-overlay">
                             <h4 class="card-title">TASHKENT</h4>
                             <p class="card-text">Starting from $300</p>
@@ -197,16 +269,18 @@
                     </div>
                 </a>
                 <a href="#">
-                    <div class="card-group" >
+                    <div class="card-group">
                         <div class="card card-inverse" style="">
-                            <img style="height: 15rem; " class="card-img-top " src="{{asset('maxresdefault.jpg')}}" alt="Card image">
+                            <img style="height: 15rem; " class="card-img-top " src="{{asset('maxresdefault.jpg')}}"
+                                 alt="Card image">
                             <div class="card-img-overlay">
                                 <h4 class="card-title">TASHKENT</h4>
                                 <p class="card-text">Starting from $300</p>
                             </div>
                         </div>
                         <div class="card card-inverse" style="margin-left: 1rem; border: none;">
-                            <img style="height: 15rem; " class="card-img-top " src="{{asset('registan-ensemble-samarkand-at-night.jpg')}}" alt="Card image">
+                            <img style="height: 15rem; " class="card-img-top "
+                                 src="{{asset('registan-ensemble-samarkand-at-night.jpg')}}" alt="Card image">
                             <div class="card-img-overlay">
                                 <h4 class="card-title">TASHKENT</h4>
                                 <p class="card-text">Starting from $300</p>
@@ -216,8 +290,62 @@
                 </a>
             </div>
         </div>
-        <div class="row" style="height: 300px;">
-
+    </div>
+    <div class="container-fluid bg-grey">
+        <div class="container text-center">
+            <br>
+            <h2 class="text-orange">
+                SPECIAL PACKAGES
+            </h2>
+            <br>
         </div>
+
+        <div class="row"  style="padding: 20px;">
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="" height="300" src="{{asset('Uzbekistan.jpg')}}" alt="Card image">
+                    <div class="card-img-overlay">
+                        <span class="badge card-badge">4 days 3 nights</span>
+                    </div>
+                    <div class="card-block">
+                        <h5 class="card-title">Paris in Love</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-inverse">
+                    <img class="card-img" height="300" src="{{asset('maxresdefault.jpg')}}" alt="Card image">
+                    <div class="card-img-overlay">
+                        <span class="badge card-badge">4 days 3 nights</span>
+                    </div>
+                    <div class="card-block">
+                        <h5 class="card-title">Paris in Love</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="" height="300" src="{{asset('Uzbekistan.jpg')}}" alt="Card image">
+                    <div class="card-img-overlay">
+                        <span class="badge card-badge">4 days 3 nights</span>
+                    </div>
+                    <div class="card-block">
+                        <h5 class="card-title">Paris in Love</h5>
+                        <div class="rating">
+                            <label>
+                                <span class="icon1">★</span>
+                                <span class="icon1">★</span>
+                                <span class="icon1">★</span>
+                                <span class="icon1">★</span>
+                                <span class="icon1">★</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="height: 200px">
+
     </div>
 @endsection
