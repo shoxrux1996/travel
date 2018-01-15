@@ -167,8 +167,9 @@ return [
 
         'widgets' => [
             'App\\Widgets\\Tours',
-            'TCG\\Voyager\\Widgets\\PostDimmer',
             'App\\Widgets\\Hotels',
+            'App\\Widgets\\Destinations',
+            'TCG\\Voyager\\Widgets\\PostDimmer',
         ],
 
     ],
@@ -213,10 +214,10 @@ return [
     'googlemaps' => [
          'key'    => env('GOOGLE_MAPS_KEY', 'AIzaSyANKHzon4lOXOzzoGxOaiQvf5ZizicxkUE'),
          'center' => [
-             'lat' => env('GOOGLE_MAPS_DEFAULT_CENTER_LAT', '41.15'),
-             'lng' => env('GOOGLE_MAPS_DEFAULT_CENTER_LNG', '69.29'),
+             'lat' => env('GOOGLE_MAPS_DEFAULT_CENTER_LAT', '41.2981'),
+             'lng' => env('GOOGLE_MAPS_DEFAULT_CENTER_LNG', '69.1958'),
          ],
-         'zoom' => env('GOOGLE_MAPS_DEFAULT_ZOOM', 11),
+         'zoom' => env('GOOGLE_MAPS_DEFAULT_ZOOM', 11.98),
      ],
 
 ];

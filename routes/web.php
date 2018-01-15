@@ -1,5 +1,5 @@
 <?php
-
+use TCG\Voyager\Models\Post;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('post/{slug}', function($slug){
+    $post = Post::where('slug', '=', $slug)->firstOrFail();
+    return view('post.post', compact('post'));
+});
 
 Auth::routes();
 
