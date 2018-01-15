@@ -32,6 +32,10 @@
             object-fit: none; /* Do not scale the image */
             object-position: center; /* Center the image within the element */
         }
+        .card-text, .card-title{
+            color: white;
+
+        }
     </style>
 @endsection
 
@@ -171,23 +175,45 @@
         <br>--}}
         <div class="row">
             <div class="col-md-6">
-                <div class="card card-inverse">
-                    <img class="card-center" style="height: 32rem;" src="{{asset('maxresdefault.jpg')}}" alt="Card image">
-                </div>
+                <a href="#">
+                    <div class="card card-inverse">
+                        <img class="card-center" style="height: 32rem;" src="{{asset('maxresdefault.jpg')}}" alt="Card image">
+                        <div class="card-img-overlay">
+                            <h4 class="card-title">TASHKENT</h4>
+                            <p class="card-text">Starting from $300</p>
+                        </div>
+                    </div>
+                </a>
             </div>
 
             <div class="col-md-6" style="">
-                <div class="card card-inverse" style="margin-bottom: 2rem;">
-                    <img style="max-height: 15rem;" class="card-img-top"  src="{{asset('maxresdefault.jpg')}}" alt="Card image">
-                </div>
-                <div class="card-group" >
-                    <div class="card card-inverse" style="">
-                        <img style="height: 15rem; " class="card-img-top " src="{{asset('maxresdefault.jpg')}}" alt="Card image">
+                <a href="#">
+                    <div class="card card-inverse" style="margin-bottom: 2rem;">
+                        <img style="max-height: 15rem;" class="card-img-top"  src="{{asset('maxresdefault.jpg')}}" alt="Card image">
+                        <div class="card-img-overlay">
+                            <h4 class="card-title">TASHKENT</h4>
+                            <p class="card-text">Starting from $300</p>
+                        </div>
                     </div>
-                    <div class="card card-inverse" style="margin-left: 1rem; border: none;">
-                        <img style="height: 15rem; " class="card-img-top " src="{{asset('registan-ensemble-samarkand-at-night.jpg')}}" alt="Card image">
+                </a>
+                <a href="#">
+                    <div class="card-group" >
+                        <div class="card card-inverse" style="">
+                            <img style="height: 15rem; " class="card-img-top " src="{{asset('maxresdefault.jpg')}}" alt="Card image">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title">TASHKENT</h4>
+                                <p class="card-text">Starting from $300</p>
+                            </div>
+                        </div>
+                        <div class="card card-inverse" style="margin-left: 1rem; border: none;">
+                            <img style="height: 15rem; " class="card-img-top " src="{{asset('registan-ensemble-samarkand-at-night.jpg')}}" alt="Card image">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title">TASHKENT</h4>
+                                <p class="card-text">Starting from $300</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
         <div class="row" style="height: 300px;">
