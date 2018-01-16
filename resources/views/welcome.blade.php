@@ -2,6 +2,16 @@
 
 @section('styles')
     <style>
+        .crop {
+            overflow: hidden;
+        }
+
+        .crop img {
+            object-fit: cover;
+            width: 100%;
+            height: 300px;
+        }
+
         .text-orange {
             color: #FF5F49;
         }
@@ -22,31 +32,25 @@
             background-color: #eee;
         }
 
-      /*  .cover {
-            height: 600px;
-            background-size: contain;
-            background: no-repeat center center;
-            padding: 32px;
-        }*/
+        /*  .cover {
+              height: 600px;
+              background-size: contain;
+              background: no-repeat center center;
+              padding: 32px;
+          }*/
 
         .card-center {
             object-fit: none; /* Do not scale the image */
             object-position: center; /* Center the image within the element */
         }
 
-        .card-text{
+        .card-text {
             color: white;
         }
-        .card-badge{
+
+        .card-badge {
             background: #FF5F49;
-            color:white;
-        }
-        .rating {
-            display: inline-block;
-            position: relative;
-            height: 50px;
-            line-height: 50px;
-            font-size: 35px;
+            color: white;
         }
 
         .rating label {
@@ -88,23 +92,15 @@
             opacity: 0;
         }
 
-        .rating label .icon1 {
-            float: left;
-            color: transparent;
-        }
-
-        .rating label:last-child .icon1 {
-            color: #000;
-        }
-
-        .rating:not(:hover) label input:checked ~ .icon1,
-        .rating:hover label:hover input ~ .icon1 {
-            color: #09f;
-        }
-
-        .rating label input:focus:not(:checked) ~ .icon1:last-child {
-            color: #000;
-            text-shadow: 0 0 5px #09f;
+        .card-body{padding: 10px 15px;}
+        .card-title{font-size: 1em;}
+        .star-rating .fa-star-o{color: dodgerblue;}
+        .star-rating .fa-star{color: dodgerblue;}
+        .button{
+            background-color: #FF5F49;
+            padding: 5px 80px;
+            color: white;
+            cursor: hand;
         }
     </style>
 @endsection
@@ -210,39 +206,6 @@
             TOP DESTINATIONS
         </h2>
         <br>
-        {{--<div class="row">
-            <div class="cover text-left"
-                 style="width: 50%;
-                 background-image: url('https://c1.staticflickr.com/8/7163/6519841459_9a17376267_b.jpg');">
-                <h3 class="display-5 text-white">TASHKENT</h3>
-                <h4 class="text-white">Starting from $300</h4>
-            </div>
-            <div style="width: 50%; height: 100%">
-                <div class="col-md-12 text-left" style="height: 40%;">
-                    <div style="position: absolute; margin: 32px;">
-                        <h3 class="display-5 text-white">BUKHARA</h3>
-                        <h4 class="text-white">Starting from $250</h4>
-                    </div>
-                    <img class="img-fluid"
-                         src="http://gettingnowhere.net/wp-content/uploads/2012/07/Bukhara-at-night.jpg" alt="bukhara">
-                </div>
-                <div style="width: 100%; height: 60%">
-                    <div class="text-left cover"
-                         style="width: 50%; height: 100%;
-                     background-image: url('http://static.panoramio.com/photos/large/46576059.jpg')">
-                        <h3 class="display-5 text-white">BUKHARA</h3>
-                        <h4 class="text-white">Starting from $250</h4>
-                    </div>
-                    <div class="text-left cover"
-                         style="width: 50%; height: 100%;
-                     background-image: url('http://static.panoramio.com/photos/large/46576059.jpg')">
-                        <h3 class="display-5 text-white">BUKHARA</h3>
-                        <h4 class="text-white">Starting from $250</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>--}}
         <div class="row">
             <div class="col-md-6">
                 <a href="#">
@@ -298,51 +261,143 @@
                 SPECIAL PACKAGES
             </h2>
             <br>
-        </div>
-
-        <div class="row"  style="padding: 20px;">
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="" height="300" src="{{asset('Uzbekistan.jpg')}}" alt="Card image">
-                    <div class="card-img-overlay">
-                        <span class="badge card-badge">4 days 3 nights</span>
-                    </div>
-                    <div class="card-block">
-                        <h5 class="card-title">Paris in Love</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-inverse">
-                    <img class="card-img" height="300" src="{{asset('maxresdefault.jpg')}}" alt="Card image">
-                    <div class="card-img-overlay">
-                        <span class="badge card-badge">4 days 3 nights</span>
-                    </div>
-                    <div class="card-block">
-                        <h5 class="card-title">Paris in Love</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="" height="300" src="{{asset('Uzbekistan.jpg')}}" alt="Card image">
-                    <div class="card-img-overlay">
-                        <span class="badge card-badge">4 days 3 nights</span>
-                    </div>
-                    <div class="card-block">
-                        <h5 class="card-title">Paris in Love</h5>
-                        <div class="rating">
-                            <label>
-                                <span class="icon1">★</span>
-                                <span class="icon1">★</span>
-                                <span class="icon1">★</span>
-                                <span class="icon1">★</span>
-                                <span class="icon1">★</span>
-                            </label>
+            <div class="row text-left">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-img-overlay" style="max-height: 50px;">
+                                <span class="badge card-badge">4 days 3 nights</span>
+                            </div>
+                            <div class="crop">
+                                <img src="{{asset('Uzbekistan.jpg')}}" alt="Card image">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title<span class="pull-right fa fa-heart-o"></span></h5>
+                                <div class="star-rating">
+                                    <span class="fa fa-star" data-rating="1"></span>
+                                    <span class="fa fa-star" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="pull-right fa fa-dollar text-orange" data-rating="1"><strong>1422</strong></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-img-overlay" style="max-height: 50px;">
+                                <span class="badge card-badge">4 days 3 nights</span>
+                            </div>
+                            <div class="crop">
+                                <img src="{{asset('registan-ensemble-samarkand-at-night.jpg')}}" alt="Card image">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title<span class="pull-right fa fa-heart-o"></span></h5>
+                                <div class="star-rating">
+                                    <span class="fa fa-star" data-rating="1"></span>
+                                    <span class="fa fa-star" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="pull-right fa fa-dollar text-orange" data-rating="1"><strong>1422</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-img-overlay" style="max-height: 50px;">
+                                <span class="badge card-badge">4 days 3 nights</span>
+                            </div>
+                            <div class="crop">
+                                <img src="{{asset('maxresdefault.jpg')}}" alt="Card image">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title<span class="pull-right fa fa-heart-o"></span></h5>
+                                <div class="star-rating">
+                                    <span class="fa fa-star" data-rating="1"></span>
+                                    <span class="fa fa-star" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="pull-right fa fa-dollar text-orange" data-rating="1"><strong>1422</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-img-overlay" style="max-height: 50px;">
+                                <span class="badge card-badge">4 days 3 nights</span>
+                            </div>
+                            <div class="crop">
+                                <img src="{{asset('Uzbekistan.jpg')}}" alt="Card image">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title<span class="pull-right fa fa-heart-o"></span></h5>
+                                <div class="star-rating">
+                                    <span class="fa fa-star" data-rating="1"></span>
+                                    <span class="fa fa-star" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="pull-right fa fa-dollar text-orange" data-rating="1"><strong>1422</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-img-overlay" style="max-height: 50px;">
+                                <span class="badge card-badge">4 days 3 nights</span>
+                            </div>
+                            <div class="crop">
+                                <img src="{{asset('registan-ensemble-samarkand-at-night.jpg')}}" alt="Card image">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title<span class="pull-right fa fa-heart-o"></span></h5>
+                                <div class="star-rating">
+                                    <span class="fa fa-star" data-rating="1"></span>
+                                    <span class="fa fa-star" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="pull-right fa fa-dollar text-orange" data-rating="1"><strong>1422</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-img-overlay" style="max-height: 50px;">
+                                <span class="badge card-badge">4 days 3 nights</span>
+                            </div>
+                            <div class="crop">
+                                <img src="{{asset('maxresdefault.jpg')}}" alt="Card image">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title<span class="pull-right fa fa-heart-o"></span></h5>
+                                <div class="star-rating">
+                                    <span class="fa fa-star" data-rating="1"></span>
+                                    <span class="fa fa-star" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="pull-right fa fa-dollar text-orange" data-rating="1"><strong>1422</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
                 </div>
             </div>
+            <button class="btn button">SEE ALL</button>
+            <br>
+            <br>
         </div>
     </div>
     <div class="row" style="height: 200px">
