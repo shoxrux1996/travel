@@ -32,7 +32,7 @@
             background-color: #eee;
         }
 
-        /*  .cover {
+     /*   .cover {
               height: 600px;
               background-size: contain;
               background: no-repeat center center;
@@ -40,7 +40,7 @@
           }*/
 
         .card-center {
-            object-fit: none; /* Do not scale the image */
+            object-fit: cover; /* Do not scale the image */
             object-position: center; /* Center the image within the element */
         }
 
@@ -115,17 +115,17 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img class="d-block w-100"
-                     src="https://www.tcsworldtravel.com/sites/default/files/styles/grid_hero_desktop_1x/public/imce/Destinations/Uzbekistan/superstock_1566-360927.jpg?t=1C2Eth&itok=18O6HFcA"
+                     src="{{asset('superstock_1566-360927.jpg')}}"
                      alt="First slide">
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100"
-                     src="https://www.tcsworldtravel.com/sites/default/files/styles/grid_hero_desktop_1x/public/imce/Destinations/Uzbekistan/superstock_1566-360927.jpg?t=1C2Eth&itok=18O6HFcA"
+                     src="{{asset('superstock_1566-360927.jpg')}}"
                      alt="Second slide">
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100"
-                     src="https://www.tcsworldtravel.com/sites/default/files/styles/grid_hero_desktop_1x/public/imce/Destinations/Uzbekistan/superstock_1566-360927.jpg?t=1C2Eth&itok=18O6HFcA"
+                     src="{{asset('superstock_1566-360927.jpg')}}"
                      alt="Third slide">
             </div>
         </div>
@@ -223,7 +223,7 @@
             <div class="col-md-6" style="">
                 <a href="#">
                     <div class="card card-inverse" style="margin-bottom: 2rem;">
-                        <img style="max-height: 15rem;" class="card-img-top" src="{{asset('maxresdefault.jpg')}}"
+                        <img style="max-height: 15rem;" class="card-img-top card-center" src="{{asset('maxresdefault.jpg')}}"
                              alt="Card image">
                         <div class="card-img-overlay">
                             <h4 class="card-title">TASHKENT</h4>
@@ -234,7 +234,7 @@
                 <a href="#">
                     <div class="card-group">
                         <div class="card card-inverse" style="">
-                            <img style="height: 15rem; " class="card-img-top " src="{{asset('maxresdefault.jpg')}}"
+                            <img style="height: 15rem; " class="card-img-top card-center" src="{{asset('maxresdefault.jpg')}}"
                                  alt="Card image">
                             <div class="card-img-overlay">
                                 <h4 class="card-title">TASHKENT</h4>
@@ -242,7 +242,7 @@
                             </div>
                         </div>
                         <div class="card card-inverse" style="margin-left: 1rem; border: none;">
-                            <img style="height: 15rem; " class="card-img-top "
+                            <img style="height: 15rem; " class="card-img-top card-center"
                                  src="{{asset('registan-ensemble-samarkand-at-night.jpg')}}" alt="Card image">
                             <div class="card-img-overlay">
                                 <h4 class="card-title">TASHKENT</h4>
@@ -279,6 +279,7 @@
                                     <span class="fa fa-star-o" data-rating="1"></span>
                                     <span class="fa fa-star-o" data-rating="1"></span>
                                     <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span>/ 7</span>
                                     <span class="pull-right fa fa-dollar text-orange" data-rating="1"><strong>1422</strong></span>
                                 </div>
                             </div>
@@ -300,6 +301,7 @@
                                     <span class="fa fa-star-o" data-rating="1"></span>
                                     <span class="fa fa-star-o" data-rating="1"></span>
                                     <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span>/ 7</span>
                                     <span class="pull-right fa fa-dollar text-orange" data-rating="1"><strong>1422</strong></span>
                                 </div>
                             </div>
@@ -321,6 +323,7 @@
                                     <span class="fa fa-star-o" data-rating="1"></span>
                                     <span class="fa fa-star-o" data-rating="1"></span>
                                     <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span>/ 7</span>
                                     <span class="pull-right fa fa-dollar text-orange" data-rating="1"><strong>1422</strong></span>
                                 </div>
                             </div>
@@ -338,13 +341,14 @@
                                 <img src="{{asset('Uzbekistan.jpg')}}" alt="Card image">
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Card title<span class="pull-right fa fa-heart-o"></span></h5>
+                                <h5 class="card-title">Card title<span class="pull-right fa fa-heart text-orange"></span></h5>
                                 <div class="star-rating">
                                     <span class="fa fa-star" data-rating="1"></span>
                                     <span class="fa fa-star" data-rating="1"></span>
                                     <span class="fa fa-star-o" data-rating="1"></span>
                                     <span class="fa fa-star-o" data-rating="1"></span>
                                     <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span>/ 7</span>
                                     <span class="pull-right fa fa-dollar text-orange" data-rating="1"><strong>1422</strong></span>
                                 </div>
                             </div>
@@ -366,6 +370,7 @@
                                     <span class="fa fa-star-o" data-rating="1"></span>
                                     <span class="fa fa-star-o" data-rating="1"></span>
                                     <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span>/ 7</span>
                                     <span class="pull-right fa fa-dollar text-orange" data-rating="1"><strong>1422</strong></span>
                                 </div>
                             </div>
@@ -380,13 +385,14 @@
                                 <img src="{{asset('maxresdefault.jpg')}}" alt="Card image">
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Card title<span class="pull-right fa fa-heart-o"></span></h5>
+                                <h5 class="card-title">Card title<span class="pull-right fa fa-heart text-orange"></span></h5>
                                 <div class="star-rating">
                                     <span class="fa fa-star" data-rating="1"></span>
                                     <span class="fa fa-star" data-rating="1"></span>
                                     <span class="fa fa-star-o" data-rating="1"></span>
                                     <span class="fa fa-star-o" data-rating="1"></span>
                                     <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span>/ 7</span>
                                     <span class="pull-right fa fa-dollar text-orange" data-rating="1"><strong>1422</strong></span>
                                 </div>
                             </div>
