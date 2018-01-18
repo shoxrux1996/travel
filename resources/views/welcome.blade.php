@@ -518,4 +518,39 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid bg-grey">
+        <div class="container text-center">
+            <br>
+            <h3 class="text-orange">
+                TESTIMONIAL
+            </h3>
+            <h4>What our customers say about</h4>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{{ asset('resources/user1.svg') }}" width="128" class="rounded-circle" alt="Alex" style="background-color: white; padding: 12px;">
+                    <h4>Alex</h4>
+                </div>
+                <div class="col-md-4">
+                    <img src="{{ asset('resources/user2.svg') }}" width="128" class="rounded-circle" alt="Alex" style="background-color: white; padding: 12px;">
+                    <h4>Alisher</h4>
+                </div>
+                <div class="col-md-4">
+                    <img src="{{ asset('resources/user3.svg') }}" width="128" class="rounded-circle" alt="Alex" style="background-color: white; padding: 12px;">
+                    <h4>Naseer</h4>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+    <div class="container text-center">
+        <br>
+        <br>
+        <img src="{{ asset('resources/Logo.png') }}" alt="Logo" width="156">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
 @endsection
