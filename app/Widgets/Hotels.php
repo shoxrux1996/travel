@@ -23,14 +23,14 @@ class Hotels extends AbstractWidget
     public function run()
     {
         $count = Hotel::count();
-        $string = 'Hotels';
+        $string = trans_choice('voyager.dimmer.hotel', $count);
 
         return view('voyager::dimmer', array_merge($this->config, [
             'icon'   => 'voyager-medal-rank-star',
             'title'  => "{$count} {$string}",
             'text'   => __('voyager.dimmer.page_text', ['count' => $count, 'string' => Str::lower($string)]),
             'button' => [
-                'text' => 'Hotels',
+                'text' => __('voyager.dimmer.hotel_link_text'),
                 'link' => route('voyager.hotels.index'),
             ],
             'image' => asset('2.jpg'),

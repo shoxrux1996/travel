@@ -14,6 +14,10 @@ use TCG\Voyager\Models\Post;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('test/{locale}', function ($locale){
+   $destination = \App\Destination::find(5);
+       echo $destination->getTranslatedAttribute('text',$locale);
+});
 Route::get('post/{slug}', function($slug){
     $post = Post::where('slug', '=', $slug)->firstOrFail();
     return view('post.post', compact('post'));

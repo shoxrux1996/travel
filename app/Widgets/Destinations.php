@@ -23,14 +23,14 @@ class Destinations extends AbstractWidget
     public function run()
     {
         $count = Destination::count();
-        $string = 'Destinations';
+        $string = trans_choice('voyager.dimmer.destination', $count);
 
         return view('voyager::dimmer', array_merge($this->config, [
             'icon'   => 'voyager-home',
             'title'  => "{$count} {$string}",
             'text'   => __('voyager.dimmer.page_text', ['count' => $count, 'string' => Str::lower($string)]),
             'button' => [
-                'text' => 'Destinations',
+                'text' => __('voyager.dimmer.destination_link_text'),
                 'link' => route('voyager.destinations.index'),
             ],
             'image' => asset('2.jpg'),

@@ -23,14 +23,14 @@ class Tours extends AbstractWidget
     public function run()
     {
         $count = Tour::count();
-        $string = 'Tours';
+        $string = trans_choice('voyager.dimmer.tour', $count);
 
         return view('voyager::dimmer', array_merge($this->config, [
             'icon'   => 'voyager-ship',
             'title'  => "{$count} {$string}",
             'text'   => __('voyager.dimmer.page_text', ['count' => $count, 'string' => Str::lower($string)]),
             'button' => [
-                'text' => 'Tours',
+                'text' => __('voyager.dimmer.tour_link_text'),
                 'link' => route('voyager.tours.index'),
             ],
             'image' => asset('1.jpg'),
