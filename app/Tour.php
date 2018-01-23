@@ -13,4 +13,13 @@ class Tour extends Model
     public function categories(){
         return $this->belongsToMany(Voyager::modelClass('Category'));
     }
+    public function destination(){
+        return $this->belongsTo(Destination::class);
+    }
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+    public function rating(){
+        return $this->comments()->sum('rating')/$this->comments()->count();
+    }
 }

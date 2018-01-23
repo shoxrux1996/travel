@@ -31,3 +31,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+Route::get('setlocale/{locale}', function ($locale) {
+    return redirect()->back()->withCookie(cookie()->forever('language-silk-road', $locale));
+})->name('lang.switch');
