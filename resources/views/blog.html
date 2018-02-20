@@ -1,0 +1,1045 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from crenoveative.com/envato/tour-packer/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Jan 2018 09:13:29 GMT -->
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Tour Packer</title>
+	<meta name="description" content="HTML Responsive Template for Tour Agency or Company Based on Twitter Bootstrap 3.x.x" />
+	<meta name="keywords" content="tour package, holiday, hotel, vocation, booking, trip, travel, tourism, tourist" />
+	<meta name="author" content="crenoveative">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	<!-- Fav and Touch Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+	<link rel="shortcut icon" href="images/ico/favicon.png">
+
+	<!-- CSS Plugins -->
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" media="screen">	
+	<link href="css/animate.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
+	<link href="css/component.css" rel="stylesheet">
+	
+	<!-- CSS Font Icons -->
+	<link rel="stylesheet" href="icons/ionicons/css/ionicons.css">
+	<link rel="stylesheet" href="icons/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="icons/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+	<link rel="stylesheet" href="icons/simple-line-icons/css/simple-line-icons.css">
+	<link rel="stylesheet" href="icons/themify-icons/themify-icons.css">
+	<link rel="stylesheet" href="icons/rivolicons/style.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!-- Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic,300italic,300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+
+	<!-- CSS Custom -->
+	<link href="css/style.css" rel="stylesheet">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	
+</head>
+
+<body class="">
+
+	<!-- BEGIN # MODAL LOGIN -->
+	<div class="modal fade modal-login modal-border-transparent" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				
+				<button type="button" class="btn btn-close close" data-dismiss="modal" aria-label="Close">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+				</button>
+				
+				<div class="clear"></div>
+				
+				<!-- Begin # DIV Form -->
+				<div id="modal-login-form-wrapper">
+					
+					<!-- Begin # Login Form -->
+					<form id="login-form">
+					
+						<div class="modal-body pb-5">
+					
+							<h4 class="text-center heading mt-10 mb-20">Sign-in</h4>
+						
+							<button class="btn btn-facebook btn-block">Sign-in with Facebook</button>
+							
+							<div class="modal-seperator">
+								<span>or</span>
+							</div>
+							
+							<div class="form-group"> 
+								<input id="login_username" class="form-control" placeholder="username" type="text"> 
+							</div>
+							<div class="form-group"> 
+								<input id="login_password" class="form-control" placeholder="password" type="password"> 
+							</div>
+			
+							<div class="form-group">
+								<div class="row gap-5">
+									<div class="col-xs-6 col-sm-6 col-md-6">
+										<div class="checkbox-block fa-checkbox"> 
+											<input id="remember_me_checkbox" name="remember_me_checkbox" class="checkbox" value="First Choice" type="checkbox"> 
+											<label class="" for="remember_me_checkbox">remember</label>
+										</div>
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 text-right"> 
+										<button id="login_lost_btn" type="button" class="btn btn-link">forgot pass?</button>
+									</div>
+								</div>
+							</div>
+						
+						</div>
+						
+						<div class="modal-footer">
+						
+							<div class="row gap-10">
+								<div class="col-xs-6 col-sm-6 mb-10">
+									<button type="submit" class="btn btn-primary btn-block">Sign-in</button>
+								</div>
+								<div class="col-xs-6 col-sm-6 mb-10">
+									<button type="submit" class="btn btn-primary btn-block btn-inverse" data-dismiss="modal" aria-label="Close">Cancel</button>
+								</div>
+							</div>
+							<div class="text-left">
+								No account? 
+								<button id="login_register_btn" type="button" class="btn btn-link">Register</button>
+							</div>
+							
+						</div>
+					</form>
+					<!-- End # Login Form -->
+								
+					<!-- Begin | Lost Password Form -->
+					<form id="lost-form" style="display:none;">
+						<div class="modal-body pb-5">
+						
+							<h3 class="text-center heading mt-10 mb-20">Forgot password</h3>
+							<div class="form-group mb-10"> 
+								<input id="lost_email" class="form-control" type="text" placeholder="Enter Your Email">
+							</div>
+							
+							<div class="text-center">
+								<button id="lost_login_btn" type="button" class="btn btn-link">Sign-in</button> or 
+								<button id="lost_register_btn" type="button" class="btn btn-link">Register</button>
+							</div>
+							
+						</div>
+						
+						<div class="modal-footer mt-10">
+							
+							<div class="row gap-10">
+								<div class="col-xs-6 col-sm-6">
+									<button type="submit" class="btn btn-primary btn-block">Submit</button>
+								</div>
+								<div class="col-xs-6 col-sm-6">
+									<button type="submit" class="btn btn-primary btn-inverse btn-block" data-dismiss="modal" aria-label="Close">Cancel</button>
+								</div>
+							</div>
+							
+						</div>
+						
+					</form>
+					<!-- End | Lost Password Form -->
+								
+					<!-- Begin | Register Form -->
+					<form id="register-form" style="display:none;">
+					
+						<div class="modal-body pb-5">
+						
+							<h3 class="text-center heading mt-10 mb-20">Register</h3>
+							
+							<button class="btn btn-facebook btn-block">Register with Facebook</button>
+							
+							<div class="modal-seperator">
+								<span>or</span>
+							</div>
+							
+							<div class="form-group"> 
+								<input id="register_username" class="form-control" type="text" placeholder="Username"> 
+							</div>
+							
+							<div class="form-group"> 
+								<input id="register_email" class="form-control" type="email" placeholder="Email">
+							</div>
+							
+							<div class="form-group"> 
+								<input id="register_password" class="form-control" type="password" placeholder="Password">
+							</div>
+							
+							<div class="form-group"> 
+								<input id="register_password_confirm" class="form-control" type="password" placeholder="Confirm Password">
+							</div>
+
+						</div>
+							
+						<div class="modal-footer mt-10">
+						
+							<div class="row gap-10">
+								<div class="col-xs-6 col-sm-6 mb-10">
+									<button type="submit" class="btn btn-primary btn-block">Register</button>
+								</div>
+								<div class="col-xs-6 col-sm-6 mb-10">
+									<button type="submit" class="btn btn-primary btn-inverse btn-block" data-dismiss="modal" aria-label="Close">Cancel</button>
+								</div>
+							</div>
+							
+							<div class="text-left">
+									Already have account? <button id="register_login_btn" type="button" class="btn btn-link">Sign-in</button>
+							</div>
+							
+						</div>
+							
+					</form>
+					<!-- End | Register Form -->
+								
+				</div>
+				<!-- End # DIV Form -->
+								
+			</div>
+		</div>
+	</div>
+	<!-- END # MODAL LOGIN -->
+	
+	<!-- start Container Wrapper -->
+	<div class="container-wrapper">
+
+		<header id="header">
+	  
+			<!-- start Navbar (Header) -->
+			<nav class="navbar navbar-primary navbar-fixed-top navbar-sticky-function">
+
+				<div class="navbar-top">
+				
+					<div class="container">
+						
+						<div class="flex-row flex-align-middle">
+							<div class="flex-shrink flex-columns">
+								<a class="navbar-logo" href="index-2.html">
+									<img src="images/logo-white.png" alt="Logo" />
+								</a>
+							</div>
+							<div class="flex-columns">
+								<div class="pull-right">
+								
+									<div class="navbar-mini">
+										<ul class="clearfix">
+										
+											<li class="dropdown bt-dropdown-click hidden-xs">
+												<a id="language-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+													<i class="ion-social-usd hidden-xss"></i> Dollar
+													<span class="caret"></span>
+												</a>
+												<ul class="dropdown-menu" aria-labelledby="language-dropdown">
+													<li><a href="#"><i class="ion-social-usd"></i> Dollar</a></li>
+													<li><a href="#"><i class="ion-social-euro"></i> Europe</a></li>
+													<li><a href="#"><i class="ion-social-yen"></i> Yen</a></li>
+												</ul>
+											</li>
+											
+											<li class="dropdown bt-dropdown-click hidden-xs">
+												<a id="currncy-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+													<i class="ion-android-globe hidden-xss"></i> English
+													<span class="caret"></span>
+												</a>
+												<ul class="dropdown-menu" aria-labelledby="language-dropdown">
+													<li><a href="#">English</a></li>
+													<li><a href="#">France</a></li>
+													<li><a href="#">Japanese</a></li>
+												</ul>
+											</li>
+											
+											<li class="dropdown bt-dropdown-click visible-xs">
+												<a id="currncy-language-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+													<i class="fa fa-cog"></i>
+												</a>
+												<ul class="dropdown-menu" aria-labelledby="language-dropdown">
+													<li><a href="#"><i class="ion-social-usd"></i> Dollar</a></li>
+													<li><a href="#"><i class="ion-social-euro"></i> Europe</a></li>
+													<li><a href="#"><i class="ion-social-yen"></i> Yen</a></li>
+													<li class="divider"></li>
+													<li><a href="#">English</a></li>
+													<li><a href="#">France</a></li>
+													<li><a href="#">Japanese</a></li>
+												</ul>
+											</li>
+											
+											<li class="user-action">
+												<a data-toggle="modal" href="#loginModal" class="btn">Sign up/in</a>
+											</li>
+
+										</ul>
+									</div>
+						
+								</div>
+							</div>
+						</div>
+
+					</div>
+					
+				</div>
+				
+				<div class="navbar-bottom hidden-sm hidden-xs">
+				
+					<div class="container">
+					
+						<div class="row">
+						
+							<div class="col-sm-9">
+								
+								<div id="navbar" class="collapse navbar-collapse navbar-arrow">
+									<ul class="nav navbar-nav" id="responsive-menu">
+										<li><a href="index-2.html">Home</a>
+											<ul>
+												<li><a href="index-2.html">Home 01 - Default</a></li>
+												<li><a href="index-02.html">Home 02 - Background Slider</a></li>
+												<li><a href="index-03.html">Home 03 - Video Background</a></li>
+												<li><a href="index-04.html">Home 04 - Smaller Package Items</a></li>
+												<li>
+													<a href="#">Color Variants</a>
+													 <ul>
+														<li><a href="index-2.html">Default Color</a></li>
+														<li><a href="index-color-02.html">Color 02</a></li>
+														<li><a href="index-color-03.html">Color 03</a></li>
+														<li><a href="index-color-04.html">Color 04</a></li>
+														<li><a href="index-color-05.html">Color 05</a></li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+										<li><a href="result-grid.html">Tour Package</a>
+											<ul>
+												<li><a href="result-list.html">Result - List</a></li>
+												<li><a href="result-grid.html">Result - Grid</a></li>
+												<li><a href="detail-page.html">Detail Page</a></li>
+											</ul>
+										</li>
+										<li><a href="about.html">About Us</a></li>
+										<li><a href="blog.html">Blog</a>
+											<ul>
+												<li><a href="blog.html">Blog</a></li>
+												<li><a href="blog-single.html">Blog Single</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Pages</a>
+											<ul>
+												<li><a href="result-list.html">Result - List</a></li>
+												<li><a href="result-grid.html">Result - Grid</a></li>
+												<li><a href="detail-page.html">Detail Page</a></li>
+												<li><a href="payment.html">Payment</a></li>
+												<li><a href="confirmation.html">Confirmation</a></li>
+												<li><a href="faq.html">FAQ</a></li>
+												<li><a href="about.html">About Us</a></li>
+												<li><a href="static-page.html">Static Page</a></li>
+												<li><a href="blog.html">Blog</a></li>
+												<li><a href="blog-single.html">Blog Single</a></li>
+												<li><a href="contact.html">Contact us</a></li>
+											</ul>
+										</li>
+										<li><a href="contact.html">Contact us</a></li>
+									</ul>
+								</div><!--/.nav-collapse -->
+								
+							</div>
+							
+							<div class="col-sm-3">
+							
+								<div class="navbar-phone"><i class="fa fa-phone"></i> Call us: +66 28 878 5452</div>
+							
+							</div>
+
+						</div>
+						
+					</div>
+				
+				</div>
+
+				<div id="slicknav-mobile"></div>
+				
+			</nav>
+			<!-- end Navbar (Header) -->
+
+		</header>
+		
+		<div class="clear"></div>
+		
+		<!-- start Main Wrapper -->
+		<div class="main-wrapper scrollspy-container">
+		
+			<!-- start end Page title -->
+			<div class="page-title" style="background-image:url('images/hero-header/breadcrumb.jpg');">
+				
+				<div class="container">
+				
+					<div class="row">
+					
+						<div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+						
+							<h1 class="hero-title">Blog</h1>
+							
+							<ol class="breadcrumb-list">
+								<li><a href="index-2.html">Homepage</a></li>
+								<li><span>Blog</span></li>
+							</ol>
+							
+						</div>
+						
+					</div>
+
+				</div>
+				
+			</div>
+			<!-- end Page title -->
+			
+			<div class="content-wrapper">
+			
+				<div class="container">
+				
+					<div class="row">
+					
+						<div class="col-sm-8 col-md-9">
+						
+							<div class="blog-wrapper">
+
+								<div class="blog-item">
+								
+									<div class="blog-media">
+										<div class="overlay-box">
+											<a class="blog-image" href="blog-single.html">
+												<img src="images/blog/blog-01.jpg" alt="" />
+												<div class="image-overlay">
+													<div class="overlay-content">
+														<div class="overlay-icon"><i class="pe-7s-link"></i></div>
+													</div>
+												</div>
+											</a>
+										</div>
+									</div>
+											
+									<div class="blog-content">
+										<h3><a href="blog-single.html" class="inverse">Blog title post with a featured image</a></h3>
+										<ul class="blog-meta clearfix">
+											<li>by <a href="#">Admin</a></li>
+											<li>by January 09, 2016</li>
+											<li>in <a href="#">Adventure</a>, <a href="#">Backpack</a></li>
+											<li>32 comments</li>
+										</ul>
+										<div class="blog-entry">  
+											Up branch to easily missed by do. Admiration considered acceptance too led one melancholy expression. Are will took form the nor true. Winding enjoyed minuter her letters evident use eat colonel. He attacks observe mr cottage inquiry am examine gravity. Are dear but near left was. Year kept on over so as this of. She steepest doubtful betrayed formerly him. Active one called uneasy our seeing see cousin tastes its. Ye am it formed indeed agreed relied piqued. 
+										</div>
+										<a href="blog-single.html" class="btn-blog">Read More <i class="fa fa-long-arrow-right"></i></a>
+									</div>
+								
+								</div>
+								
+								<div class="blog-item">
+								
+									<div class="blog-media">
+										<div class="overlay-box">
+											<a class="blog-image" href="blog-single.html">
+												<img src="images/blog/blog-02.jpg" alt="" />
+												<div class="image-overlay">
+													<div class="overlay-content">
+														<div class="overlay-icon"><i class="pe-7s-link"></i></div>
+													</div>
+												</div>
+											</a>
+										</div>
+									</div>
+											
+									<div class="blog-content">
+										<h3><a href="blog-single.html" class="inverse">Another blog title post with a featured image</a></h3>
+										<ul class="blog-meta clearfix">
+											<li>by <a href="#">Admin</a></li>
+											<li>by January 09, 2016</li>
+											<li>in <a href="#">Adventure</a>, <a href="#">Backpack</a></li>
+											<li>32 comments</li>
+										</ul>
+										<div class="blog-entry">  
+											Up branch to easily missed by do. Admiration considered acceptance too led one melancholy expression. Are will took form the nor true. Winding enjoyed minuter her letters evident use eat colonel. He attacks observe mr cottage inquiry am examine gravity. Are dear but near left was. Year kept on over so as this of. She steepest doubtful betrayed formerly him. Active one called uneasy our seeing see cousin tastes its. Ye am it formed indeed agreed relied piqued. 
+										</div>
+										<a href="blog-single.html" class="btn-blog">Read More <i class="fa fa-long-arrow-right"></i></a>
+									</div>
+								
+								</div>
+								
+								<div class="blog-item">
+								
+									<div class="blog-media">
+										<div id="bootstrap-carousel-slider" class="carousel slide" data-ride="carousel" data-interval="5000">
+
+											<!-- Wrapper for slides -->
+											<div class="carousel-inner" role="listbox">
+											
+												<!-- First slide -->
+												<div class="item active">
+													<div class="image">
+														<img src="images/blog/blog-03.jpg" alt="Image" />
+													</div>
+													<div class="carousel-caption">
+														<p>This is the caption for slide 1</p>
+													</div>
+												</div> <!-- /.item -->
+												
+												<!-- Second slide -->
+												<div class="item">
+													<div class="image">
+														<img src="images/blog/blog-02.jpg" alt="Image" />
+													</div>
+													<div class="carousel-caption">
+														<p>This is the caption for slide 2</p>
+													</div>
+												</div><!-- /.item -->
+												
+												<!-- Third slide -->
+												<div class="item">
+													<div class="image">
+														<img src="images/blog/blog-01.jpg" alt="Image" />
+													</div>
+													<div class="carousel-caption">
+														<p>This is the caption for slide 3</p>
+													</div>
+												</div><!-- /.item -->
+											
+											</div><!-- /.carousel-inner -->
+
+											<!-- Controls -->
+											<a class="left carousel-control" href="#bootstrap-carousel-slider" role="button" data-slide="prev">
+												<span class="carousel-control-left"><i class="pe-7s-angle-left" aria-hidden="true"></i></span>
+												<span class="sr-only">Previous</span>
+											</a>
+											<a class="right carousel-control" href="#bootstrap-carousel-slider" role="button" data-slide="next">
+												<span class="carousel-control-right"><i class="pe-7s-angle-right" aria-hidden="true"></i></span>
+												<span class="sr-only">Next</span>
+											</a>
+										</div><!-- /.carousel -->
+
+									</div>
+											
+									<div class="blog-content">
+										<h3><a href="blog-single.html" class="inverse">Blog Title Post With a Slider</a></h3>
+										<ul class="blog-meta clearfix">
+											<li>by <a href="#">Admin</a></li>
+											<li>by January 09, 2016</li>
+											<li>in <a href="#">Adventure</a>, <a href="#">Backpack</a></li>
+											<li>32 comments</li>
+										</ul>
+										<div class="blog-entry">  
+											Up branch to easily missed by do. Admiration considered acceptance too led one melancholy expression. Are will took form the nor true. Winding enjoyed minuter her letters evident use eat colonel. He attacks observe mr cottage inquiry am examine gravity. Are dear but near left was. Year kept on over so as this of. She steepest doubtful betrayed formerly him. Active one called uneasy our seeing see cousin tastes its. Ye am it formed indeed agreed relied piqued. 
+										</div>
+										<a href="blog-single.html" class="btn-blog">Read More <i class="fa fa-long-arrow-right"></i></a>
+									</div>
+								
+								</div>
+								
+								<div class="blog-item">
+					
+									<div class="blog-content">
+										<h3><a href="blog-single.html" class="inverse">Blog Title Post Without any Image</a></h3>
+										<ul class="blog-meta clearfix">
+											<li>by <a href="#">Admin</a></li>
+											<li>by January 09, 2016</li>
+											<li>in <a href="#">Adventure</a>, <a href="#">Backpack</a></li>
+											<li>32 comments</li>
+										</ul>
+										<div class="blog-entry">  
+											Up branch to easily missed by do. Admiration considered acceptance too led one melancholy expression. Are will took form the nor true. Winding enjoyed minuter her letters evident use eat colonel. He attacks observe mr cottage inquiry am examine gravity. Are dear but near left was. Year kept on over so as this of. She steepest doubtful betrayed formerly him. Active one called uneasy our seeing see cousin tastes its. Ye am it formed indeed agreed relied piqued. 
+										</div>
+										<a href="blog-single.html" class="btn-blog">Read More <i class="fa fa-long-arrow-right"></i></a>
+									</div>
+								
+								</div>
+								
+								<div class="blog-item">
+					
+									<div class="blog-media">
+										<div class="flex-video vimeo"> 
+											<iframe src="http://player.vimeo.com/video/71319358" allowfullscreen></iframe> 
+										</div>
+									</div>
+									
+									<div class="blog-content">
+										<h3><a href="blog-single.html" class="inverse">Blog Title Post Viemo Video</a></h3>
+										<ul class="blog-meta clearfix">
+											<li>by <a href="#">Admin</a></li>
+											<li>by January 09, 2016</li>
+											<li>in <a href="#">Adventure</a>, <a href="#">Backpack</a></li>
+											<li>32 comments</li>
+										</ul>
+										<div class="blog-entry">  
+											Up branch to easily missed by do. Admiration considered acceptance too led one melancholy expression. Are will took form the nor true. Winding enjoyed minuter her letters evident use eat colonel. He attacks observe mr cottage inquiry am examine gravity. Are dear but near left was. Year kept on over so as this of. She steepest doubtful betrayed formerly him. Active one called uneasy our seeing see cousin tastes its. Ye am it formed indeed agreed relied piqued. 
+										</div>
+										<a href="blog-single.html" class="btn-blog">Read More <i class="fa fa-long-arrow-right"></i></a>
+									</div>
+								
+								</div>
+								
+								<div class="blog-item">
+					
+									<div class="blog-media">
+										<div class="flex-video youtube"> 
+											<iframe width="560" height="315" src="https://www.youtube.com/embed/LGvvfOQWyHo" allowfullscreen></iframe>
+										</div>
+									</div>
+									
+									<div class="blog-content">
+										<h3><a href="blog-single.html" class="inverse">Blog Title Post Youtube Video</a></h3>
+										<ul class="blog-meta clearfix">
+											<li>by <a href="#">Admin</a></li>
+											<li>by January 09, 2016</li>
+											<li>in <a href="#">Adventure</a>, <a href="#">Backpack</a></li>
+											<li>32 comments</li>
+										</ul>
+										<div class="blog-entry">  
+											Up branch to easily missed by do. Admiration considered acceptance too led one melancholy expression. Are will took form the nor true. Winding enjoyed minuter her letters evident use eat colonel. He attacks observe mr cottage inquiry am examine gravity. Are dear but near left was. Year kept on over so as this of. She steepest doubtful betrayed formerly him. Active one called uneasy our seeing see cousin tastes its. Ye am it formed indeed agreed relied piqued. 
+										</div>
+										<a href="blog-single.html" class="btn-blog">Read More <i class="fa fa-long-arrow-right"></i></a>
+									</div>
+								
+								</div>
+								
+								<div class="clear"></div>
+								
+								<div class="pager-wrappper mt-0 clearfix">
+			
+									<div class="pager-innner">
+									
+										<div class="flex-row flex-align-middle">
+												
+											<div class="flex-column flex-sm-12">
+												Showing reslut 1 to 15 from 248 
+											</div>
+											
+											<div class="flex-column flex-sm-12">
+												<nav class="pager-right">
+													<ul class="pagination">
+														<li>
+															<a href="#" aria-label="Previous">
+																<span aria-hidden="true">&laquo;</span>
+															</a>
+														</li>
+														<li class="active"><a href="#">1</a></li>
+														<li><a href="#">2</a></li>
+														<li><a href="#">3</a></li>
+														<li><span>...</span></li>
+														<li><a href="#">11</a></li>
+														<li><a href="#">12</a></li>
+														<li><a href="#">13</a></li>
+														<li>
+															<a href="#" aria-label="Next">
+																<span aria-hidden="true">&raquo;</span>
+															</a>
+														</li>
+													</ul>
+												</nav>
+											</div>
+										
+										</div>
+										
+									</div>
+									
+								</div>
+								
+							</div>
+						
+						</div>
+						
+						<div class="col-sm-4 col-md-3 mt-50-xs">
+						
+							<aside class="sidebar">
+						
+								<div class="sidebar-inner no-border for-blog">
+								
+									<div class="sidebar-module">
+										<div class="sidebar-module-inner">
+											<div class="sidebar-mini-search">
+												<div class="input-group">
+													<input type="text" class="form-control" placeholder="Search for...">
+													<span class="input-group-btn">
+														<button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<div class="clear"></div>
+
+									<div class="sidebar-module">
+										<h4 class="sidebar-title">Categories</h4>
+										<div class="sidebar-module-inner">
+											<ul class="sidebar-category">
+												<li><a href="#">Business<span>(25)</span></a></li>
+												<li class="active"><a href="#">Commerce<span>(2)</span></a></li>
+												<li><a href="#">Coporate<span>(14)</span></a></li>
+												<li><a href="#">Creative<span>(157)</span></a></li>
+												<li><a href="#">Entertainment<span>(87)</span></a></li>
+												<li><a href="#">Nonprofit<span>(47)</span></a></li>
+												<li><a href="#">Personal<span>(8)</span></a></li>
+												<li><a href="#">Technology<span>(32)</span></a></li>
+												<li><a href="#">Miscellaneous<span>(26)</span></a></li>
+											</ul>
+										</div>
+									</div>
+									
+									
+									<div class="clear"></div>
+									
+									<div class="sidebar-module">
+										<h4 class="sidebar-title">Latest Posts</h4>
+										<div class="sidebar-module-inner">
+										
+											<ul class="sidebar-post">
+												<li class="clearfix">
+													<a href="blog-single.html">
+														<div class="image">
+															<img src="images/blog/01-sm.jpg" alt="Popular Post" />
+														</div>
+														<div class="content">
+															<h6>Enough around remove to barton agreed regret</h6>
+															<p class="recent-post-sm-meta"><i class="fa fa-clock-o mr-5"></i>June 01, 2016</p>
+														</div>
+													</a>
+												</li>
+												<li class="clearfix">
+													<a href="blog-single.html">
+														<div class="image">
+															<img src="images/blog/02-sm.jpg" alt="Popular Post" />
+														</div>
+														<div class="content">
+															<h6>Year well shot deny shew come now had. Shall downs stand marry taken his for out</h6>
+															<p class="recent-post-sm-meta"><i class="fa fa-clock-o mr-5"></i>April 25, 2016</p>
+														</div>
+													</a>
+												</li>
+												<li class="clearfix">
+													<a href="blog-single.html">
+														<div class="image">
+															<img src="images/blog/03-sm.jpg" alt="Popular Post" />
+														</div>
+														<div class="content">
+															<h6>Do related mr account brandon an up. Wrong for never ready ham these witty him</h6>
+															<p class="recent-post-sm-meta"><i class="fa fa-clock-o mr-5"></i>March 20, 2016</p>
+														</div>
+													</a>
+												</li>
+												<li class="clearfix">
+													<a href="blog-single.html">
+														<div class="image">
+															<img src="images/blog/04-sm.jpg" alt="Popular Post" />
+														</div>
+														<div class="content">
+															<h6>Our compass see age uncivil matters weather forbade her minutes</h6>
+															<p class="recent-post-sm-meta"><i class="fa fa-clock-o mr-5"></i>March 05, 2016</p>
+														</div>
+													</a>
+												</li>
+												<li class="clearfix">
+													<a href="blog-single.html">
+														<div class="image">
+															<img src="images/blog/05-sm.jpg" alt="Popular Post" />
+														</div>
+														<div class="content">
+															<h6>Ready how but truth son new under.</h6>
+															<p class="recent-post-sm-meta"><i class="fa fa-clock-o mr-5"></i>February 17, 2015</p>
+														</div>
+													</a>
+												</li>
+											</ul>
+										
+										</div>
+									</div>
+									
+									<div class="clear"></div>
+									
+									<div class="sidebar-module">
+										<h4 class="sidebar-title">Popular Posts</h4>
+										<div class="sidebar-module-inner">
+											
+											<ul class="sidebar-post">
+												<li class="clearfix">
+													<a href="blog-single.html">
+														<div class="image">
+															<img src="images/blog/01-sm.jpg" alt="Popular Post" />
+														</div>
+														<div class="content">
+															<h6>Appetite welcomed interest the goodness boy</h6>
+															<p class="recent-post-sm-meta"><i class="fa fa-comments mr-5"></i>5 comments</p>
+														</div>
+													</a>
+												</li>
+												<li class="clearfix">
+													<a href="blog-single.html">
+														<div class="image">
+															<img src="images/blog/02-sm.jpg" alt="Popular Post" />
+														</div>
+														<div class="content">
+															<h6>Wrong for never ready ham these witty him</h6>
+															<p class="recent-post-sm-meta"><i class="fa fa-comments mr-5"></i>5 comments</p>
+														</div>
+													</a>
+												</li>
+												<li class="clearfix">
+													<a href="blog-single.html">
+														<div class="image">
+															<img src="images/blog/03-sm.jpg" alt="Popular Post" />
+														</div>
+														<div class="content">
+															<h6>Tell size come hard mrs and four fond are</h6>
+															<p class="recent-post-sm-meta"><i class="fa fa-comments mr-5"></i>5 comments</p>
+														</div>
+													</a>
+												</li>
+												<li class="clearfix">
+													<a href="blog-single.html">
+														<div class="image">
+															<img src="images/blog/04-sm.jpg" alt="Popular Post" />
+														</div>
+														<div class="content">
+															<h6>Side need at in what dear ever upon</h6>
+															<p class="recent-post-sm-meta"><i class="fa fa-comments mr-5"></i>5 comments</p>
+														</div>
+													</a>
+												</li>
+												<li class="clearfix">
+													<a href="blog-single.html">
+														<div class="image">
+															<img src="images/blog/05-sm.jpg" alt="Popular Post" />
+														</div>
+														<div class="content">
+															<h6>Same down want joy neat ask pain help</h6>
+															<p class="recent-post-sm-meta"><i class="fa fa-comments mr-5"></i>5 comments</p>
+														</div>
+													</a>
+												</li>
+											</ul>
+										
+										</div>
+									</div>
+									
+									<div class="clear"></div>
+									
+									<div class="sidebar-module">
+										<h4 class="sidebar-title">Archives with numbers</h4>
+										<div class="sidebar-module-inner">
+											<ul class="sidebar-archives">
+												<li><a href="#">January 2015<span>(25)</span></a></li>
+												<li class="active"><a href="#">February 2015<span>(2)</span></a></li>
+												<li><a href="#">March 2015<span>(14)</span></a></li>
+												<li><a href="#">April 2015<span>(157)</span></a></li>
+												<li><a href="#">June 2015<span>(87)</span></a></li>
+											</ul>
+										</div>
+									</div>
+									
+									<div class="clear"></div>
+									
+									<div class="sidebar-module">
+										<h4 class="sidebar-title">Tags</h4>
+										<div class="sidebar-module-inner">
+											<div class="tag-cloud clearfix">
+												<a href="#" class="tag-item">HTML5</a> <a href="#" class="tag-item">CSS3</a> <a href="#" class="tag-item">jQuery</a> 
+												<a href="#" class="tag-item">Creative</a> <a href="#" class="tag-item">Design</a> <a href="#" class="tag-item">iOS</a> 
+												<a href="#" class="tag-item">Android</a> <a href="#" class="tag-item">Video</a> <a href="#" class="tag-item">Markup</a> 
+												<a href="#" class="tag-item">Programming</a> <a href="#" class="tag-item">SEO</a>
+											</div>
+										</div>
+									</div>
+									
+									<div class="clear"></div>
+
+									<div class="sidebar-module">
+										<h4 class="sidebar-title">Sidebar Text Widget</h4>
+										<div class="sidebar-module-inner">
+											<div class="sidebar-text-widget">
+												<p>In alteration insipidity impression by travelling reasonable up motionless. Of regard warmth by unable sudden garden ladies. No kept hung am size spot no. Likewise led and dissuade <a href="#">rejoiced</a> welcomed husbands boy.</p>
+												<ul>
+													<li>Eat imagine you chiefly few end ferrars compass</li>
+													<li>Be visitor females am ferrars inquiry</li>
+													<li>Latter law remark two lively thrown</li>
+													<li>Spot set they know rest its</li>
+													<li>Raptures law diverted believed jennings</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+
+									<div class="clear"></div>
+									
+									<div class="sidebar-module">
+										<h4 class="sidebar-title">Meta</h4>
+										<div class="sidebar-module-inner">
+											<ul class="sidebar-list">
+												<li><a href="#">Log in</a></li>
+												<li><a href="#">Entries RSS</a></li>
+												<li><a href="#">Comments RSS</a></li>
+												<li><a href="#">WordPress.org</a></li>
+											</ul>
+										</div>
+									</div>
+									
+									<div class="clear"></div>
+
+								</div>
+							
+							</aside>
+							
+						</div>
+					
+					</div>
+					
+				</div>
+				
+			</div>
+			
+
+		</div>
+		<!-- end Main Wrapper -->
+
+		<footer class="footer scrollspy-footer"> <!-- add scrollspy-footer to stop sidebar scrollspy -->
+			
+			<div class="container">
+			
+				<div class="main-footer">
+				
+					<div class="row">
+				
+						<div class="col-xs-12 col-sm-5 col-md-3">
+						
+							<div class="footer-logo">
+								<img src="images/logo-white.png" alt="Logo" />
+							</div>
+							
+							<p class="footer-address">324 Yarang Road, T.Chabangtigo, Muanng Pattani 9400 <br/> <i class="fa fa-phone"></i> +66 28 878 5452 <br/> <i class="fa fa-phone"></i> +66 2 547 2223 <br/> <i class="fa fa-envelope-o"></i> <a href="#">support@tourpacker.com</a></p>
+							
+							<div class="footer-social">
+							
+								<a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
+								<a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
+								<a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a>
+								<a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+							
+							</div>
+							
+							<p class="copy-right">&#169; Copyright 2016 Tour Packer. All Rights Reserved</p>
+							
+						</div>
+						
+						<div class="col-xs-12 col-sm-7 col-md-9">
+
+							<div class="row gap-10">
+							
+								<div class="col-xs-12 col-sm-4 col-md-3 col-md-offset-3 mt-30-xs">
+								
+									<h5 class="footer-title">About Tour Packer</h5>
+									
+									<ul class="footer-menu">
+									
+										<li><a href="static-page.html">Who we are</a></li>
+										<li><a href="static-page.html">Careers</a></li>
+										<li><a href="static-page.html">Company history</a></li>
+										<li><a href="static-page.html">Legal</a></li>
+										<li><a href="static-page.html">Partners</a></li>
+										<li><a href="static-page.html">Privacy notice</a></li>
+										
+									</ul>
+									
+								</div>
+								
+								<div class="col-xs-12 col-sm-4 col-md-3 mt-30-xs">
+
+									<h5 class="footer-title">Customer service</h5>
+									
+									<ul class="footer-menu">
+									
+										<li><a href="static-page.html">Payment</a></li>
+										<li><a href="static-page.html">Feedback</a></li>
+										<li><a href="static-page.html">Contact us</a></li>
+										<li><a href="static-page.html">Travel advisories</a></li>
+										<li><a href="static-page.html">FAQ</a></li>
+										<li><a href="static-page.html">Site map</a></li>
+										
+									</ul>
+									
+								</div>
+								
+								<div class="col-xs-12 col-sm-4 col-md-3 mt-30-xs">
+
+									<h5 class="footer-title">Others</h5>
+									
+									<ul class="footer-menu">
+									
+										<li><a href="static-page.html">Destinations</a></li>
+										<li><a href="static-page.html">Blog</a></li>
+										<li><a href="static-page.html">Pre Departure Planning</a></li>
+										<li><a href="static-page.html">Visas</a></li>
+										<li><a href="static-page.html">Insurance</a></li>
+										<li><a href="static-page.html">Travel Guide</a></li>
+										
+									</ul>
+									
+								</div>
+								
+							</div>
+
+						</div>
+						
+					</div>
+
+				</div>
+				
+			</div>
+			
+		</footer>
+
+	</div>  <!-- end Container Wrapper -->
+ 
+
+ 
+<!-- start Back To Top -->
+<div id="back-to-top">
+   <a href="#"><i class="fa fa-angle-up"></i></a>
+</div>
+<!-- end Back To Top -->
+
+
+
+<!-- JS -->
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/SmoothScroll.min.js"></script>
+<script type="text/javascript" src="js/jquery.slicknav.min.js"></script>
+<script type="text/javascript" src="js/jquery.placeholder.min.js"></script>
+<script type="text/javascript" src="js/instagram.min.js"></script>
+<script type="text/javascript" src="js/spin.min.js"></script>
+<script type="text/javascript" src="js/jquery.introLoader.min.js"></script>
+<script type="text/javascript" src="js/select2.full.js"></script>
+<script type="text/javascript" src="js/jquery.responsivegrid.js"></script>
+<script type="text/javascript" src="js/ion.rangeSlider.min.js"></script>
+<script type="text/javascript" src="js/readmore.min.js"></script>
+<script type="text/javascript" src="js/slick.min.js"></script>
+<script type="text/javascript" src="js/validator.min.js"></script>
+<script type="text/javascript" src="js/jquery.raty.js"></script> 
+<script type="text/javascript" src="js/customs.js"></script>
+
+</body>
+
+
+<!-- Mirrored from crenoveative.com/envato/tour-packer/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Jan 2018 09:13:33 GMT -->
+</html>

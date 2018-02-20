@@ -9,26 +9,40 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\App;
 use Config;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 
 class Language
 {
     public function handle($request, Closure $next)
     {
-        if($request->hasCookie('language-silk-road')) {
-            $cookie = $request->cookie('language-silk-road');
+
+        if($request->hasCookie('languageSilk')) {
+            $cookie = $request->cookie('languageSilk');
             if (in_array($cookie, Config::get('app.locales'))) {
-	            $locale = $cookie;
-	        } else
-	            $locale = Config::get('app.locale');
+                $locale = $cookie;
+            } else $locale = Config::get('app.locale');
             app()->setLocale($locale);
             Carbon::setLocale($locale);
+            switch ($locale) {
+                case 'ru':
+                    setLocale(LC_TIME, 'ru_RU.utf8');
+                    break;
+                case 'uz':
+                    setLocale(LC_TIME,'uz-Latn-UZ');
+                    break;
+                default:
+                    setLocale(LC_TIME,'en-US');
+                    # code...
+                    break;
+            }
             return $next($request);
         } else {
             $response = $next($request);
-            $response->withCookie(cookie()->forever('language-silk-road', Config::get('app.locale')));
+            $response->withCookie(cookie()->forever('languageSilk', Config::get('app.locale')));
             return $response;
         }
+
     }
 
 }

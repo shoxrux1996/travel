@@ -1,0 +1,100 @@
+/*------------------------------------------------------------------
+* Project:        Tour Packer
+* Author:         Crenoveative
+* URL:            http://crenoveative.com
+* Version:        1.0.0
+* Created:        06/03/2016
+* Last change:    06/03/2016
+-------------------------------------------------------------------*/
+
+
+/** Background */
+.navbar-primary, ul.sort-by li.active a:after, .package-grid-item .absolute-in-image .duration span, .package-list-item .absolute-in-image .duration span, 
+ul.list-info li .icon, .itinerary-item.intro-item:before, .itinerary-item-wrapper .panel-heading .absolute-day-number,
+.newsletter-text .icon, .about-us-grid-block-item, .payment-header .number, ul.price-summary-list li.total-price, .boxed-social a,
+
+.btn-primary, .btn-primary.btn-inverse:hover, 
+
+.progress-primary .progress-bar, .irs-bar, .irs-bar-edge { background: #F0A42B; }
+
+
+
+.bg-primary { background: #F0A42B !important; }
+
+.boxed-social a:hover, .comment-item a.comment-reply:hover, .comment-item a.comment-reply:hover, .tag-cloud a:hover,
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary.focus { background: #E09722; }
+
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus { background-color: #E09722; }
+
+
+/** Color */
+
+ul.availabily-list li.availabily-content > div.date-from:after, ul.sort-by li.active a, ul.sort-by li a:hover, .btn-sorting.active,
+.btn-sorting:hover, .featured-item .content .icon, ul.featured-list-sm li .icon, .absolute-in-content .price, .alt-smaller .price, 
+.package-list-item .content .price, .itinerary-item-wrapper .panel-heading.active .absolute-day-number,
+.review-overall-point span, .faq-alt-2-wrapper .bootstarp-accordion .panel-heading a:before, ul.static-page-menu li a:hover,
+ul.static-page-menu li.active a, .breadcrumb-wrapper ol.breadcrumb-list li a,
+
+a, h1, h2, h3, h4, h5, h6, .btn-link,
+
+.scrollspy-sidebar .nav > li > a:hover, .irs-from, .irs-to, .irs-single { color: #F0A42B; }
+
+.text-primary { color: #F0A42B !important; }
+
+ul.social-share-sm li a:hover, .blog-content h3 a:hover, .blog-author h5 a:hover, .navbar-nav li ul li:hover > a, .navbar-nav > li.mega-menu:hover > a,
+.navbar-nav > li.mega-menu > a:hover, .navbar-nav > li.dropdown:hover > a, .navbar-nav > li.dropdown > a:hover, .navbar-nav > li.dropdown.active > a,
+.navbar-nav > li.dropdown.active > a:hover, .navbar-nav > li:hover > a, .navbar-nav > li.active > a, .breadcrumb-wrapper ol.breadcrumb-list li a:hover, .navbar-nav > li.mega-menu ul li a:hover, .navbar-sticky .navbar-nav > li > a:hover, .navbar-sticky .navbar-nav > li > a:focus, .breadcrumb-wrapper ol.breadcrumb-list li a:hover, .sidebar-inner.for-blog a:hover, ul.sidebar-post li a:hover h6, .pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus, .team-item ul.social li a:hover , ul.social-share-sm li a:hover, .blog-content h3 a:hover, .blog-author h5 a:hover,
+
+a:hover,
+
+input[type='radio'] + label:hover::before,
+input[type='checkbox'] + label:hover::before,
+input[type='radio']:checked + label:before,
+input[type='checkbox']:checked + label:before
+ { color: #E09722; }
+
+
+/** Border Color */
+ul.featured-list-sm li .icon, .itinerary-item-wrapper .panel-heading .absolute-day-number, .itinerary-item-wrapper .panel-heading.active .absolute-day-number, .comment-item a.comment-reply,
+
+.btn-primary,  
+
+.progress-primary .progress-bar, .scrollspy-sidebar .nav > li > a:hover, .irs-slider { border-color: #F0A42B; }
+
+.comment-item a.comment-reply:hover, .tag-cloud a:hover, .comment-item a.comment-reply:hover,
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary.focus,  .form-control:focus, .form-control:active { border-color: #E09722; }
+
+
+
+/** Border Top Color */
+.navbar-nav li ul { border-top-color: #F0A42B; }
+
+
+
+/** Border Right Color */
+.for-faq-page.scrollspy-sidebar .nav > li > a:hover, .for-faq-page.scrollspy-sidebar .nav > .active > a,
+.for-faq-page.scrollspy-sidebar .nav > .active:hover > a, .for-faq-page.scrollspy-sidebar .nav > .active:focus > a, ul.static-page-menu li a:hover,
+ul.static-page-menu li.active a { border-right-color: #F0A42B !important; }
+
+
+.btn-primary.btn-inverse { color: #F0A42B !important; border-color: #F0A42B !important; }
+
+.scrollspy-sidebar .nav > .active > a,
+.scrollspy-sidebar .nav > .active:hover > a,
+.scrollspy-sidebar .nav > .active:focus > a { color: #F0A42B !important; border-color: #F0A42B !important; }
+
+#back-to-top a:hover { background-color: #E09722; border-color: #E09722; }
+
+
+
+
+
+

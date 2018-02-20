@@ -26170,15 +26170,40 @@
             menubar: !1,
             selector: "textarea.richTextBox",
             skin: "voyager",
-            content_css : "/vendor/tcg/voyager/assets/js/css/mycontent.css",
+            content_css : ["/dist/bootstrap/css/bootstrap.min.css","/dist/icons/font-awesome/css/font-awesome.min.css","/dist/css/main.css","/dist/css/style.css"],
             min_height: 600,
             resize: "vertical",
             plugins: "link, image, code, youtube, giphy, table, textcolor, lists",
             extended_valid_elements: "input[id|name|value|type|class|style|required|placeholder|autocomplete|onclick]",
+            extended_valid_elements: "i[id|name|value|type|class|style|required|placeholder|autocomplete|onclick]",
             file_browser_callback: function (e, t, n, i) {
                 "image" == n && $("#upload_file").trigger("click")
             },
-            toolbar: "styleselect bold italic underline | forecolor backcolor | alignleft aligncenter alignright | bullist numlist outdent indent | link image table youtube giphy | code | blockquote",
+            style_formats_merge: true,
+            style_formats: [
+                {title: 'Поправить Лист', selector: 'ul', classes:'list-with-icon with-heading'}
+            ],
+            toolbar: "styleselect bold italic underline | forecolor backcolor | alignleft aligncenter alignright | bullist numlist outdent indent | link image table youtube giphy | code | blockquote | mybutton1 mybutton2",
+            setup: function (editor) {
+                editor.addButton('mybutton1', {
+                    icon: false,
+                    image:'/dist/icons/checked.png',
+                    onclick: function () {
+                        editor.insertContent('<li><i class=\"fa fa-check-circle text-primary\"></i><h6 class=\"heading mt-0\">Заглавие</h6><p>Текст</p></li>');
+                        tinyMCE.activeEditor.dom.addClass(tinyMCE.activeEditor.dom.select('ul'), 'list-with-icon');
+                        tinyMCE.activeEditor.dom.addClass(tinyMCE.activeEditor.dom.select('ul'), 'with-heading');
+                    }
+                });
+                editor.addButton('mybutton2', {
+                        icon: false,
+                        image:'/dist/icons/times-circle.png',
+                        onclick: function () {
+                            editor.insertContent('<li><i class=\"fa fa-times-circle text-light\"></i><h6 class=\"heading mt-0\">Заглавие</h6><p>Текст</p></li>');
+                            tinyMCE.activeEditor.dom.addClass(tinyMCE.activeEditor.dom.select('ul'), 'list-with-icon');
+                            tinyMCE.activeEditor.dom.addClass(tinyMCE.activeEditor.dom.select('ul'), 'with-heading');
+                        }
+                    })
+            },
             convert_urls: !1,
             image_caption: !0,
             image_title: !0

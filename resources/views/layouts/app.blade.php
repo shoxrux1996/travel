@@ -54,7 +54,7 @@
 
         #logo {
             padding: 16px;
-            width: 92%;
+            width: 90px;
             text-align: center;
             margin: 0 auto;
             transform: rotate(-45deg);
