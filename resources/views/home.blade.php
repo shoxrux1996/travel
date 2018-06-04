@@ -53,7 +53,7 @@
                             <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 
                                 <h1 class="hero-title">Silk Road Asia Travel</h1>
-                                <p class="lead">Visit Bukhara, Samarkand, Khiva or beyond!</p>
+                                <p class="lead">@lang('home.visitbuckara')</p>
 
                             </div>
 
@@ -67,8 +67,8 @@
                                     <div class="column-item col-md-offset-3">
                                         <div class="form-group">
 
-                                            <select name="destinations[]" class="select2-multi form-control" data-placeholder="Choose a Destination" multiple>
-                                                <option value="">Choose a Destination</option>
+                                            <select name="destinations[]" class="select2-multi form-control" data-placeholder="@lang('home.choosedes')" multiple>
+                                                <option value="">@lang('home.choosedes')</option>
                                                 @foreach($destinations as $key => $destination)
                                                     <option value="{{$destination->name}}">{{$destination->getTranslatedAttribute('name', \App::getLocale(),'ru') }}
                                                     </option>
@@ -82,7 +82,7 @@
 
                                         <div class="form-group">
 
-                                            <button type="submit" class="btn btn-primary btn-block">Search</button>
+                                            <button type="submit" class="btn btn-primary btn-block">@lang('home.search')</button>
 
                                         </div>
 
@@ -112,8 +112,8 @@
                             <div class="featured-count clearfix">
                                 <div class="icon"><i class="pe-7s-map-marker"></i></div>
                                 <div class="content">
-                                    <h6>300+ Destinations</h6>
-                                    <span>Tastes giving in passed direct me valley supply.</span>
+                                    <h6>300+ @lang('home.destinations')</h6>
+                                    <span>@lang('home.destinationInfo')</span>
                                 </div>
                             </div>
                         </div>
@@ -122,8 +122,8 @@
                             <div class="featured-count clearfix">
                                 <div class="icon"> <i class="pe-7s-user"></i></div>
                                 <div class="content">
-                                    <h6>500+ Travel Guides</h6>
-                                    <span>Prepared do an dissuade whatever steepest.</span>
+                                    <h6>500+ @lang('home.travelguides')</h6>
+                                    <span>@lang('home.travelguidesInfo')</span>
                                 </div>
                             </div>
                         </div>
@@ -132,8 +132,8 @@
                             <div class="featured-count clearfix">
                                 <div class="icon"> <i class="pe-7s-smile"></i></div>
                                 <div class="content">
-                                    <h6>20000+ Happy Customers</h6>
-                                    <span>Devonshire invitation discovered indulgence.</span>
+                                    <h6>20000+ @lang('home.happycostumers')</h6>
+                                    <span>@lang('home.happycostumersInfo')</span>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                             
                             <div class="section-title">
                             
-                                <h3>Top Destinations</h3>
+                                <h3>@lang('home.topDestinations')</h3>
                                 
                             </div>
                             
@@ -171,7 +171,7 @@
                                 <a href="#" onclick="destinationSubmit('{{$destinations[0]->name}}')" class="top-destination-image-bg" style="background-image:url('{{asset('storage/'.$topdestinations[0]->image)}}');">
                                     <div class="relative">
                                         <h4>{{$topdestinations[0]->getTranslatedAttribute('name', \App::getLocale(),'ru')}}</h4>
-                                        <span>Starting from ${{$topdestinations[0]->price()}}</span>
+                                        @if($topdestinations[0]->price() != null)<span>@lang('home.startingfrom') ${{$topdestinations[0]->price()}}</span>@endif
                                     </div>
                                 </a>
 
@@ -181,7 +181,7 @@
                             <a href="#" onclick="destinationSubmit('{{$destinations[1]->name}}')"  class="top-destination-image-bg" style="background-image:url('{{asset('storage/'.$topdestinations[1]->image)}}');">
                                 <div class="relative">
                                     <h4>{{$topdestinations[1]->getTranslatedAttribute('name', \App::getLocale(),'ru')}}</h4>
-                                    <span>Starting from ${{$topdestinations[1]->price()}}</span>
+                                    @if($topdestinations[1]->price() != null)<span>@lang('home.startingfrom')${{$topdestinations[1]->price()}}</span>@endif
                                 </div>
                             </a>
                         </div>
@@ -190,7 +190,7 @@
                             <a href="#" onclick="destinationSubmit('{{$destinations[2]->name}}')"  class="top-destination-image-bg" style="background-image:url('{{asset('storage/'.$topdestinations[2]->image)}}');">
                                 <div class="relative">
                                     <h4>{{$topdestinations[2]->getTranslatedAttribute('name', \App::getLocale(),'ru')}}</h4>
-                                    <span>Starting from ${{$topdestinations[2]->price()}}</span>
+                                    @if($topdestinations[2]->price() != null)<span>@lang('home.startingfrom') ${{$topdestinations[2]->price()}}</span>@endif
                                 </div>
                             </a>
                         </div>
@@ -199,7 +199,7 @@
                             <a href="#" onclick="destinationSubmit('{{$destinations[3]->name}}')"  class="top-destination-image-bg" style="background-image:url('{{asset('storage/'.$topdestinations[3]->image)}}');">
                                 <div class="relative">
                                     <h4>{{$topdestinations[3]->getTranslatedAttribute('name', \App::getLocale(),'ru')}}</h4>
-                                    <span>Starting from ${{$topdestinations[3]->price()}}</span>
+                                    @if($topdestinations[3]->price() != null)<span>@lang('home.startingfrom') ${{$topdestinations[3]->price()}}</span>@endif
                                 </div>
                             </a>
                         </div>
@@ -221,8 +221,8 @@
                             
                             <div class="section-title">
                             
-                                <h3>Special Packages</h3>
-                                <p>Of distrusts immediate enjoyment curiosity do. Marianne numerous saw thoughts the humoured.</p>
+                                <h3>@lang('home.specialpack')</h3>
+                                <p>@lang('home.specialpackInfo')</p>
                                 
                             </div>
                             
@@ -239,16 +239,21 @@
                                         <div class="package-grid-item">
                                             <a href="{{route('tour.show', $tour->slug)}}">
                                                 <div class="image">
-                                                    <img src="{{asset('storage/'.json_decode($tour->images)[0])}}" alt="Tour Package" />
+                                                    @if(json_decode($tour->images) != null)<img src="{{asset('storage/'.json_decode($tour->images)[0])}}" alt="Tour Package" />
+                                                    @else
+                                                        <img src="{{asset('default.jpg')}}" alt="Tour Package" />
+                                                    @endif
                                                     <div class="absolute-in-image">
-                                                        <div class="duration"><span>{{$tour->days}} days {{$tour->nights}} nights</span></div>
+                                                        <div class="duration"><span>
+                                                                @if($tour->days != 0){{$tour->days}} {{trans_choice('day.days',$tour->days)}}@endif @if($tour->nights != 0){{$tour->nights}} {{trans_choice('day.nights',$tour->nights)}}@endif
+                                                            </span></div>
                                                     </div>
                                                 </div>
                                                 <div class="content clearfix">
                                                     <h5>{{$tour->getTranslatedAttribute('title', \App::getLocale(),'ru')}}</h5>
                                                     <div class="rating-wrapper">
                                                         <div class="raty-wrapper">
-                                                            <div class="star-rating-read-only" data-rating-score="{{$tour->rating()}}"></div> <span> / {{$tour->comments->count()}} review</span>
+                                                            <div class="star-rating-read-only" data-rating-score="{{$tour->rating()}}"></div> <span> / {{$tour->comments->count()}} {{trans_choice('day.reviews', $tour->comments->count())}}</span>
                                                         </div>
                                                     </div>
                                                     <div class="absolute-in-content">
@@ -280,14 +285,14 @@
                         
                             <div class="section-title text-left">
                             
-                                <h3>Why Booking With Us</h3>
-                                <p>There are several seasons that you must travel with us</p>
+                                <h3>@lang('home.whyus')</h3>
+                                <p>@lang('home.whyusInfo')</p>
                                 
                             </div>
                             
                             <div class="featured-item">
                             
-                                <h4>Experts On Tour</h4>
+                                <h4>@lang('home.expertsontour')</h4>
                                 
                                 <div class="content clearfix">
                                 
@@ -295,14 +300,14 @@
                                         <i class="pe-7s-users"></i>
                                     </div>
                                     
-                                    <p>Blind would equal while oh mr lain led and fact none. One preferred sportsmen resolving the happiness continued. High at of in loud rich true.</p>
+                                    <p>@lang('home.expertsontourInfo')</p>
                                     
                                 </div>
                             </div>
                             
                             <div class="featured-item">
                             
-                                <h4>Quality Accommodation</h4>
+                                <h4>@lang('home.qualityaccom')</h4>
                                 
                                 <div class="content clearfix">
                                 
@@ -310,7 +315,7 @@
                                         <i class="pe-7s-home"></i>
                                     </div>
                                     
-                                    <p>Admiration stimulated cultivated reasonable be projection possession of. Real no near room ye bred sake if some. Is arranging furnished knowledge.</p>
+                                    <p>@lang('home.qualityaccomInfo')</p>
                                     
                                 </div>
                             </div>
@@ -318,7 +323,7 @@
                             
                             <div class="featured-item">
                             
-                                <h4>Comfortable Transport</h4>
+                                <h4>@lang('home.comfortabletrans')</h4>
                                 
                                 <div class="content clearfix">
                                 
@@ -326,7 +331,7 @@
                                         <i class="pe-7s-car"></i>
                                     </div>
                                     
-                                    <p>Effect twenty indeed beyond for not had county. The use him without greatly can private. Increasing it unpleasant no of contrasted no continuing.</p>
+                                    <p>@lang('home.comfortabletransInfo')</p>
                                     
                                 </div>
                             </div>
@@ -353,15 +358,15 @@
                             
                             <div class="section-title">
                             
-                                <h3>Testimonial</h3>
-                                <p>What our customers say about us</p>
+                                <h3>@lang('home.testimonial')</h3>
+                                <p>@lang('home.testimonialInfo')</p>
                             </div>
                             
                         </div>
                     
                     </div>
                     
-                    <div class="testimonial-wrapper">
+                   {{--  <div class="testimonial-wrapper">
                     
                         <div class="row">
                             
@@ -373,7 +378,7 @@
                                     <div class="content">
                                         <h4>Antony Robert</h4>
                                         <h6>From Spain</h6>
-                                        <p>She meant new their sex could defer child. An lose at quit to life do dull. Moreover end horrible endeavor entrance any families. Income appear extent on of thrown in admire.</p>
+                                        <p>She meant new their could defer child. An lose at quit to life do dull. Moreover end horrible endeavor entrance any families. Income appear extent on of thrown in admire.</p>
                                     </div>
                                 </div>
                             </div>
@@ -393,7 +398,7 @@
                             
                         </div>
                         
-                    </div>
+                    </div> --}}
                     
                 </div>
                 

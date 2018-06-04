@@ -23,7 +23,16 @@ class Destination extends Model
     public function tours(){
         return $this->hasMany(Tour::class);
     }
+    public function toursStarting(){
+        return $this->hasMany(Tour::class,'start_id');
+    }
+    public function toursEnding(){
+        return $this->hasMany(Tour::class,'end_id');
+    }
+    public function tourlist(){
+        return $this->toursStarting()->union($this->toursEnding());
+    }
     public function price(){
-        return $this->tours()->orderBy('price')->first() != null ? $this->tours()->orderBy('price')->first()->price : "";
+        return $this->tourlist()->orderBy('price')->first() != null ? $this->tourList()->orderBy('price')->first()->price : "";
     }
 }

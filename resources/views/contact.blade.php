@@ -18,11 +18,11 @@
 
                     <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
 
-                        <h1 class="hero-title">Contact Us</h1>
+                        <h1 class="hero-title">@lang('contactus.contact_us')</h1>
 
                         <ol class="breadcrumb-list">
-                            <li><a href="{{route('home')}}">Homepage</a></li>
-                            <li><span>Contact Us</span></li>
+                            <li><a href="{{route('home')}}">@lang('contactus.homepage')</a></li>
+                            <li><span>@lang('contactus.contact_us')</span></li>
                         </ol>
 
                     </div>
@@ -44,9 +44,9 @@
 
                         <div class="section-title">
 
-                            <h3>Our Offices are worldwide</h3>
+                            <h3>@lang('contactus.our_offices')</h3>
 
-                            <p>Expression acceptance imprudence particular had eat unsatiable.</p>
+                            <p>@lang('contactus.our_offices_body')</p>
 
                         </div>
 
@@ -163,7 +163,7 @@
 
                             <div class="section-title">
 
-                                <h3>Keep in touch</h3>
+                                <h3>@lang('contactus.keep_in_touch')</h3>
 
                             </div>
 
@@ -189,7 +189,7 @@
                                         <div class="content">
                                             <h5 class="heading mt-0"> @ Tashkent, Uzbekistan</h5>
                                             <ul class="address-list">
-                                                <li><i class="fa fa-map-marker"></i> {{setting('site.address')}}</li>
+                                                <li><i class="fa fa-map-marker"></i> @lang('contactus.address') </li>
                                                 <li><i class="fa fa-phone"></i> {{setting('site.phone')}}</li>
                                                 <li><i class="fa fa-envelope"></i> {{setting('site.email')}}</li>
                                             </ul>
@@ -226,19 +226,19 @@
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="inputName">Your Name <span class="font10 text-danger">(required)</span></label>
-                                            <input id="inputName" type="text" class="form-control" name="name" data-error="Your name is required" required>
+                                            <label for="inputName">@lang('contactus.message.your_name')<span class="font10 text-danger"> (@lang('contactus.required'))</span></label>
+                                            <input id="inputName" type="text" class="form-control" name="name" data-error="@lang('contactus.message.name_required')" required>
                                             <div class="help-block with-errors"></div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="inputEmail">Your Email <span class="font10 text-danger">(required)</span></label>
-                                            <input id="inputEmail" type="email" class="form-control" name="email" data-error="Your email is required and must be a valid email address" required>
+                                            <label for="inputEmail">@lang('contactus.message.your_email') <span class="font10 text-danger">(@lang('contactus.required'))</span></label>
+                                            <input id="inputEmail" type="email" class="form-control" name="@lang('contactus.message.email_required')" required>
                                             <div class="help-block with-errors"></div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Subject</label>
+                                            <label>@lang('contactus.message.subject')</label>
                                             <input type="text" class="form-control" name="subject" />
                                         </div>
 
@@ -247,15 +247,15 @@
                                     <div class="col-sm-6">
 
                                         <div class="form-group">
-                                            <label for="inputMessage">Message <span class="font10 text-danger">(required)</span></label>
-                                            <textarea id="inputMessage" class="form-control" rows="9" name="message" data-minlength="50" data-error="Your message is required and must not less than 50 characters" required></textarea>
+                                            <label for="inputMessage">@lang('contactus.message.message') <span class="font10 text-danger">(@lang('contactus.required'))</span></label>
+                                            <textarea id="inputMessage" class="form-control" rows="9" name="message" data-minlength="50" data-error="@lang('contactus.message.message_required')" required></textarea>
                                             <div class="help-block with-errors"></div>
                                         </div>
 
                                     </div>
 
                                     <div class="col-sm-12 text-right text-left-sm">
-                                        <button type="submit" class="btn btn-primary mt-5">Send Message</button>
+                                        <button type="submit" class="btn btn-primary mt-5">@lang('contactus.message.send_message')</button>
                                     </div>
 
 

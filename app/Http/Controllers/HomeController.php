@@ -22,10 +22,10 @@ class HomeController extends Controller
     public function index()
     {
         $tours = Tour::with('translations')->orderByRaw("RAND()")->take(9)->get();
-        $destinations = Destination::where('parent_id',null)->get();
-        $topDestinations = Destination::where('parent_id',null)
-            ->withCount('tours as tours_count')->orderBy('tours_count','desc')->get()->take(4);
+        $destinations = Destination::where('parent_id','!=',null)->get();
 
+        $topDestinations = Destination::where('parent_id','!=',null)
+            ->withCount('tourList as tours_count')->orderBy('tours_count','desc')->get()->take(4);
 
         return view('home')->withTours($tours)->withDestinations($destinations)->withTopdestinations($topDestinations);
     }

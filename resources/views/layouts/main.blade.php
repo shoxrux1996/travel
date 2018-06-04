@@ -25,7 +25,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72"
           href="{{asset('dist/images/ico/apple-touch-icon-72-precomposed.png')}}">
     <link rel="apple-touch-icon-precomposed" href="{{asset('dist/images/ico/apple-touch-icon-57-precomposed.png')}}">
-    <link rel="shortcut icon" href="{{asset('dist/images/ico/favicon.png')}}">
+    <link rel="shortcut icon" href="{{asset('storage/'.setting("site.logo"))}}">
 
     <!-- CSS Plugins -->
     <link rel="stylesheet" type="text/css" href="{{asset('dist/bootstrap/css/bootstrap.min.css')}}" media="screen">
@@ -324,15 +324,15 @@
                     <div class="row">
                             <div id="navbar" class="collapse navbar-collapse navbar-arrow">
                                     <ul class="nav navbar-nav" id="responsive-menu">
-                                        <li class="navbar-left"><a href="{{route('home')}}">Home</a>
+                                        <li class="navbar-left"><a href="{{route('home')}}">@lang('layout.home')</a>
                                         </li>
-                                        <li class="navbar-left"><a href="{{route('tour.list')}}">Tours</a>
+                                        <li class="navbar-left"><a href="{{route('tour.list')}}">@lang('layout.tours')</a>
                                         </li>
-                                        <li class="navbar-left"><a href="{{route('blog.list')}}">Blog</a></li>
-                                        <li class="navbar-left"><a href="{{route('about')}}">About Us</a></li>
+                                        <li class="navbar-left"><a href="{{route('blog.list')}}">@lang('layout.blog')</a></li>
+                                        <li class="navbar-left"><a href="{{route('about')}}">@lang('layout.aboutus')</a></li>
 
 
-                                        <li class="navbar-right"><a href="{{route('faqs')}}">FAQ</a></li>
+                                        <li class="navbar-right"><a href="{{route('faqs')}}">@lang('layout.faq')</a></li>
                                         <li class="navbar-right"><a href="#">{{App::isLocale('uz') ? "O'zbek" : (App::isLocale('en') ? "English" : "Русский")}}</a>
                                             <ul>
                                                 @if(App::isLocale('uz'))
@@ -359,7 +359,7 @@
                                                 @endif
                                             </ul>
                                         </li>
-                                        <li class="navbar-right"><a href="{{route('contact')}}">Contact us</a></li>
+                                        <li class="navbar-right"><a href="{{route('contact')}}">@lang('layout.contactus')</a></li>
 
 
 
@@ -405,7 +405,7 @@
                         </div>--}}
 
                         <h5 class="footer-title">Silk Road Asia Travel</h5>
-                        <p class="footer-address">{{setting('site.address')}}<br/>
+                        <p class="footer-address">@lang('layout.address')<br/>
                             <i class="fa fa-phone"></i> {{setting('site.phone')}} <br/>
                             <i class="fa fa-envelope-o"></i> <a href="#">{{setting('site.email')}}</a>
                         </p>
@@ -423,7 +423,7 @@
 
                         </div>
 
-                        <p class="copy-right">&#169; Copyright 2018 IUTLab. All Rights Reserved</p>
+                        <p class="copy-right">&#169; @lang('layout.copyright')</p>
 
                     </div>
 
@@ -433,14 +433,14 @@
 
                             <div class="col-xs-12 col-sm-4 col-md-3 col-md-offset-3 mt-30-xs">
 
-                                <h5 class="footer-title">About Silk Road</h5>
+                                <h5 class="footer-title">@lang('layout.about_silkroad')</h5>
 
                                 <ul class="footer-menu">
 
-                                    <li><a href="#">Who we are</a></li>
-                                    <li><a href="#">Careers</a></li>
-                                    <li><a href="#">Company history</a></li>
-                                    <li><a href="#">Legal</a></li>
+                                    <li><a href="#">@lang('layout.who_we_are')</a></li>
+                                    <li><a href="#">@lang('layout.careers')</a></li>
+                                    <li><a href="#">@lang('layout.company_histoyry')</a></li>
+                                    <li><a href="#">@lang('layout.legal')</a></li>
 
                                 </ul>
 
@@ -448,14 +448,14 @@
 
                             <div class="col-xs-12 col-sm-4 col-md-3 mt-30-xs">
 
-                                <h5 class="footer-title">Customer service</h5>
+                                <h5 class="footer-title">@lang('layout.customer_service')</h5>
 
                                 <ul class="footer-menu">
 
-                                    <li><a href="#">Payment</a></li>
-                                    <li><a href="{{route('contact')}}">Contact us</a></li>
-                                    <li><a href="{{route('faqs')}}">FAQ</a></li>
-                                    <li><a href="{{route('contact')}}">Site map</a></li>
+                                    <li><a href="#">@lang('layout.payment')</a></li>
+                                    <li><a href="{{route('contact')}}">@lang('layout.contactus')</a></li>
+                                    <li><a href="{{route('faqs')}}">@lang('layout.faq')</a></li>
+                                    <li><a href="{{route('contact')}}">@lang('layout.sitemap')</a></li>
 
                                 </ul>
 
@@ -463,14 +463,14 @@
 
                             <div class="col-xs-12 col-sm-4 col-md-3 mt-30-xs">
 
-                                <h5 class="footer-title">Others</h5>
+                                <h5 class="footer-title">@lang('layout.others')</h5>
 
                                 <ul class="footer-menu">
 
-                                    <li><a href="{{route('tour.list')}}">Destinations</a></li>
-                                    <li><a href="{{route('blog.list')}}">Blog</a></li>
-                                    <li><a href="#">Pre Departure Planning</a></li>
-                                    <li><a href="{{route('faqs')}}">Visas</a></li>
+                                    <li><a href="{{route('tour.list')}}">@lang('layout.destinations')</a></li>
+                                    <li><a href="{{route('blog.list')}}">@lang('layout.blog')</a></li>
+                                    <li><a href="#">@lang('layout.pre_departure_planning')</a></li>
+                                    <li><a href="{{route('faqs')}}">@lang('layout.viza')</a></li>
                                 </ul>
 
                             </div>

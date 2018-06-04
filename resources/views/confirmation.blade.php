@@ -15,11 +15,10 @@
             <div class="container">
 
                 <ol class="breadcrumb-list booking-step">
-                    <li><a href="#">Search</a></li>
-                    <li><a href="#">Result</a></li>
-                    <li><a href="#">Detail</a></li>
-                    <li><a href="#">Payment</a></li>
-                    <li><span>Confirmation</span></li>
+                    <li><a href="{{ route('tour.list') }}">@lang('confirmation.result')</a></li>
+                    <li><a href="{{ route('tour.show', $book->tour->slug) }}">@lang('confirmation.detail')</a></li>
+                    <li><a>@lang('confirmation.payment')</a></li>
+                    <li><span>@lang('confirmation.confirmation')</span></li>
                 </ol>
 
             </div>
@@ -44,8 +43,8 @@
 
                                 <div class="content">
 
-                                    <h2 class="heading uppercase mt-0 text-success">Thank you, your booking is complete!</h2>
-                                    <p>Your confirmation number is <span class="text-primary font700">{{sprintf('%06d',$book->id)}}</span></p>
+                                    <h2 class="heading uppercase mt-0 text-success">@lang('confirmation.thank_you')</h2>
+                                    <p>@lang('confirmation.your_confirmation')<span class="text-primary font700"> {{sprintf('%06d',$book->id)}}</span></p>
 
                                 </div>
 
@@ -54,19 +53,19 @@
                             <div class="confirmation-content">
 
                                 <div class="section-title text-left">
-                                    <h4>Booking Information</h4>
+                                    <h4>@lang('confirmation.book_info')</h4>
                                 </div>
 
                                 <ul class="book-sum-list">
-                                    <li><span class="font600">Booking Number: </span>{{sprintf('%06d',$book->id)}}</li>
-                                    <li><span class="font600">Traveller Name: </span>{{$book->firstName}} {{$book->lastName}}</li>
-                                    <li><span class="font600">Package Name: </span>{{$book->tour->getTranslatedAttribute('title', App::getLocale(), 'ru')}} ({{$book->tour->days}} days {{$book->tour->nights}} nights)</li>
-                                    <li><span class="font600">Destination: </span> {{$book->tour->destination->getTranslatedAttribute('name', App::getLocale(), 'ru')}}</li>
-                                    <li><span class="font600">Travellers: </span> {{$book->travellers->count() + 1}}</li>
-                                    <li><span class="font600">Total Price: </span> ${{$book->price}}</li>
-                                    <li><span class="font600">Billing Email: </span>{{$book->email}}</li>
-                                    <li><span class="font600">Billing Address: </span>{{$book->address}}, {{$book->city}}, {{$book->country}} {{$book->postal}} </li>
-                                    <li><span class="font600">Phone Number: </span>{{$book->phone}}</li>
+                                    <li><span class="font600">@lang('confirmation.booking_number'): </span>{{sprintf('%06d',$book->id)}}</li>
+                                    <li><span class="font600">@lang('confirmation.traveller_name'): </span>{{$book->firstName}} {{$book->lastName}}</li>
+                                    <li><span class="font600">@lang('confirmation.package_name'): </span>{{$book->tour->getTranslatedAttribute('title', App::getLocale(), 'ru')}} ({{$book->tour->days}} days {{$book->tour->nights}} nights)</li>
+                                    <li><span class="font600">@lang('confirmation.destination'): </span> {{$book->tour->destination->getTranslatedAttribute('name', App::getLocale(), 'ru')}}</li>
+                                    <li><span class="font600">@lang('confirmation.travellers'): </span> {{$book->travellers->count() + 1}}</li>
+                                    <li><span class="font600">@lang('confirmation.total_price'): </span> ${{$book->price}}</li>
+                                    <li><span class="font600">@lang('confirmation.billing_email'): </span>{{$book->email}}</li>
+                                    <li><span class="font600">@lang('confirmation.billing_address'): </span>{{$book->address}}, {{$book->city}}, {{$book->country}} {{$book->postal}} </li>
+                                    <li><span class="font600">@lang('confirmation.phone_number'): </span>{{$book->phone}}</li>
                                 </ul>
 
                             </div>
@@ -86,15 +85,15 @@
                             <div class="confirmation-content">
 
                                 <div class="section-title text-left">
-                                    <h4>Additional Information</h4>
+                                    <h4>@lang('confirmation.additional_info')</h4>
                                 </div>
 
-                                <p>Abilities or he perfectly pretended so strangers be exquisite. Oh to another chamber pleased imagine do in. Went me rank at last loud shot an draw. Excellent so to no sincerity smallness. Removal request delight if on he we. Unaffected in we by apartments astonished to decisively themselves. Offended ten old consider speaking.</p>
+                                <p>@lang('confirmation.additional_info_body')</p>
 
                             </div>
                             {{--<button class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
                             <button class="btn btn-primary btn-inverse"><i class="fa fa-envelope-o"></i> Sent to</button>--}}
-                            <a class="btn btn-primary" href="{{route('home')}}"><i class="fa fa-home"></i> Home</a>
+                            <a class="btn btn-primary" href="{{route('home')}}"><i class="fa fa-home"></i> @lang('confirmation.home')</a>
                         </div>
 
                     </div>
@@ -106,41 +105,41 @@
                             <div class="sidebar-inner">
 
                                 <div class="sidebar-module">
-                                    <h4 class="heading mt-0">Need Booking Help?</h4>
+                                    <h4 class="heading mt-0">@lang('confirmation.need_help')</h4>
                                     <div class="sidebar-module-inner">
-                                        <p class="mb-10">Paid was hill sir high 24/7. For him precaution any advantages dissimilar.</p>
+                                        <p class="mb-10">@lang('confirmation.need_help_header')</p>
                                         <ul class="help-list">
-                                            <li><span class="font600">Hotline</span>: +1900 12 213 21</li>
-                                            <li><span class="font600">Email</span>: support@tourpacker.com</li>
-                                            <li><span class="font600">Livechat</span>: tourpacker (Skype)</li>
+                                            <li><span class="font600">@lang('confirmation.hotline')</span>: {{setting('site.phone')}}</li>
+                                            <li><span class="font600">@lang('confirmation.email')</span>: {{setting('site.email')}}</li>
+                                            <li><span class="font600">@lang('confirmation.livechat')</span>: {{setting('site.skype')}} (Skype)</li>
                                         </ul>
                                     </div>
                                 </div>
 
 
                                 <div class="sidebar-module">
-                                    <h4 class="heading mt-0">Why booking with us?</h4>
+                                    <h4 class="heading mt-0">@lang('confirmation.why_booking')</h4>
                                     <div class="sidebar-module-inner">
                                         <ul class="featured-list-sm">
                                             <li>
                                                 <span class="icon"><i class="fa fa-thumbs-up"></i></span>
-                                                <h6 class="heading mt-0">No Booking Charges</h6>
-                                                We don't charge you an extra fee for booking a hotel room with us
+                                                <h6 class="heading mt-0">@lang('confirmation.booking_charges')</h6>
+                                                @lang('confirmation.booking_charges_header')
                                             </li>
                                             <li>
                                                 <span class="icon"><i class="fa fa-credit-card"></i></span>
-                                                <h6 class="heading mt-0">No Cancellation Sees</h6>
-                                                We don't charge you a cancellation or modification fee in case plans change
+                                                <h6 class="heading mt-0">@lang('confirmation.cancellation_sees')</h6>
+                                                @lang('confirmation.cancellation_sees_header')
                                             </li>
                                             <li>
                                                 <span class="icon"><i class="fa fa-inbox"></i></span>
-                                                <h6 class="heading mt-0">Instant Confirmation</h6>
-                                                Instant booking confirmation whether booking online or via the telephone
+                                                <h6 class="heading mt-0">@lang('confirmation.instant_confirmation')</h6>
+                                                @lang('confirmation.instant_confirmation_header')
                                             </li>
                                             <li>
                                                 <span class="icon"><i class="fa fa-calendar"></i></span>
-                                                <h6 class="heading mt-0">Flexible Booking</h6>
-                                                You can book up to a whole year in advance or right up until the moment of your stay
+                                                <h6 class="heading mt-0">@lang('confirmation.flexible_booking')</h6>
+                                                @lang('confirmation.flexible_booking_header')
                                             </li>
                                         </ul>
                                     </div>

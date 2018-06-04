@@ -15,10 +15,10 @@
             <div class="container">
 
                 <ol class="breadcrumb-list booking-step">
-                    <li><a href="#">Search</a></li>
-                    <li><a href="#">Result</a></li>
-                    <li><a href="#">Detail</a></li>
-                    <li><span>Confirmation</span></li>
+                    <li><a href="{{ route('home') }}">@lang('book.homepage')</a></li>
+                    <li><a href="{{ route('tour.list') }}">@lang('book.result')</a></li>
+                    <li><a href="{{ route('tour.show', $tour->slug) }}">@lang('book.detail')</a></li>
+                    <li><span>@lang('book.confirmation')</span></li>
                 </ol>
 
             </div>
@@ -35,37 +35,37 @@
 
                         <div class="price-summary-wrapper">
 
-                            <h4 class="heading mt-0 text-primary uppercase">My Trip</h4>
+                            <h4 class="heading mt-0 text-primary uppercase">@lang('book.my_trip')</h4>
 
                             <ul class="price-summary-list">
 
                                 <li>
                                     <h6 class="heading mt-0 mb-0">{{$tour->getTranslatedAttribute('title', App::getLocale(),'ru')}}</h6>
-                                    <p class="font12 text-light">{{$tour->days}} days {{$tour->nights}} nights</p>
+                                    <p class="font12 text-light">{{$tour->days}} {{trans_choice('day.days', $tour->days)}} {{$tour->nights}} {{trans_choice('day.nights', $tour->nights)}}</p>
                                 </li>
 
                                 <li>
-                                    <h6 class="heading mt-0 mb-0">Period from</h6>
+                                    <h6 class="heading mt-0 mb-0">@lang('book.period_from')</h6>
                                     <p class="font12 text-light">{{\Carbon\Carbon::parse($tour->from)->formatLocalized('%A')}}</p>
                                 </li>
 
                                 <li>
-                                    <h6 class="heading mt-0 mb-0">Period to</h6>
+                                    <h6 class="heading mt-0 mb-0">@lang('book.period_to')</h6>
                                     <p class="font12 text-light">{{\Carbon\Carbon::parse($tour->to)->formatLocalized('%A')}}</p>
                                 </li>
 
                                 <li>
-                                    <h6 class="heading mt-0 mb-0">Country</h6>
+                                    <h6 class="heading mt-0 mb-0">@lang('book.country')</h6>
                                     <p class="font12 text-light">{{$tour->destination->getTranslatedAttribute('name', App::getLocale(),'ru')}}</p>
                                 </li>
 
                                 <li class="divider"></li>
 
                                 <li>
-                                    <h6 class="heading mt-20 mb-5 text-primary uppercase">Price per person</h6>
+                                    <h6 class="heading mt-20 mb-5 text-primary uppercase">@lang('book.price_per_person')</h6>
                                     <div class="row gap-10 mt-10">
                                         <div class="col-xs-7 col-sm-7">
-                                            Brochure Price
+                                            @lang('book.brochure_price')
                                         </div>
                                         <div class="col-xs-5 col-sm-5 text-right">
                                             ${{$tour->price}}
@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="row gap-10 mt-10">
                                         <div class="col-xs-7 col-sm-7">
-                                            Tax &amp; fee
+                                            @lang('book.tax')
                                         </div>
                                         <div class="col-xs-5 col-sm-5 text-right">
                                             $0
@@ -93,7 +93,7 @@
 
                                     <div class="row gap-10 font600 font14">
                                         <div class="col-xs-9 col-sm-9">
-                                            Number of Travellers
+                                            @lang('book.number_of_travellers')
                                         </div>
                                         <div class="col-xs-3 col-sm-3 text-right numberOfTraveller">
                                             1
@@ -106,12 +106,12 @@
 
                                     <div class="row gap-10">
                                         <div class="col-xs-6 col-sm-6">
-                                            <h5 class="heading mt-0 mb-0 text-white">Amount due</h5>
-                                            <p class="font12">before departure</p>
+                                            <h5 class="heading mt-0 mb-0 text-white">@lang('book.amount_due')</h5>
+                                            <p class="font12">@lang('book.before_departure')</p>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 text-right">
                                             <span class="block font20 font600 mb-5 tourPrice">${{$tour->price}}</span>
-                                            <span class="font10 line10 block">**Best Price Guarantee </span>
+                                            <span class="font10 line10 block">@lang('book.best_price_guarantee')</span>
                                         </div>
                                     </div>
 
@@ -127,7 +127,7 @@
 
                         <div class="section-title text-left">
 
-                            <h3>{{$tour->getTranslatedAttribute('title', App::getLocale(),'ru')}}<small> / {{$tour->days}} days {{$tour->nights}} nights</small></h3>
+                            <h3>{{$tour->getTranslatedAttribute('title', App::getLocale(),'ru')}}<small> / {{$tour->days}} {{trans_choice('day.days', $tour->days)}} {{$tour->nights}} {{trans_choice('day.nights', $tour->nights)}}</small></h3>
 
                         </div>
 
@@ -146,11 +146,11 @@
                                         <div class="row gap-10">
 
                                             <div class="col-sm-9">
-                                                <h5 class="heading mt-0">Your selected departure date</h5>
+                                                <h5 class="heading mt-0">@lang('book.your_selected_departure_date')</h5>
                                             </div>
 
                                             <div class="col-sm-3">
-                                                <a href="#" class="btn btn-primary btn-inverse btn-sm pull-right pull-left-xs mb-20-xss">change</a>
+                                                <a href="#" class="btn btn-primary btn-inverse btn-sm pull-right pull-left-xs mb-20-xss">@lang('book.change')</a>
                                             </div>
 
                                         </div>
@@ -160,7 +160,7 @@
                                     <div class="payment-content">
 
                                         <div class="payment-content">
-                                            <p>Your departure date: {{\Carbon\Carbon::parse($tour->from)->formatLocalized('%B')}} - {{\Carbon\Carbon::parse($tour->to)->formatLocalized('%B')}}</p>
+                                            <p>@lang('book.your_departure_date'): {{\Carbon\Carbon::parse($tour->from)->formatLocalized('%B')}} - {{\Carbon\Carbon::parse($tour->to)->formatLocalized('%B')}}</p>
                                         </div>
 
                                     </div>
@@ -175,7 +175,7 @@
                                             2
                                         </div>
 
-                                        <h5 class="heading mt-0">Traveller Details</h5>
+                                        <h5 class="heading mt-0">@lang('book.traveller_details')</h5>
 
                                     </div>
 
@@ -195,7 +195,7 @@
                                             <div class="row gap-0">
 
                                                 <div class="col-sm-9 col-sm-offser-3 col-md-10 col-md-offset-2">
-                                                    <h6 class="heading" id="heading">Traveller 1</h6>
+                                                    <h6 class="heading" id="heading">@lang('book.traveller') 1</h6>
                                                 </div>
 
                                             </div>
@@ -217,7 +217,7 @@
 
                                             <div class="form-horizontal">
                                                 <div class="form-group gap-20">
-                                                    <label class="col-sm-3 col-md-2 control-label">First Name:</label>
+                                                    <label class="col-sm-3 col-md-2 control-label">@lang('book.first_name'):</label>
                                                     <div class="col-sm-5 col-md-4">
                                                         <input type="text" class="form-control" value="" name="firstName[]" id="firstName_1" required>
                                                     </div>
@@ -226,7 +226,7 @@
 
                                             <div class="form-horizontal">
                                                 <div class="form-group gap-20">
-                                                    <label class="col-sm-3 col-md-2 control-label">Last Name:</label>
+                                                    <label class="col-sm-3 col-md-2 control-label">@lang('book.last_name'):</label>
                                                     <div class="col-sm-5 col-md-4">
                                                         <input type="text" class="form-control" value="" name="lastName[]" id="lastName_1" required>
                                                     </div>
@@ -235,12 +235,12 @@
 
                                             <div class="form-horizontal">
                                                 <div class="form-group gap-20 select2-input-hide">
-                                                    <label class="col-sm-3 col-md-2 control-label">Gender:</label>
+                                                    <label class="col-sm-3 col-md-2 control-label">@lang('book.gender'):</label>
                                                     <div class="col-sm-3 col-md-2">
-                                                        <select class="select2-no-search form-control" data-placeholder="Gender" name="gender[]" id="gender_1" required>
-                                                            <option value="">Gender</option>
-                                                            <option value="m">Male.</option>
-                                                            <option value="f">Female.</option>
+                                                        <select class="select2-no-search form-control" data-placeholder="@lang('book.gender')" name="gender[]" id="gender_1" required>
+                                                            <option value="">@lang('book.gender')</option>
+                                                            <option value="m">@lang('book.male')</option>
+                                                            <option value="f">@lang('book.female')</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -248,12 +248,12 @@
 
                                             <div class="form-horizontal">
                                                 <div class="form-group gap-20 select2-input-hide">
-                                                    <label class="col-sm-3 col-md-2 control-label">Date:</label>
+                                                    <label class="col-sm-3 col-md-2 control-label">@lang('book.date'):</label>
                                                     <div class="col-sm-8 col-md-6">
                                                         <div class="row gap-15">
                                                             <div class="col-xs-4 col-sm-4">
-                                                                <select class="select2-no-search form-control" data-placeholder="Date" id="date_1" name="date[]" required>
-                                                                    <option value="">Date</option>
+                                                                <select class="select2-no-search form-control" data-placeholder="@lang('book.date')" id="date_1" name="date[]" required>
+                                                                    <option value="">@lang('book.date')</option>
                                                                     <option value="01">01</option>
                                                                     <option value="02">02</option>
                                                                     <option value="03">03</option>
@@ -265,8 +265,8 @@
                                                             </div>
 
                                                             <div class="col-xs-4 col-sm-4">
-                                                                <select class="select2-no-search form-control" data-placeholder="Month" id="month_1" name="month[]" required>
-                                                                    <option value="">Month</option>
+                                                                <select class="select2-no-search form-control" data-placeholder="@lang('book.month')" id="month_1" name="month[]" required>
+                                                                    <option value="">@lang('book.month')</option>
                                                                     <option value="jan">Jan</option>
                                                                     <option value="feb">Feb</option>
                                                                     <option value="mar">Mar</option>
@@ -278,8 +278,8 @@
                                                             </div>
 
                                                             <div class="col-xs-4 col-sm-4">
-                                                                <select class="select2-no-search form-control" data-placeholder="Year" name="year_1" id="year[]" required>
-                                                                    <option value="">Year</option>
+                                                                <select class="select2-no-search form-control" data-placeholder="@lang('book.year')" name="year_1" id="year[]" required>
+                                                                    <option value="">@lang('book.year')</option>
                                                                     <option value="1985">1985</option>
                                                                     <option value="1986">1986</option>
                                                                     <option value="1987">1987</option>
@@ -298,7 +298,7 @@
 
                                             <div class="form-horizontal">
                                                 <div class="form-group gap-20">
-                                                    <label class="col-sm-3 col-md-2 control-label">Email:</label>
+                                                    <label class="col-sm-3 col-md-2 control-label">@lang('book.email'):</label>
                                                     <div class="col-sm-5 col-md-4">
                                                         <input type="email" class="form-control" value="" name="email" id="email_1" required>
                                                     </div>
@@ -307,7 +307,7 @@
 
                                             <div class="form-horizontal">
                                                 <div class="form-group gap-20">
-                                                    <label class="col-sm-3 col-md-2 control-label">Phone Number:</label>
+                                                    <label class="col-sm-3 col-md-2 control-label">@lang('book.phone'):</label>
                                                     <div class="col-sm-5 col-md-4">
                                                         <input type="text" class="form-control" value="" name="phone" id="phone_1" required>
                                                     </div>
@@ -316,10 +316,10 @@
 
                                             <div class="form-horizontal">
                                                 <div class="form-group gap-20">
-                                                    <label class="col-sm-3 col-md-2 control-label">Nationality:</label>
+                                                    <label class="col-sm-3 col-md-2 control-label">@lang('book.nationality'):</label>
                                                     <div class="col-sm-5 col-md-4">
-                                                        <select class="select2-single form-control" data-placeholder="Nationality" name="nationality" id="nationality_1" required>
-                                                            <option value="">Nationality</option>
+                                                        <select class="select2-single form-control" data-placeholder="@lang('book.nationality')" name="nationality" id="nationality_1" required>
+                                                            <option value="">@lang('book.nationality')</option>
                                                             <option value="Thai">Thai</option>
                                                             <option value="Malaysian">Malaysian</option>
                                                             <option value="Indonesian">Indonesian</option>
@@ -466,7 +466,7 @@
                                         </div>--}}
 
                                         <div class="text-center">
-                                            <button onclick="addTraveler();" type="button" class="btn btn-primary btn-sm btn-inverse">Add another traveller</button>
+                                            <button onclick="addTraveler();" type="button" class="btn btn-primary btn-sm btn-inverse">@lang('book.add_traveller')</button>
                                         </div>
 
                                     </div>
@@ -481,7 +481,7 @@
                                             3
                                         </div>
 
-                                        <h5 class="heading mt-0">Billing Address</h5>
+                                        <h5 class="heading mt-0">@lang('book.billing_address')</h5>
 
                                     </div>
 
@@ -489,7 +489,7 @@
 
                                         <div class="form-horizontal">
                                             <div class="form-group gap-20">
-                                                <label class="col-sm-3 col-md-2 control-label">Address:</label>
+                                                <label class="col-sm-3 col-md-2 control-label">@lang('book.address'):</label>
                                                 <div class="col-sm-5 col-md-4">
                                                     <input type="text" name="address" class="form-control" value="" required>
                                                 </div>
@@ -498,7 +498,7 @@
 
                                         <div class="form-horizontal">
                                             <div class="form-group gap-20">
-                                                <label class="col-sm-3 col-md-2 control-label">City:</label>
+                                                <label class="col-sm-3 col-md-2 control-label">@lang('book.city'):</label>
                                                 <div class="col-sm-5 col-md-4">
                                                     <input type="text" name="city" class="form-control" value="" required>
                                                 </div>
@@ -507,7 +507,7 @@
 
                                         <div class="form-horizontal">
                                             <div class="form-group gap-20">
-                                                <label class="col-sm-3 col-md-2 control-label">Postal:</label>
+                                                <label class="col-sm-3 col-md-2 control-label">@lang('book.postal'):</label>
                                                 <div class="col-sm-5 col-md-4">
                                                     <input type="text" name="postal" class="form-control" value="" required>
                                                 </div>
@@ -516,7 +516,7 @@
 
                                         <div class="form-horizontal">
                                             <div class="form-group gap-20">
-                                                <label class="col-sm-3 col-md-2 control-label">Province:</label>
+                                                <label class="col-sm-3 col-md-2 control-label">@lang('book.province'):</label>
                                                 <div class="col-sm-5 col-md-4">
                                                     <input type="text" class="form-control" value="" required>
                                                 </div>
@@ -525,11 +525,11 @@
 
                                         <div class="form-horizontal">
                                             <div class="form-group gap-20">
-                                                <label class="col-sm-3 col-md-2 control-label">Conntry:</label>
+                                                <label class="col-sm-3 col-md-2 control-label">@lang('book.country'):</label>
                                                 <div class="col-sm-5 col-md-4">
-                                                    <select class="select2-single form-control" data-placeholder="Conntry" name="country">
+                                                    <select class="select2-single form-control" data-placeholder="@lang('book.country')" name="country">
                                                         @for($i = 0; $i<10; $i++)
-                                                        <option value="">Conntry</option>
+                                                        <option value="">@lang('book.country')</option>
                                                         <option value="Thai">Thai</option>
                                                         <option value="Malaysian">Malaysian</option>
                                                         <option value="Indonesian">Indonesian</option>
@@ -676,16 +676,16 @@
 --}}
                                 <div class="checkbox-block">
                                     <input id="accept_booking" name="accept_booking" type="checkbox" class="checkbox" value="paymentsCreditCard"/>
-                                    <label class="" for="accept_booking">By submitting a booking request, you accept our <a href="#">terms and conditions</a> as well as the <a href="#">cancellation policy</a> and  <a href="#">House Rules</a> .</label>
+                                    <label class="" for="accept_booking">@lang('book.submitting')</label>
                                 </div>
 
                                 <div class="row mt-20">
 
                                     <div class="col-sm-8 col-md-6">
 
-                                        <button class="btn btn-primary">Book Now</button>
+                                        <button class="btn btn-primary">@lang('book.book_now')</button>
 
-                                        <p class="line18 mt-10"><span class="font600">Prepared is me marianne</span>: pleasure likewise debating. Wonder an unable except better stairs do ye admire.</p>
+                                        <p class="line18 mt-10"><span class="font600">@lang('book.prepared')</span>@lang('book.prepared_footer')</p>
 
                                     </div>
 
@@ -701,37 +701,37 @@
 
                         <div class="price-summary-wrapper">
 
-                            <h4 class="heading mt-0 text-primary uppercase">My Trip</h4>
+                            <h4 class="heading mt-0 text-primary uppercase">@lang('book.my_trip')</h4>
 
                             <ul class="price-summary-list">
 
                                 <li>
                                     <h6 class="heading mt-0 mb-0">{{$tour->getTranslatedAttribute('title', App::getLocale(),'ru')}}</h6>
-                                    <p class="font12 text-light">{{$tour->days}} days {{$tour->nights}} nights</p>
+                                    <p class="font12 text-light">{{$tour->days}} {{trans_choice('day.days', $tour->days)}} {{$tour->nights}} {{trans_choice('day.nights', $tour->nights)}}</p>
                                 </li>
 
                                 <li>
-                                    <h6 class="heading mt-0 mb-0">From (period)</h6>
+                                    <h6 class="heading mt-0 mb-0">@lang('book.period_from')</h6>
                                     <p class="font12 text-light">{{\Carbon\Carbon::parse($tour->from)->formatLocalized('%B')}}</p>
                                 </li>
 
                                 <li>
-                                    <h6 class="heading mt-0 mb-0">To (period)</h6>
+                                    <h6 class="heading mt-0 mb-0">@lang('book.period_to')</h6>
                                     <p class="font12 text-light">{{\Carbon\Carbon::parse($tour->to)->formatLocalized('%B')}}</p>
                                 </li>
 
                                 <li>
-                                    <h6 class="heading mt-0 mb-0">Destination</h6>
+                                    <h6 class="heading mt-0 mb-0">@lang('book.destination')</h6>
                                     <p class="font12 text-light">{{$tour->destination->getTranslatedAttribute('name', App::getLocale(),'ru')}}</p>
                                 </li>
 
                                 <li class="divider"></li>
 
                                 <li>
-                                    <h6 class="heading mt-20 mb-5 text-primary uppercase">Price per person</h6>
+                                    <h6 class="heading mt-20 mb-5 text-primary uppercase">@lang('book.price_per_person')</h6>
                                     <div class="row gap-10 mt-10">
                                         <div class="col-xs-7 col-sm-7">
-                                            Brochure Price
+                                            @lang('book.brochure_price')
                                         </div>
                                         <div class="col-xs-5 col-sm-5 text-right">
                                             ${{$tour->price}}
@@ -739,7 +739,7 @@
                                     </div>
                                     <div class="row gap-10 mt-10">
                                         <div class="col-xs-7 col-sm-7">
-                                            Tax &amp; fee
+                                            @lang('book.tax')
                                         </div>
                                         <div class="col-xs-5 col-sm-5 text-right">
                                             $0
@@ -758,7 +758,7 @@
 
                                     <div class="row gap-10 font600 font14">
                                         <div class="col-xs-9 col-sm-9">
-                                            Number of Travellers
+                                            @lang('book.number_of_travellers')
                                         </div>
                                         <div class="col-xs-3 col-sm-3 text-right numberOfTraveller" >
                                             1
@@ -771,12 +771,12 @@
 
                                     <div class="row gap-10">
                                         <div class="col-xs-6 col-sm-6">
-                                            <h5 class="heading mt-0 mb-0 text-white">Amount due</h5>
-                                            <p class="font12">before departure</p>
+                                            <h5 class="heading mt-0 mb-0 text-white">@lang('book.amount_due')</h5>
+                                            <p class="font12">@lang('book.before_departure')</p>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 text-right">
                                             <span class="block font20 font600 mb-5 tourPrice">${{$tour->price}}</span>
-                                            <span class="font10 line10 block">**Best Price Guarantee </span>
+                                            <span class="font10 line10 block">@lang('book.best_price_guarantee')</span>
                                         </div>
                                     </div>
 
@@ -812,7 +812,7 @@
                 var newel = $('.payment-traveller:last').clone(true);
                 $(newel).find('a').show();
                 $('.tourPrice').text("$"+price*index);
-                $(newel).find('#heading').text("Traveller "+ index);
+                $(newel).find('#heading').text("@lang('book.traveller') "+ index);
                 $('.numberOfTraveller').text(index);
                 // Set id of new element
                 $(newel).find('input:eq(0)').attr("id","firstName_"+index);
@@ -862,7 +862,7 @@
         function bookSubmit() {
             if($('#accept_booking').is(':checked')){ return true; }
             else {
-                alert('Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy');
+                alert('@lang('book.alert_message')');
                 return false;
             }
         }

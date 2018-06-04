@@ -70,7 +70,7 @@ class Tour extends Model
 
             case 5:
                 # code...
-                require "Excellent";
+                return "Excellent";
                 break;
             default:
                 return null;

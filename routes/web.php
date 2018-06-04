@@ -10,7 +10,11 @@ use TCG\Voyager\Models\Post;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::prefix('admin')->group(function () {
+    // Language
+    Route::get('language/texts/{lang?}/{file?}', 'LanguageAdminController@showTexts')->name('language.file');
+    Route::post('language/texts/{lang}/{file}', 'LanguageAdminController@updateTexts');
+});
 Route::get('home', function () {
     return view('welcome');
 });

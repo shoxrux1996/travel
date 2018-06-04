@@ -35,12 +35,19 @@ class TourController extends Controller
 
     public function result_list(Request $request){
         
-        $destinations = Destination::where('parent_id',null)->get();
+        $destinations = Destination::where('parent_id','!=',null)->get();
         $tours = Tour::with('translations');
-
+        $tour_destinations =Destination::query();
         if($request->destinations != null){
             $dest_names = $request->destinations;
-            $tours->whereHas('destination', function($query) use($dest_names){
+            $tours->whereHas('startingPoint', function($query) use($dest_names){
+                foreach ($dest_names as $key => $value) {
+                    if($key == 0)
+                        $query->where('name', $value);
+                    else
+                        $query->orWhere('name', $value);
+                }
+            })->orWhereHas('endingPoint', function($query) use($dest_names){
                 foreach ($dest_names as $key => $value) {
                     if($key == 0)
                         $query->where('name', $value);
@@ -48,6 +55,15 @@ class TourController extends Controller
                         $query->orWhere('name', $value);
                 }
             });
+             foreach ($dest_names as $key => $value) {
+                if($key == 0)
+                    $tour_destinations = $tour_destinations->where('name', $value);
+                else
+                    $tour_destinations = $tour_destinations->orWhere('name', $value);
+            }
+            
+        }else{
+            $tour_destinations->where('name', $request->destination);
         }
 
         if($request->months != null){
@@ -91,10 +107,7 @@ class TourController extends Controller
               ->orWhereHas('translations', function($quer) use($search){
                         $quer->where('value','LIKE',"%$search%")->where('column_name','intro');
                     });
-
-
-            $tours = $tours->get();
-            dd($tours);
+            
         }
 
         if($request->price_from != null || $request->price_to != null){
@@ -133,10 +146,10 @@ class TourController extends Controller
 
         if($request->result == "grid" || Session::get('grid')){
             Session::put('grid', true);
-            return view('result-grid')->withTours($tours->paginate(8))->withDestinations($destinations)->withInput($request->all());
+            return view('result-grid')->withTours($tours->paginate(9))->withDestinations($destinations)->withInput($request->all())->withTourDestinations($tour_destinations->get());
         }
         
-        return view('result-list')->withTours($tours->paginate(8))->withDestinations($destinations)->withInput($request->all());
+        return view('result-list')->withTours($tours->paginate(9))->withDestinations($destinations)->withInput($request->all())->withTourDestinations($tour_destinations->get());
 
     }
     protected function filter(Request $request, $orders){

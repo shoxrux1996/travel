@@ -19,11 +19,11 @@
 
                     <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
 
-                        <h1 class="hero-title">Blog</h1>
+                        <h1 class="hero-title">@lang('blog.blog')</h1>
 
                         <ol class="breadcrumb-list">
-                            <li><a href="index-2.html">Homepage</a></li>
-                            <li><span>Blog</span></li>
+                            <li><a href="index-2.html">@lang('blog.homepage')</a></li>
+                            <li><span>@lang('blog.blog')</span></li>
                         </ol>
 
                     </div>
@@ -63,15 +63,15 @@
                                 <div class="blog-content">
                                     <h3><a href="{{route('blog.show',$post->slug)}}" class="inverse">{{$post->getTranslatedAttribute('title', \App::getLocale(),'ru')}}</a></h3>
                                     <ul class="blog-meta clearfix">
-                                        <li>by <a href="#">{{$post->authorId->name}}</a></li>
-                                        <li>by {{\Carbon\Carbon::parse($post->created_at)->formatLocalized('%B %d, %Y')}}</li>
+                                        <li>@lang('blog.by') <a href="#">{{$post->authorId->name}}</a></li>
+                                        <li>{{\Carbon\Carbon::parse($post->created_at)->formatLocalized('%B %d, %Y')}}</li>
                                         {{-- <li>in <a href="#">Adventure</a>, <a href="#">Backpack</a></li> --}}
-                                        <li>{{$post->commentsCount()}} comments</li>
+                                        <li>{{$post->commentsCount()}} {{trans_choice('day.comments', $post->commentsCount())}}</li>
                                     </ul>
                                     <div class="blog-entry">
-                                        {{ substr(strip_tags($post->getTranslatedAttribute('body', \App::getLocale(),'ru')),0,300)}} {{strlen(strip_tags($post->getTranslatedAttribute('body', \App::getLocale(),'ru')))>300 ? '...' : ""}}
+                                        {{ substr(strip_tags($post->getTranslatedAttribute('body', \App::getLocale(),'ru')),0,600)}} {{strlen(strip_tags($post->getTranslatedAttribute('body', \App::getLocale(),'ru')))>600 ? '...' : ""}}
                                     </div>
-                                    <a href="{{route('blog.show',$post->slug)}}" class="btn-blog">Read More <i class="fa fa-long-arrow-right"></i></a>
+                                    <a href="{{route('blog.show',$post->slug)}}" class="btn-blog">@lang('blog.read_more')<i class="fa fa-long-arrow-right"></i></a>
                                 </div>
 
                             </div>
@@ -252,7 +252,7 @@
                                     <div class="flex-row flex-align-middle">
                                         @if($posts->total() > $posts->perPage())
                                         <div class="flex-column flex-sm-12">
-                                            Showing reslut {{$posts->currentPage()}} to {{$posts->perPage()}} from {{$posts->total()}}
+                                            @lang('blog.showing_result') {{$posts->currentPage()}} @lang('blog.to') {{$posts->perPage()}} @lang('blog.from') {{$posts->total()}}
                                         </div>
                                         @endif
                                         <div class="flex-column flex-sm-12">
@@ -282,7 +282,7 @@
                                         <div class="sidebar-module-inner">
                                             <div class="sidebar-mini-search">
                                                 <div class="input-group">
-                                                    <input type="text" name="search" class="form-control" placeholder="Search for...">
+                                                    <input type="text" name="search" class="form-control" placeholder="@lang('blog.search_for')">
                                                     <span class="input-group-btn">
 														<button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
                                                 </span>
@@ -295,7 +295,7 @@
                                 <div class="clear"></div>
 
                                 <div class="sidebar-module">
-                                    <h4 class="sidebar-title">Категория</h4>
+                                    <h4 class="sidebar-title">@lang('blog.category')</h4>
                                     <div class="sidebar-module-inner">
                                         <ul class="sidebar-category">
                                             @foreach($categories as $key=> $category)
@@ -381,7 +381,7 @@
                                 <div class="clear"></div>
 
                                 <div class="sidebar-module">
-                                    <h4 class="sidebar-title">Popular Posts</h4>
+                                    <h4 class="sidebar-title">@lang('blog.popular_posts')</h4>
                                     <div class="sidebar-module-inner">
 
                                         <ul class="sidebar-post">
@@ -389,11 +389,11 @@
                                             <li class="clearfix">
                                                 <a href="{{route('blog.show',$post->slug)}}">
                                                     <div class="image">
-                                                        <img src="{{asset('storage/'.$post->thumbnail('small'))}}" alt="Popular Post" />
+                                                        <img src="{{asset('storage/'.$post->thumbnail('small'))}}" alt="@lang('blog.popular_posts')" />
                                                     </div>
                                                     <div class="content">
                                                         <h6>{{$post->getTranslatedAttribute('title',\App::getLocale(),'ru')}}</h6>
-                                                        <p class="recent-post-sm-meta"><i class="fa fa-comments mr-5"></i>{{$post->commentsCount()}} comments</p>
+                                                        <p class="recent-post-sm-meta"><i class="fa fa-comments mr-5"></i>{{$post->commentsCount()}} {{trans_choice('day.comments', $post->commentsCount())}}</p>
                                                     </div>
                                                 </a>
                                             </li>
@@ -421,7 +421,7 @@
                                 <div class="clear"></div>--}}
 
                                 <div class="sidebar-module">
-                                    <h4 class="sidebar-title">Tags</h4>
+                                    <h4 class="sidebar-title">@lang('blog.tags')</h4>
                                     <div class="sidebar-module-inner">
                                         <div class="tag-cloud clearfix">
                                             @foreach($relatedcategories as $category)
@@ -458,13 +458,15 @@
                                 <div class="clear"></div>
 
                                 <div class="sidebar-module">
-                                    <h4 class="sidebar-title">Meta</h4>
+                                    <h4 class="sidebar-title">@lang('blog.meta')</h4>
                                     <div class="sidebar-module-inner">
                                         <ul class="sidebar-list">
-                                            <li><a href="#">Log in</a></li>
-                                            <li><a href="#">Entries RSS</a></li>
-                                            <li><a href="#">Comments RSS</a></li>
-                                            <li><a href="#">WordPress.org</a></li>
+                                            <li><a href="#">silkroadasiatravel.uz</a></li>
+                                            <li><a href="#">тур агенства</a></li>
+                                            <li><a href="#">tour agency</a></li>
+                                            <li><a href="#">tourism</a></li>
+                                            <li><a href="#">travel</a></li>
+
                                         </ul>
                                     </div>
                                 </div>

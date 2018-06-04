@@ -8,7 +8,7 @@
         <!-- start end Page title -->
 
         <div class="page-title detail-page-title"
-             style="background-image:url({{json_decode($tour->images) ? asset('storage/'.json_decode($tour->images)[0]) : ""}});">
+             style="background-image:url({{json_decode($tour->images) ? asset('storage/'.json_decode($tour->images)[0]) : asset('default.jpg')}});">
 
             <div class="container">
 
@@ -18,14 +18,15 @@
 
                         <h1 class="hero-title">{{$tour->title}}</h1>
                         {{--<p class="line18">He do subjects prepared bachelor juvenile ye oh. He feelings removing informed--}}
-                            {{--he as ignorant we prepared.</p>--}}
+                        {{--he as ignorant we prepared.</p>--}}
 
                         <ul class="list-col clearfix">
                             <li class="rating-box">
                                 <div class="rating-wrapper">
                                     <div class="raty-wrapper">
-                                        <div class="star-rating-white" data-rating-score="4.0"></div>
-                                        <span style="display: block;"> / 7 review</span>
+                                        <div class="star-rating-white"
+                                             data-rating-score="{{$original->rating()}}"></div>
+                                        <span style="display: block;"> / {{$original->comments()->count()}} {{trans_choice('day.reviews', $original->comments()->count())}}</span>
                                     </div>
                                 </div>
                             </li>
@@ -41,21 +42,21 @@
                             <li class="duration-box">
                                 <div class="meta">
                                     <span class="block">{{$tour->days}}</span>
-                                    Days
+                                    {{trans_choice('day.days', $tour->days)}}
                                 </div>
                                 <div class="meta">
                                     &amp;
                                 </div>
                                 <div class="meta">
                                     <span class="block">{{$tour->nights}}</span>
-                                    Nights
+                                    {{trans_choice('day.nights', $tour->nights)}}
                                 </div>
                             </li>
 
                             <li class="price-box">
                                 <div class="meta">
                                     <span class="block">{{$tour->price}}$</span>
-                                    starting from
+                                    @lang('tour.starting_from')
                                 </div>
                             </li>
 
@@ -65,7 +66,7 @@
 
                     <div class="flex-column flex-md-4 flex-align-bottom flex-sm-12 mt-20-sm">
                         <div class="text-right text-left-sm">
-                            <a href="#section-5" class="anchor btn btn-primary">See dates &amp; Book Now</a>
+                            <a href="#section-5" class="anchor btn btn-primary">@lang('tour.see_dates')</a>
                         </div>
                     </div>
 
@@ -81,9 +82,8 @@
             <div class="container">
 
                 <ol class="breadcrumb-list">
-                    <li><a href="index-2.html">Homepage</a></li>
-                    <li><a href="#">Desinations</a></li>
-                    <li><a href="#">City</a></li>
+                    <li><a href="{{route('home')}}">@lang('tour.homepage')</a></li>
+                    <li><a href="{{route('tour.list')}}">@lang('tour.destinations')</a></li>
                     <li><span>{{$tour->title}}</span></li>
                 </ol>
 
@@ -104,43 +104,47 @@
                             <div id="section-0" class="detail-content">
 
                                 <div class="section-title text-left">
-                                    <h4>Highlights</h4>
+                                    <h4>@lang('tour.highlights')</h4>
                                 </div>
                                 {!! $tour->description!!}
                             </div>
 
                             <div id="section-1" class="detail-content">
                                 <div class="section-title text-left">
-                                    <h4>Gallery</h4>
+                                    <h4>@lang('tour.gallery')</h4>
                                 </div>
                                 @if(json_decode($tour->images))
-                                <div class="slick-gallery-slideshow">
-                                    <div class="slider gallery-slideshow">
-                                        @foreach(json_decode($tour->images) as $image)
-                                        <div>
-                                            <div class="image" style="background-image: url({{asset('storage/'.$image)}})"><img src="{{asset('storage/'.$image)}}" alt="Image"/>
-                                            </div>
+                                    <div class="slick-gallery-slideshow">
+                                        <div class="slider gallery-slideshow">
+                                            @foreach(json_decode($tour->images) as $image)
+                                                <div>
+                                                    <div class="image"
+                                                         style="background-image: url({{asset('storage/'.$image)}})">
+                                                        <img src="{{asset('storage/'.$image)}}" alt="Image"/>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </div>
-                                        @endforeach
-                                    </div>
-                                    @if(count(json_decode($tour->images)) >=8)
-                                    <div class="slider gallery-nav">
-                                        @foreach(json_decode($tour->images) as $image)
-                                        <div>
-                                            <div class="image"><img src="{{asset('storage/'.$original->image_crop($image))}}" alt="Image"/>
+                                        @if(count(json_decode($tour->images)) >=8)
+                                            <div class="slider gallery-nav">
+                                                @foreach(json_decode($tour->images) as $image)
+                                                    <div>
+                                                        <div class="image"><img
+                                                                    src="{{asset('storage/'.$original->image_crop($image))}}"
+                                                                    alt="Image"/>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
                                             </div>
-                                        </div>
-                                        @endforeach
+                                        @endif
                                     </div>
-                                    @endif
-                                </div>
                                 @endif
                             </div>
 
                             <div id="section-2" class="detail-content">
 
                                 <div class="section-title text-left">
-                                    <h4>Itinerary</h4>
+                                    <h4>@lang('tour.itinerary')</h4>
                                 </div>
 
                                 <div class="detail-item">
@@ -150,15 +154,27 @@
                                         <div class="col-sm-4 col-sm-3 mb-30">
 
                                             <ul class="list-info no-icon bb-dotted">
-                                                <li><span class="font600">Duration: </span>{{$tour->days}} days &amp; {{$tour->nights}} nights</li>
-                                                <li><span class="font600">Country: </span> {{$tour->destination->name}}</li>
+                                                <li><span class="font600">@lang('tour.duration')
+                                                        : </span>{{$tour->days}} {{trans_choice('day.days', $tour->days)}}
+                                                    &amp; {{$tour->nights}} {{trans_choice('day.nights', $tour->nights)}}
+                                                </li>
+                                                <li><span class="font600">@lang('tour.country')
+                                                        : </span> {{$tour->destination->name}}
+                                                </li>
                                                 {{--<li><span class="font600">Experiences:</span> 5</li>--}}
-                                                <li><span class="font600">Ages:</span> {{$tour->age}}+</li>
+                                                <li><span class="font600">@lang('tour.ages'):</span> {{$tour->age}}+
+                                                </li>
                                                 @if($tour->startingPoint != null)
-                                                <li><span class="font600">Starting Point:</span> {{$tour->startingPoint->name}}</li>
+                                                    <li>
+                                                        <span class="font600">@lang('tour.starting_point')
+                                                            :</span> {{$tour->startingPoint->name}}
+                                                    </li>
                                                 @endif
                                                 @if($tour->endingPoint != null )
-                                                <li><span class="font600">Ending Point:</span> {{$tour->endingPoint->name}}</li>
+                                                    <li>
+                                                        <span class="font600">@lang('tour.ending_point')
+                                                            :</span> {{$tour->endingPoint->name}}
+                                                    </li>
                                                 @endif
                                             </ul>
 
@@ -169,13 +185,14 @@
                                             <div class="itinerary-wrapper">
 
                                                 <div class="itinerary-item intro-item">
-                                                    <h5>Introduction</h5>
+                                                    <h5>@lang('tour.introduction')</h5>
                                                     <div class="intro-item-body">
                                                         {!! $tour->intro !!}
                                                     </div>
                                                 </div>
 
-                                                <div class="itinerary-day-label font600 uppercase"><span>Day</span>
+                                                <div class="itinerary-day-label font600 uppercase">
+                                                    <span>@lang('tour.day')</span>
                                                 </div>
 
                                                 <div class="itinerary-item-wrapper">
@@ -183,29 +200,31 @@
                                                     <div class="panel-group bootstarp-toggle">
 
                                                         @foreach($tour->programs as $key=> $program)
-                                                        <div class="panel itinerary-item">
-                                                            <div class="panel-heading">
-                                                                <h5 class="panel-title">
-                                                                    <a data-toggle="collapse" data-parent="#"
-                                                                       href="#bootstarp-toggle-{{$key}}"><span
-                                                                                class="absolute-day-number">{{$program->order}}</span>
-                                                                        {{$program->title}}</a>
-                                                                </h5>
-                                                            </div>
-                                                            <div id="bootstarp-toggle-{{$key}}"
-                                                                 class="panel-collapse collapse">
-                                                                <div class="panel-body">
-                                                                    <p>{{$program->text}}</p>
-                                                                    <ul class="itinerary-meta clearfix">
-                                                                        <li><i class="fa fa-building-o"></i> {{$program->place}}
-                                                                        </li>
-                                                                        <li><i class="fa fa-clock-o"></i> {{$program->trip_time}}
-                                                                        </li>
-                                                                    </ul>
+                                                            <div class="panel itinerary-item">
+                                                                <div class="panel-heading">
+                                                                    <h5 class="panel-title">
+                                                                        <a data-toggle="collapse" data-parent="#"
+                                                                           href="#bootstarp-toggle-{{$key}}"><span
+                                                                                    class="absolute-day-number">{{$program->order}}</span>
+                                                                            {{$program->title}}</a>
+                                                                    </h5>
+                                                                </div>
+                                                                <div id="bootstarp-toggle-{{$key}}"
+                                                                     class="panel-collapse collapse">
+                                                                    <div class="panel-body">
+                                                                        <p>{{$program->text}}</p>
+                                                                        <ul class="itinerary-meta clearfix">
+                                                                            <li>
+                                                                                <i class="fa fa-building-o"></i> {{$program->place}}
+                                                                            </li>
+                                                                            <li>
+                                                                                <i class="fa fa-clock-o"></i> {{$program->trip_time}}
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <!-- end of panel -->
+                                                            <!-- end of panel -->
                                                         @endforeach
                                                     </div>
 
@@ -221,46 +240,48 @@
 
                             </div>
 
-                            <div id="section-3" class="detail-content">
+                            @if($original->getTranslatedAttribute('hotel', \App::getLocale(),'ru') != null && $original->getTranslatedAttribute('hotel', \App::getLocale(),'ru') != "")
+                                <div id="section-3" class="detail-content">
 
-                                <div class="section-title text-left">
-                                    <h4>Tour Accommodation</h4>
-                                </div>
+                                    <div class="section-title text-left">
+                                        <h4>@lang('tour.tour_accommodation')</h4>
+                                    </div>
 
-                                <div class="hotel-item-wrapper">
-                                @for($i=0; $i<$original->accommodations->count(); $i+=3)
-                                    <div class="row gap-1">
-                                        @for($j=$i; $j<=$i+2 && $j<$original->accommodations->count(); $j++)
-                                            <div class="col-sm-xss-12 col-xs-6 col-sm-4 col-md-4">
+                                    <div class="hotel-item-wrapper">
+                                        @for($i=0; $i<$original->accommodations->count(); $i+=3)
+                                            <div class="row gap-1">
+                                                @for($j=$i; $j<=$i+2 && $j<$original->accommodations->count(); $j++)
+                                                    <div class="col-sm-xss-12 col-xs-6 col-sm-4 col-md-4">
 
-                                                <div class="hotel-item mb-1">
-                                                    <a href="{{$original->accommodations[$j]->url}}">
-                                                        <div class="image">
-                                                            <img src="{{ asset('storage/'.json_decode($original->accommodations[$j]->images)[0]) }}" alt="Hotel"/>
+                                                        <div class="hotel-item mb-1">
+                                                            <a href="{{$original->accommodations[$j]->url}}">
+                                                                <div class="image">
+                                                                    <img src="{{ asset('storage/'.json_decode($original->accommodations[$j]->images)[0]) }}"
+                                                                         alt="Hotel"/>
+                                                                </div>
+                                                                <div class="content">
+                                                                    <h6>{{$original->accommodations[$j]->name}}</h6>
+                                                                </div>
+                                                            </a>
                                                         </div>
-                                                        <div class="content">
-                                                            <h6>{{$original->accommodations[$j]->name}}</h6>
-                                                        </div>
-                                                    </a>
-                                                </div>
+
+                                                    </div>
+                                                @endfor
 
                                             </div>
                                         @endfor
 
                                     </div>
-                                    @endfor
 
+                                    <p>
+                                        {!! $tour->hotels!!}
+                                    </p>
                                 </div>
-
-                                <p>
-                                    {!! $tour->hotels!!}
-                                </p>
-                            </div>
-
+                            @endif
                             <div id="section-4" class="detail-content">
 
                                 <div class="section-title text-left">
-                                    <h4>What's included</h4>
+                                    <h4>@lang('tour.what_included')</h4>
                                 </div>
 
                                 {!! $tour->includes !!}
@@ -319,10 +340,9 @@
                             <div id="section-5" class="detail-content">
 
                                 <div class="section-title text-left">
-                                    <h4>Availability</h4>
+                                    <h4>@lang('tour.availability')</h4>
                                 </div>
-
-                                <div class="row mb-20">
+                                {{--<div class="row mb-20">
                                     <div class="col-sm-6">
                                         <div class="form-group form-icon">
                                             <i class="fa fa-calendar"></i>
@@ -345,7 +365,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
+                                </div>--}}
 
                                 <div class="availabily-wrapper">
 
@@ -354,19 +374,19 @@
                                         <li class="availabily-heading clearfix">
 
                                             <div class="date-from">
-                                                start
+                                                @lang('tour.start')
                                             </div>
 
                                             <div class="date-to">
-                                                end
+                                                @lang('tour.end')
                                             </div>
 
                                             <div class="status">
-                                                destination
+                                                @lang('tour.destination')
                                             </div>
 
                                             <div class="price">
-                                                price
+                                                @lang('tour.price')
                                             </div>
 
                                             <div class="action">
@@ -378,29 +398,30 @@
                                         <li class="availabily-content clearfix">
 
                                             <div class="date-from">
-                                                <span class="availabily-heading-label">start:</span>
+                                                <span class="availabily-heading-label"></span>
                                                 {{\Carbon\Carbon::parse($tour->from)->formatLocalized('%A')}}
                                                 <span>{{\Carbon\Carbon::parse($tour->from)->formatLocalized('%B %d %Y')}}</span>
                                             </div>
 
                                             <div class="date-to">
-                                                <span class="availabily-heading-label">start:</span>
+                                                <span class="availabily-heading-label"></span>
                                                 {{\Carbon\Carbon::parse($tour->to)->formatLocalized('%A')}}
                                                 <span>{{\Carbon\Carbon::parse($tour->to)->formatLocalized('%B %d %Y')}}</span>
                                             </div>
 
                                             <div class="status">
-                                                <span class="availabily-heading-label">destination:</span>
+                                                <span class="availabily-heading-label"></span>
                                                 <span>{{$tour->destination->name}}</span>
                                             </div>
 
                                             <div class="price">
-                                                <span class="availabily-heading-label">price:</span>
+                                                <span class="availabily-heading-label"></span>
                                                 <span>{{$tour->price}}</span>
                                             </div>
 
                                             <div class="action">
-                                                <a href="#" class="btn btn-primary btn-sm btn-inverse">Book now</a>
+                                                <a href="{{ route('payment', $tour->id) }}"
+                                                   class="btn btn-primary btn-sm btn-inverse">@lang('tour.book_now')</a>
                                             </div>
 
                                         </li>
@@ -472,7 +493,8 @@
 
                                 <div class="text-center mt-30">
 
-                                    <button class="btn btn-primary">Show more departures</button>
+                                    <a href="{{route('tour.list')}}"
+                                       class="btn btn-primary">@lang('tour.more_departures')</a>
                                 </div>
 
                             </div>
@@ -480,39 +502,43 @@
                             <div class="detail-content">
 
                                 <div class="section-title text-left">
-                                    <h4>Similar Packages</h4>
+                                    <h4>@lang('tour.similar_packages')</h4>
                                 </div>
 
                                 <div class="GridLex-gap-20-wrappper package-grid-item-wrapper on-page-result-page alt-smaller">
 
                                     <div class="GridLex-grid-noGutter-equalHeight">
-                                        @foreach($similars as $similar)        
-                                        <div class="GridLex-col-4_sm-4_xs-12 mb-20">
-                                            <div class="package-grid-item">
-                                                <a href="{{route('tour.show',$similar->slug)}}">
-                                                    <div class="image">
-                                                        <img src="{{ asset('storage/'.json_decode($similar->images)[0]) }}" alt="Tour Package"/>
-                                                        <div class="absolute-in-image">
-                                                            <div class="duration"><span>{{$similar->days}}days {{$similar->nights}} nights</span></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="content clearfix">
-                                                        <h6>{{$similar->getTranslatedAttribute('title', \App::getLocale(),'ru')}}</h6>
-                                                        <div class="rating-wrapper">
-                                                            <div class="raty-wrapper">
-                                                                <div class="star-rating-12px"
-                                                                     data-rating-score="{{$similar->rating()}}"></div>
-                                                                <span> / {{$similar->comments()->count()}} review</span>
+                                        @foreach($similars as $similar)
+                                            <div class="GridLex-col-4_sm-4_xs-12 mb-20">
+                                                <div class="package-grid-item">
+                                                    <a href="{{route('tour.show',$similar->slug)}}">
+                                                        <div class="image">
+                                                            <img src="{{json_decode($similar->images) ? asset('storage/'.json_decode($similar->images)[0]) : asset('default.jpg') }}"
+                                                                 alt="Tour Package"/>
+                                                            <div class="absolute-in-image">
+                                                                <div class="duration"><span>{{$similar->days}}
+                                                                        {{trans_choice('day.days', $similar->days)}} {{$similar->nights}} {{trans_choice('day.nights', $similar->nights)}}</span>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="absolute-in-content">
-                                                            <span class="btn"><i class="fa fa-heart-o"></i></span>
-                                                            <div class="price">${{$similar->price}}</div>
+                                                        <div class="content clearfix">
+                                                            <h6>{{$similar->getTranslatedAttribute('title', \App::getLocale(),'ru')}}</h6>
+                                                            <div class="rating-wrapper">
+                                                                <div class="raty-wrapper">
+                                                                    <div class="star-rating-12px"
+                                                                         data-rating-score="{{$similar->rating()}}"></div>
+                                                                    <span> / {{$similar->comments()->count()}}
+                                                                        {{trans_choice('day.reviews', $similar->comments()->count())}}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="absolute-in-content">
+                                                                <span class="btn"><i class="fa fa-heart-o"></i></span>
+                                                                <div class="price">${{$similar->price}}</div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </a>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
                                         @endforeach
 
                                     </div>
@@ -524,84 +550,91 @@
                             <div id="section-6" class="detail-content">
 
                                 <div class="section-title text-left">
-                                    <h4>Information &amp; FAQ</h4>
+                                    <h4>@lang('tour.information_faq')</h4>
                                 </div>
 
-                                <div class="row">
+                                @if($original->getTranslatedAttribute('viza', \App::getLocale(),'ru') != null && $original->getTranslatedAttribute('viza', \App::getLocale(),'ru') != "")
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 mb-15">
 
-                                    <div class="col-sm-12 col-md-12 mb-15">
+                                            <div class="read-more-div" data-collapsed-height="107">
 
-                                        <div class="read-more-div" data-collapsed-height="107">
+                                                <div class="read-more-div-inner">
 
-                                            <div class="read-more-div-inner">
+                                                    <h5 class="heading mt-0">@lang('tour.viza')</h5>
 
-                                                <h5 class="heading mt-0">Heading Information 1</h5>
+                                                    {!! $original->getTranslatedAttribute('viza', \App::getLocale(),'ru') !!}
 
-                                                {!! $tour->viza !!}
+                                                </div>
 
                                             </div>
 
                                         </div>
-
                                     </div>
-                                </div>
+                                @endif
 
-                                <h5 class="heading mt-0">FAQ</h5>
+                                @if($faqs->count() != 0)
+                                    <h5 class="heading mt-0">@lang('tour.faq')</h5>
 
-                                <div class="faq-alt-2-wrapper">
+                                    <div class="faq-alt-2-wrapper">
 
-                                    <div class="panel-group bootstarp-accordion" id="accordion" role="tablist"
-                                         aria-multiselectable="true">
-                                        @foreach($faqs as $key => $faq)
-                                        <div class="panel">
-                                            <div class="panel-heading" role="tab" id="heading{{$key}}">
-                                                <h6 class="panel-title">
-                                                    <a role="button" data-toggle="collapse" data-parent="#accordion"
-                                                       href="#collapse{{$key}}" aria-expanded="true"
-                                                       aria-controls="collapse{{$key}}">{{$faq->title}}</a>
-                                                </h6>
-                                            </div>
-                                            <div id="collapse{{$key}}" class="panel-collapse collapse" role="tabpanel"
-                                                 aria-labelledby="heading{{$key}}">
-                                                <div class="panel-body">
-                                                    <div class="faq-thread">
-                                                        {!! $faq->text !!}
+                                        <div class="panel-group bootstarp-accordion" id="accordion" role="tablist"
+                                             aria-multiselectable="true">
+                                            @foreach($faqs as $key => $faq)
+                                                <div class="panel">
+                                                    <div class="panel-heading" role="tab" id="heading{{$key}}">
+                                                        <h6 class="panel-title">
+                                                            <a role="button" data-toggle="collapse"
+                                                               data-parent="#accordion"
+                                                               href="#collapse{{$key}}" aria-expanded="true"
+                                                               aria-controls="collapse{{$key}}">{{$faq->title}}</a>
+                                                        </h6>
+                                                    </div>
+                                                    <div id="collapse{{$key}}" class="panel-collapse collapse"
+                                                         role="tabpanel"
+                                                         aria-labelledby="heading{{$key}}">
+                                                        <div class="panel-body">
+                                                            <div class="faq-thread">
+                                                                {!! $faq->text !!}
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
                                         @endforeach
                                         <!-- end of panel -->
-                                    </div>
-                                    <!-- end of #accordion -->
+                                        </div>
+                                        <!-- end of #accordion -->
 
-                                    <div class="text-center pt-10">
-                                        <a href="#" class="btn btn-primary">Show ALl FAQs</a>
-                                    </div>
+                                        <div class="text-center pt-10">
+                                            <a href="{{route('faqs')}}" class="btn btn-primary">@lang('tour.show_all_faqs')</a>
+                                        </div>
 
-                                </div>
+                                    </div>
+                                @endif
 
                             </div>
 
                             <div id="section-7" class="detail-content">
 
                                 <div class="section-title text-left">
-                                    <h4>Reviews</h4>
+                                    <h4>@lang('tour.reviews')</h4>
                                 </div>
 
                                 <div class="review-wrapper">
 
                                     <div class="review-header">
                                         <div class="row">
-                                            
+
                                             <div class="col-sm-5 col-md-4">
                                                 <div class="review-overall">
                                                     <h5>{{$original->ratingType()}}</h5>
-                                                    <p class="review-overall-point"><span>{{$original->rating()}}</span> / 5.0</p>
-                                                    <p class="review-overall-recommend">{{$original->ratingPercentage()}}% recommend this package</p>
+                                                    <p class="review-overall-point"><span>{{$original->rating()}}</span>
+                                                        / 5.0</p>
+                                                    <p class="review-overall-recommend">{{$original->ratingPercentage()}}
+                                                        % @lang('tour.recommend_this_package')</p>
                                                 </div>
                                             </div>
-                                            
+
 
                                             <div class="col-sm-7 col-md-8">
 
@@ -611,7 +644,7 @@
 
                                                         <div class="col-xss-12 col-xs-12 col-sm-7">
 
-                                                            <h6>Score Breakdown</h6>
+                                                            <h6>@lang('tour.score_breakdown')</h6>
                                                             <ul class="breakdown-list">
 
                                                                 <li class="clearfix">
@@ -624,11 +657,15 @@
                                                                     </div>
                                                                     <div class="progress progress-primary">
                                                                         <div class="progress-bar" role="progressbar"
-                                                                             aria-valuenow="{{$original->comments->count() ? $original->comments()->where('rating','>=', 4.5)->count()*100/$original->comments->count() : 0}}" aria-valuemin="0"
+                                                                             aria-valuenow="{{$original->comments->count() ? $original->comments()->where('rating','>=', 4.5)->count()*100/$original->comments->count() : 0}}"
+                                                                             aria-valuemin="0"
                                                                              aria-valuemax="100"
                                                                              style="width: {{$original->comments->count() ? $original->comments()->where('rating','>=', 4.5)->count()*100/$original->comments->count() : 0}}%;"></div>
                                                                     </div>
-                                                                    <div class="breakdown-count"> ({{$original->comments()->where('rating','>=', 4.5)->count()}})</div>
+                                                                    <div class="breakdown-count">
+                                                                        ({{$original->comments()->where('rating','>=', 4.5)->count()}}
+                                                                        )
+                                                                    </div>
                                                                 </li>
 
                                                                 <li class="clearfix">
@@ -640,12 +677,16 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress progress-primary">
-                                                                          <div class="progress-bar" role="progressbar"
-                                                                             aria-valuenow="{{$original->comments->count() ? $original->comments()->where('rating','>=', 3.5)->where('rating','<',4.5)->count()*100/$original->comments->count() : 0}}" aria-valuemin="0"
+                                                                        <div class="progress-bar" role="progressbar"
+                                                                             aria-valuenow="{{$original->comments->count() ? $original->comments()->where('rating','>=', 3.5)->where('rating','<',4.5)->count()*100/$original->comments->count() : 0}}"
+                                                                             aria-valuemin="0"
                                                                              aria-valuemax="100"
                                                                              style="width: {{$original->comments->count() ? $original->comments()->where('rating','>=', 3.5)->where('rating','<',4.5)->count()*100/$original->comments->count() : 0}}%;"></div>
                                                                     </div>
-                                                                    <div class="breakdown-count"> ({{$original->comments()->where('rating','>=', 3.5)->where('rating','<',4.5)->count()}})</div>
+                                                                    <div class="breakdown-count">
+                                                                        ({{$original->comments()->where('rating','>=', 3.5)->where('rating','<',4.5)->count()}}
+                                                                        )
+                                                                    </div>
                                                                 </li>
 
                                                                 <li class="clearfix">
@@ -657,12 +698,16 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress progress-primary">
-                                                                          <div class="progress-bar" role="progressbar"
-                                                                             aria-valuenow="{{$original->comments->count() ? $original->comments()->where('rating','>=', 2.5)->where('rating','<',3.5)->count()*100/$original->comments->count() : 0}}" aria-valuemin="0"
+                                                                        <div class="progress-bar" role="progressbar"
+                                                                             aria-valuenow="{{$original->comments->count() ? $original->comments()->where('rating','>=', 2.5)->where('rating','<',3.5)->count()*100/$original->comments->count() : 0}}"
+                                                                             aria-valuemin="0"
                                                                              aria-valuemax="100"
                                                                              style="width: {{$original->comments->count() ? $original->comments()->where('rating','>=', 2.5)->where('rating','<',3.5)->count()*100/$original->comments->count() : 0}}%;"></div>
                                                                     </div>
-                                                                    <div class="breakdown-count"> ({{$original->comments()->where('rating','>=', 2.5)->where('rating','<',3.5)->count()}})</div>
+                                                                    <div class="breakdown-count">
+                                                                        ({{$original->comments()->where('rating','>=', 2.5)->where('rating','<',3.5)->count()}}
+                                                                        )
+                                                                    </div>
                                                                 </li>
                                                                 <li class="clearfix">
                                                                     <div class="rating-wrapper">
@@ -673,12 +718,16 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress progress-primary">
-                                                                          <div class="progress-bar" role="progressbar"
-                                                                             aria-valuenow="{{$original->comments->count() ? $original->comments()->where('rating','>=', 1.5)->where('rating','<',2.5)->count()*100/$original->comments->count() : 0}}" aria-valuemin="0"
+                                                                        <div class="progress-bar" role="progressbar"
+                                                                             aria-valuenow="{{$original->comments->count() ? $original->comments()->where('rating','>=', 1.5)->where('rating','<',2.5)->count()*100/$original->comments->count() : 0}}"
+                                                                             aria-valuemin="0"
                                                                              aria-valuemax="100"
                                                                              style="width: {{$original->comments->count() ? $original->comments()->where('rating','>=', 1.5)->where('rating','<',2.5)->count()*100/$original->comments->count() : 0}}%;"></div>
                                                                     </div>
-                                                                    <div class="breakdown-count"> ({{$original->comments()->where('rating','>=', 1.5)->where('rating','<',2.5)->count()}})</div>
+                                                                    <div class="breakdown-count">
+                                                                        ({{$original->comments()->where('rating','>=', 1.5)->where('rating','<',2.5)->count()}}
+                                                                        )
+                                                                    </div>
                                                                 </li>
 
                                                                 <li class="clearfix">
@@ -690,18 +739,21 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress progress-primary">
-                                                                          <div class="progress-bar" role="progressbar"
-                                                                             aria-valuenow="{{$original->comments->count() ? $original->comments()->where('rating','<',1.5)->count()*100/$original->comments->count() : 0}}" aria-valuemin="0"
+                                                                        <div class="progress-bar" role="progressbar"
+                                                                             aria-valuenow="{{$original->comments->count() ? $original->comments()->where('rating','<',1.5)->count()*100/$original->comments->count() : 0}}"
+                                                                             aria-valuemin="0"
                                                                              aria-valuemax="100"
                                                                              style="width: {{$original->comments->count() ? $original->comments()->where('rating','<',1.5)->count()*100/$original->comments->count() : 0}}%;"></div>
                                                                     </div>
-                                                                    <div class="breakdown-count"> ({{$original->comments()->where('rating','<',1.5)->count()}})</div>
+                                                                    <div class="breakdown-count">
+                                                                        ({{$original->comments()->where('rating','<',1.5)->count()}}
+                                                                        )
+                                                                    </div>
                                                                 </li>
                                                             </ul>
 
                                                         </div>
 
-                                                       
 
                                                     </div>
 
@@ -718,12 +770,12 @@
                                         <div class="row gap-20">
 
                                             <div class="col-sm-6">
-                                                <h5>There are {{$tour->comments->count()}} reviews</h5>
+                                                <h5>{{$tour->comments->count()}} {{trans_choice('day.reviews', $tour->comments->count())}}</h5>
                                             </div>
 
                                             <div class="col-sm-6 text-right text-left-xs">
                                                 <a href="#leave-comment"
-                                                   class="anchor btn btn-primary btn-inverse btn-sm">Leave comments</a>
+                                                   class="anchor btn btn-primary btn-inverse btn-sm">@lang('tour.leave_comment')</a>
                                             </div>
 
                                         </div>
@@ -748,7 +800,8 @@
 
                                                         <div class="rating-wrapper">
                                                             <div class="raty-wrapper">
-                                                                <div class="star-rating-12px" data-rating-score="{{$comment->rating}}"></div>
+                                                                <div class="star-rating-12px"
+                                                                     data-rating-score="{{$comment->rating}}"></div>
                                                             </div>
                                                         </div>
 
@@ -767,11 +820,14 @@
                                                                     <ul class="social-share-sm">
 
                                                                         <li>
-                                                                            <span><i class="fa fa-share-square"></i> share</span>
+                                                                            <span><i class="fa fa-share-square"></i> @lang('tour.share')</span>
                                                                         </li>
-                                                                        <li class="the-label"><a href="#">Facebook</a></li>
-                                                                        <li class="the-label"><a href="#">Twitter</a></li>
-                                                                        <li class="the-label"><a href="#">Google Plus</a>
+                                                                        <li class="the-label"><a href="#">Facebook</a>
+                                                                        </li>
+                                                                        <li class="the-label"><a href="#">Twitter</a>
+                                                                        </li>
+                                                                        <li class="the-label"><a href="#">Google
+                                                                                Plus</a>
                                                                         </li>
 
                                                                     </ul>
@@ -789,9 +845,9 @@
 
                                         </ul>
 
-                                       {{--  <div class="bt text-center pt-30">
-                                            <a href="#" class="btn btn-primary">Load More</a>
-                                        </div> --}}
+                                        {{--  <div class="bt text-center pt-30">
+                                             <a href="#" class="btn btn-primary">Load More</a>
+                                         </div> --}}
 
                                     </div>
 
@@ -802,7 +858,7 @@
                             <div id="leave-comment" class="detail-content">
 
                                 <div class="section-title text-left">
-                                    <h4>Leave Your Review</h4>
+                                    <h4>@lang('tour.leave_your_review')</h4>
                                 </div>
 
                                 <div class="review-form" id="form-err">
@@ -814,15 +870,16 @@
                                             <div class="col-sm-6 col-md-4">
 
                                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                                    <label>Your Name: </label>
-                                                    <input type="text" class="form-control name-err" name="name" value="{{ old('name') }}" required/>
+                                                    <label>@lang('tour.your_name'): </label>
+                                                    <input type="text" class="form-control name-err" name="name"
+                                                           value="{{ old('name') }}" required/>
                                                     @if ($errors->has('name'))
-                                                    <span class="help-block">
+                                                        <span class="help-block">
                                                         <strong>{{ $errors->first('name') }}</strong>
                                                     </span>
                                                     @endif
                                                 </div>
-                                                
+
 
                                             </div>
 
@@ -831,16 +888,16 @@
                                             <div class="col-sm-6 col-md-4">
 
                                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                                    <label>Your Email Address: </label>
-                                                    <input type="email" class="form-control email-err" name="email" value="{{ old('email') }}" required/>
+                                                    <label>@lang('tour.your_emal'): </label>
+                                                    <input type="email" class="form-control email-err" name="email"
+                                                           value="{{ old('email') }}" required/>
                                                     @if ($errors->has('email'))
-                                                    <span class="help-block">
+                                                        <span class="help-block">
                                                         <strong>{{ $errors->first('email') }}</strong>
                                                     </span>
                                                     @endif
                                                 </div>
 
-                                                
 
                                             </div>
 
@@ -849,20 +906,21 @@
                                             <div class="col-sm-6 col-md-4">
 
                                                 <div class="form-group{{ $errors->has('rating') ? ' has-error' : '' }}">
-                                                    <label>Your Rating: </label>
+                                                    <label>@lang('tour.your_rating'): </label>
                                                     <div class="rating-wrapper">
                                                         <div class="raty-wrapper">
-                                                            <div class="star-rating rating-err" data-rating-score="{{old('rating') != null ? old('rating') : 5}}"></div>
+                                                            <div class="star-rating rating-err"
+                                                                 data-rating-score="{{old('rating') != null ? old('rating') : 5}}"></div>
                                                         </div>
                                                     </div>
                                                     @if ($errors->has('rating'))
-                                                    <span class="help-block">
+                                                        <span class="help-block">
                                                         <strong>{{ $errors->first('rating') }}</strong>
                                                     </span>
                                                     @endif
                                                 </div>
 
-                                                
+
                                             </div>
 
                                             <div class="clear"></div>
@@ -870,21 +928,25 @@
                                             <div class="col-sm-12 col-md-8">
 
                                                 <div class="form-group{{ $errors->has('text') ? ' has-error' : '' }}">
-                                                    <label>Your Message: </label>
-                                                    <textarea class="form-control form-control-sm text-err" rows="5" name="text" data-error="Your message is required and must not less than 50 characters" required>{{old('text')}}</textarea>
+                                                    <label>@lang('tour.your_message'): </label>
+                                                    <textarea class="form-control form-control-sm text-err" rows="5"
+                                                              name="text"
+                                                              data-error="Your message is required and must not less than 50 characters"
+                                                              required>{{old('text')}}</textarea>
                                                     @if ($errors->has('text'))
-                                                    <span class="help-block">
+                                                        <span class="help-block">
                                                         <strong>{{ $errors->first('text') }}</strong>
                                                     </span>
                                                     @endif
                                                 </div>
-                                                
+
                                             </div>
 
                                             <div class="clear"></div>
 
                                             <div class="col-sm-12 col-md-8 mt-10">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="submit"
+                                                        class="btn btn-primary">@lang('tour.submit')</button>
                                             </div>
 
                                         </div>
@@ -897,8 +959,8 @@
 
                             <div class="call-to-action">
 
-                                Question? <a href="#" class="btn btn-primary btn-sm btn-inverse">Make an inquiry</a> or
-                                call +66 28 878 5452
+                                @lang('tour.question') <a href="{{route('contact')}}"
+                                                          class="btn btn-primary btn-sm btn-inverse">@lang('tour.make_inquiry')</a> @lang('tour.or_call') {{setting('site.phone')}}
 
                             </div>
 
@@ -914,20 +976,21 @@
 
                                 <li>
                                     <ul class="nav">
-                                        <li><a href="#section-0" class="anchor">Highlights</a></li>
-                                        <li><a href="#section-1" class="anchor">Gallery</a></li>
-                                        <li><a href="#section-2" class="anchor">Itinerary</a></li>
-                                        <li><a href="#section-3" class="anchor">Tour Accommodation</a></li>
-                                        <li><a href="#section-4" class="anchor">What's Included</a></li>
-                                        <li><a href="#section-5" class="anchor">Availabilitylities</a></li>
-                                        <li><a href="#section-6" class="anchor">Information &amp; FAQ</a></li>
-                                        <li><a href="#section-7" class="anchor">Reviews</a></li>
+                                        <li><a href="#section-0" class="anchor">@lang('tour.highlights')</a></li>
+                                        <li><a href="#section-1" class="anchor">@lang('tour.gallery')</a></li>
+                                        <li><a href="#section-2" class="anchor">@lang('tour.itinerary')</a></li>
+                                        <li><a href="#section-3" class="anchor">@lang('tour.tour_accommodation')</a>
+                                        </li>
+                                        <li><a href="#section-4" class="anchor">@lang('tour.what_included')</a></li>
+                                        <li><a href="#section-5" class="anchor">@lang('tour.availability')</a></li>
+                                        <li><a href="#section-6" class="anchor">@lang('tour.information_faq')</a></li>
+                                        <li><a href="#section-7" class="anchor">@lang('tour.reviews')</a></li>
                                     </ul>
                                 </li>
 
                             </ul>
 
-                            <a href="#" class="btn btn-primary">Change Search</a>
+                            <a href="#" class="btn btn-primary">@lang('tour.change_search')</a>
 
                             <div style="width: 100%; height: 20px;"></div>
 
@@ -948,7 +1011,7 @@
 
 
 @section('scripts')
-<script type="text/javascript" src="{{asset('dist/js/jquery.raty.js')}}"></script>
+    <script type="text/javascript" src="{{asset('dist/js/jquery.raty.js')}}"></script>
 @endsection
 
 @section('error_script')

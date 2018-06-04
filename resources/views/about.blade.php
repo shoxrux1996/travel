@@ -5,6 +5,11 @@
           content="Silk Road Asia Travel - posts"/>
     <meta name="keywords"
           content="silkroadasiatravel.uz, silkroad, silk road asia travel ,тур агенства, tour package, hotel, vocation, booking, trip, travel, tourism, tourist"/>
+          <style type="text/css">
+              .opacity{
+                opacity: 0.9;
+              }
+          </style>
 @endsection
 
 @section('content')
@@ -20,11 +25,11 @@
 
                     <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
 
-                        <h1 class="hero-title">About Us</h1>
+                        <h1 class="hero-title">@lang('aboutus.about_us')</h1>
 
                         <ol class="breadcrumb-list">
-                            <li><a href="{{route('home')}}">Homepage</a></li>
-                            <li><span>About Us</span></li>
+                            <li><a href="{{route('home')}}">@lang('aboutus.homepage')</a></li>
+                            <li><span>@lang('aboutus.about_us')</span></li>
                         </ol>
 
                     </div>
@@ -42,13 +47,7 @@
 
                 <div class="container">
 
-                    <p class="font15 mb-30">Among going manor who did. Do ye is celebrated it sympathize considered. May
-                        ecstatic did surprise elegance the ignorant age. Own her miss cold last. It so numerous if he
-                        outlived disposal. How but sons mrs lady when. Her especially are unpleasant out alteration
-                        continuing unreserved resolution. Hence hopes noisy may china fully and. Am it regard stairs
-                        branch thirty length afford. Tolerably earnestly middleton extremely distrusts she boy now not.
-                        Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact
-                        prepare all put. Added forth chief trees but rooms think may.</p>
+                    <p class="font15 mb-30">@lang('aboutus.content')</p>
 
                     <div class="about-us-grid-block GridLex-gap-20-wrappper">
 
@@ -56,21 +55,19 @@
 
                             <div class="GridLex-col-6_xs-12">
                                 <div class="about-us-grid-block-item mb-20">
-                                    <h4 class="heading mt-0 text-white">Mission</h4>
-                                    <p>Style too own civil out along. Perfectly offending attempted add arranging age
-                                        gentleman concluded. Get who uncommonly our expression ten increasing considered
-                                        occasional travelling.</p>
+                                    <h4 class="heading mt-0 text-white">@lang('aboutus.mission')</h4>
+                                    <p>@lang('aboutus.mission_body')</p>
                                 </div>
                             </div>
 
                             <div class="GridLex-col-3_xs-12">
-                                <div class="image-bg mb-20"
-                                     style="background-image:url('{{asset('dist/images/about-us/about-us-image-bg-01.jpg')}}');"></div>
+                                <div class="image-bg mb-20 opacity"
+                                     style="background-image:url('{{asset('storage/'.setting('aboutus.mission1'))}}');"></div>
                             </div>
 
                             <div class="GridLex-col-3_xs-12">
-                                <div class="image-bg mb-20"
-                                     style="background-image:url('{{asset('dist/images/about-us/about-us-image-bg-02.jpg')}}');"></div>
+                                <div class="image-bg mb-20 opacity"
+                                     style="background-image:url('{{asset('storage/'.setting('aboutus.mission2'))}}');"></div>
                             </div>
 
                         </div>
@@ -78,22 +75,20 @@
                         <div class="GridLex-grid-noGutter-equalHeight gap-20">
 
                             <div class="GridLex-col-3_xs-12">
-                                <div class="image-bg mb-20"
-                                     style="background-image:url('{{asset('dist/images/about-us/about-us-image-bg-03.jpg')}}');"></div>
+                                <div class="image-bg mb-20 opacity"
+                                     style="background-image:url('{{asset('storage/'.setting('aboutus.vission1'))}}');"></div>
                             </div>
 
                             <div class="GridLex-col-6_xs-12">
                                 <div class="about-us-grid-block-item mb-20">
-                                    <h4 class="heading mt-0 text-white">Vission</h4>
-                                    <p>Style too own civil out along. Perfectly offending attempted add arranging age
-                                        gentleman concluded. Get who uncommonly our expression ten increasing considered
-                                        occasional travelling.</p>
+                                    <h4 class="heading mt-0 text-white">@lang('aboutus.vission')</h4>
+                                    <p>@lang('aboutus.vission_body')</p>
                                 </div>
                             </div>
 
                             <div class="GridLex-col-3_xs-12 mb-20">
-                                <div class="image-bg"
-                                     style="background-image:url('{{asset('dist/images/about-us/about-us-image-bg-04.jpg')}}');"></div>
+                                <div class="image-bg opacity"
+                                     style="background-image:url('{{asset('storage/'.setting('aboutus.vission2'))}}');"></div>
                             </div>
 
                         </div>
@@ -101,21 +96,19 @@
                         <div class="GridLex-grid-noGutter-equalHeight gap-20">
 
                             <div class="GridLex-col-3_xs-12 mb-20">
-                                <div class="image-bg"
-                                     style="background-image:url('{{asset('dist/images/about-us/about-us-image-bg-05.jpg')}}');"></div>
+                                <div class="image-bg opacity"
+                                     style="background-image:url('{{asset('storage/'.setting('aboutus.goal1'))}}');"></div>
                             </div>
 
                             <div class="GridLex-col-3_xs-12 mb-20">
-                                <div class="image-bg"
-                                     style="background-image:url('{{asset('dist/images/about-us/about-us-image-bg-06.jpg')}}');"></div>
+                                <div class="image-bg opacity"
+                                     style="background-image:url('{{asset('storage/'.setting('aboutus.goal2'))}}');"></div>
                             </div>
 
                             <div class="GridLex-col-6_xs-12">
                                 <div class="about-us-grid-block-item mb-20">
-                                    <h4 class="heading mt-0 text-white">Our Goal</h4>
-                                    <p>Style too own civil out along. Perfectly offending attempted add arranging age
-                                        gentleman concluded. Get who uncommonly our expression ten increasing considered
-                                        occasional travelling.</p>
+                                    <h4 class="heading mt-0 text-white">@lang('aboutus.our_goal')</h4>
+                                    <p>@lang('aboutus.our_goal_body')</p>
                                 </div>
                             </div>
 
@@ -123,17 +116,11 @@
 
                     </div>
 
-                    <h4>Style too own civil out along</h4>
-                    <p>Is branched in my up strictly remember. Songs but chief has ham widow downs. Genius or so up
-                        vanity cannot. Large do tried going about water defer by. Silent son man she wished mother.
-                        Distrusts allowance do knowledge eagerness assurance additions to.</p>
+                    <h4>@lang('aboutus.first_footer_header')</h4>
+                    <p>@lang('aboutus.first_footer_body')</p>
 
-                    <h4>May ecstatic did surprise elegance the ignorant age</h4>
-                    <p>Among going manor who did. Do ye is celebrated it sympathize considered. May ecstatic did
-                        surprise elegance the ignorant age. Own her miss cold last. It so numerous if he outlived
-                        disposal. How but sons mrs lady when. Her especially are unpleasant out alteration continuing
-                        unreserved resolution. Hence hopes noisy may china fully and. Am it regard stairs branch thirty
-                        length afford.</p>
+                    <h4>@lang('aboutus.second_footer_header')</h4>
+                    <p>@lang('aboutus.second_footer_body')</p>
 
                 </div>
 
@@ -149,8 +136,8 @@
 
                             <div class="section-title">
 
-                                <h3>Our Team</h3>
-                                <p>Meet with our people behind the move.</p>
+                                <h3>@lang('aboutus.our_team')</h3>
+                                <p>@lang('aboutus.our_team_body')</p>
 
                             </div>
 
@@ -161,24 +148,24 @@
                     <div class="team-wrapper">
 
                         <div class="row">
-
+                            @foreach($users as $user)
                             <div class="col-xss-12 col-xs-6 col-sm-3 mv-15">
 
                                 <div class="team-item">
 
                                     <div class="image">
-                                        <img src="{{asset('dist/images/team/01.jpg')}}" alt="Team" class="img-circle"/>
+                                        <img src="{{asset('storage/'.$user->avatar)}}" alt="Team" class="img-circle" />
                                     </div>
 
                                     <div class="content">
 
-                                        <h5 class="uppercase">ROBERT SMITH</h5>
-                                        <p>Director Manager</p>
+                                        <h5 class="uppercase">{{$user->name}}</h5>
+                                        <p>{{$user->position}}</p>
                                         <ul class="social">
-                                            <li><a href="{{setting('site.facebook')}}"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="{{setting('site.telegram')}}"><i class="fa fa-telegram"></i></a></li>
-                                            <li><a href="{{setting('site.facebook')}}"><i class="fa fa-google-plus"></i></a></li>
-                                            <li><a href="{{setting('site.instagram')}}"><i class="fa fa-instagram"></i></a></li>
+                                            <li><a href="{{$user->facebook}}"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="{{$user->telegram}}"><i class="fa fa-telegram"></i></a></li>
+                                            <li><a href="mailto:{{$user->email}}"><i class="fa fa-google-plus"></i></a></li>
+                                            <li><a href="{{$user->instagram}}"><i class="fa fa-instagram"></i></a></li>
                                         </ul>
 
                                     </div>
@@ -186,81 +173,7 @@
                                 </div>
 
                             </div>
-
-                            <div class="col-xss-12 col-xs-6 col-sm-3 mv-15">
-
-                                <div class="team-item">
-
-                                    <div class="image">
-                                        <img src="{{asset('dist/images/team/02.jpg')}}" alt="Team" class="img-circle"/>
-                                    </div>
-
-                                    <div class="content">
-
-                                        <h5 class="uppercase">ROBERT SMITH</h5>
-                                        <p>Director Manager</p>
-                                        <ul class="social">
-                                            <li><a href="{{setting('site.facebook')}}"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="{{setting('site.telegram')}}"><i class="fa fa-telegram"></i></a></li>
-                                            <li><a href="{{setting('site.facebook')}}"><i class="fa fa-google-plus"></i></a></li>
-                                            <li><a href="{{setting('site.instagram')}}"><i class="fa fa-instagram"></i></a></li>
-                                        </ul>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-xss-12 col-xs-6 col-sm-3 mv-15">
-
-                                <div class="team-item">
-
-                                    <div class="image">
-                                        <img src="{{asset('dist/images/team/03.jpg')}}" alt="Team" class="img-circle"/>
-                                    </div>
-
-                                    <div class="content">
-
-                                        <h5 class="uppercase">ROBERT SMITH</h5>
-                                        <p>Director Manager</p>
-                                        <ul class="social">
-                                            <li><a href="{{setting('site.facebook')}}"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="{{setting('site.telegram')}}"><i class="fa fa-telegram"></i></a></li>
-                                            <li><a href="{{setting('site.facebook')}}"><i class="fa fa-google-plus"></i></a></li>
-                                            <li><a href="{{setting('site.instagram')}}"><i class="fa fa-instagram"></i></a></li>
-                                        </ul>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-xss-12 col-xs-6 col-sm-3 mv-15">
-
-                                <div class="team-item">
-
-                                    <div class="image">
-                                        <img src="{{asset('dist/images/team/04.jpg')}}" alt="Team" class="img-circle"/>
-                                    </div>
-
-                                    <div class="content">
-
-                                        <h5 class="uppercase">ROBERT SMITH</h5>
-                                        <p>Director Manager</p>
-                                        <ul class="social">
-                                            <li><a href="{{setting('site.facebook')}}"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="{{setting('site.telegram')}}"><i class="fa fa-telegram"></i></a></li>
-                                            <li><a href="{{setting('site.facebook')}}"><i class="fa fa-google-plus"></i></a></li>
-                                            <li><a href="{{setting('site.instagram')}}"><i class="fa fa-instagram"></i></a></li>
-                                        </ul>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
+                            @endforeach
 
                         </div>
 

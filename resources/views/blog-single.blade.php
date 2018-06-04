@@ -19,11 +19,11 @@
 
                     <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
 
-                        <h1 class="hero-title">Blog</h1>
+                        <h1 class="hero-title">@lang('blog.blog')</h1>
 
                         <ol class="breadcrumb-list">
-                            <li><a href="index-2.html">Homepage</a></li>
-                            <li><span>Blog</span></li>
+                            <li><a href="index-2.html">@lang('blog.homepage')</a></li>
+                            <li><span>@lang('blog.blog')</span></li>
                         </ol>
 
                     </div>
@@ -53,10 +53,10 @@
                                 <div class="blog-content">
                                     <h3><a href="blog-single.html" class="inverse">{{$post->getTranslatedAttribute('title', \App::getLocale(),'ru')}}</a></h3>
                                     <ul class="blog-meta clearfix">
-                                        <li>by <a href="#">{{$post->authorId->name}}</a></li>
-                                        <li>by {{\Carbon\Carbon::parse($post->created_at)->formatLocalized('%B %d, %Y')}}</li>
+                                        <li>@lang('blog.by') <a href="#">{{$post->authorId->name}}</a></li>
+                                        <li> {{\Carbon\Carbon::parse($post->created_at)->formatLocalized('%B %d, %Y')}}</li>
                                         {{-- <li>in <a href="#">Adventure</a>, <a href="#">Backpack</a></li> --}}
-                                        <li>{{$post->commentsCount()}} comments</li>
+                                        <li>{{$post->commentsCount()}} {{trans_choice('day.comments', $post->commentsCount())}}</li>
                                     </ul>
                                     <div class="blog-entry">
                                         {!! $post->getTranslatedAttribute('body', \App::getLocale(),'ru') !!}
@@ -67,7 +67,7 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-6 col-md-7 xs-mb">
                                             <div class="tag-cloud clearfix mt-0">
-                                                <span><i class="fa fa-tags"></i> tags: </span>
+                                                <span><i class="fa fa-tags"></i> @lang('blog.tag'): </span>
                                                 @foreach($post->categories as $category)
                                                     <a class="tag-item">
                                                         <form method="get" action="{{route('blog.list')}}" ><button name="category" value="{{$category->name}}" class="remove-button-css" type="submit">
@@ -109,7 +109,7 @@
                                     </div>
                                 </div>
 --}}
-                                <h4 class="uppercase">{{$post->commentsCount()}} Comments</h4>
+                                <h4 class="uppercase">{{$post->commentsCount()}} {{trans_choice('day.comments', $post->commentsCount())}}</h4>
 
                                 <div id="comment-wrapper">
 
@@ -120,7 +120,7 @@
                                                 <img src="{{asset('storage/'.$comme)}}" alt="author image" />
                                             </div>--}}
                                             <div class="comment-header">
-                                                <a href="#" onclick="myFunction(this, '{{$comment->id}}','{{$comment->name}}')" class="comment-reply">reply</a>
+                                                <a href="#" onclick="myFunction(this, '{{$comment->id}}','{{$comment->name}}')" class="comment-reply">@lang('blog.reply')</a>
                                                 <h6 class="heading mt-0">{{$comment->name}}</h6>
                                                 <span class="comment-time">{{$comment->created_at}}</span>
                                             </div>
@@ -154,7 +154,7 @@
 
                                 </div><!-- End Comment -->
 
-                                <h3 class="uppercase">Leave a Comment</h3>
+                                <h3 class="uppercase">@lang('blog.leave_comment')</h3>
 
                                 <form method="post" id="contactForm" action="{{route('note', $post->id)}}" class="comment-form">
                                     {{csrf_field()}}
@@ -170,7 +170,7 @@
                                     <div class="row replyComment" style="display:none;">
                                         <div class="col-xs-12 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <label for="replyComment">Reply</label>
+                                                <label for="replyComment">@lang('blog.Reply')</label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control" id="replyComment" value="" readonly>
                                                     <a onclick="removeDiv(this)" class="input-group-addon"><span ><i class="fa fa-times"></i></span></a>
@@ -181,14 +181,14 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <label for="comment-name">Your Name <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" id="comment-name" name="name" data-error="Your name is required" required>
+                                                <label for="comment-name">@lang('blog.comment.your_name') <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="comment-name" name="name" data-error="@lang('blog.comment.name_required')" required>
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <label for="comment-email">Your Email <span class="text-danger">*</span></label>
-                                                <input type="email" class="form-control" id="comment-email" name="email" data-error="Your email is required and must be a valid email address" required>
+                                                <label for="comment-email">@lang('blog.comment.your_email')<span class="text-danger">*</span></label>
+                                                <input type="email" class="form-control" id="comment-email" name="email" data-error="@lang('blog.comment.email_required')" required>
                                             </div>
                                         </div>
                                     </div>
@@ -196,8 +196,8 @@
                                     <div class="row">
                                         <div class="col-md-12 mb-30">
                                             <div class="form-group">
-                                                <label for="comment-message">Message <span class="text-danger">*</span></label>
-                                                <textarea name="message" id="comment-message" class="form-control" rows="8" data-error="Your message is required and must not less than 50 characters" required></textarea>
+                                                <label for="comment-message">@lang('blog.comment.message') <span class="text-danger">*</span></label>
+                                                <textarea name="message" id="comment-message" class="form-control" rows="8" data-error="@lang('blog.comment.message_required')" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -206,7 +206,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn btn-primary">Comment</button>
+                                            <button type="submit" class="btn btn-primary">@lang('blog.comment.comment')</button>
                                         </div>
                                     </div>
                                 </form>
@@ -231,7 +231,7 @@
                                         <div class="sidebar-module-inner">
                                             <div class="sidebar-mini-search">
                                                 <div class="input-group">
-                                                    <input type="text" name="search" class="form-control" placeholder="Search for...">
+                                                    <input type="text" name="search" class="form-control" placeholder="@lang('blog.search_for')">
                                                     <span class="input-group-btn">
 														<button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
                                                 </span>
@@ -244,7 +244,7 @@
                                 <div class="clear"></div>
 
                                 <div class="sidebar-module">
-                                    <h4 class="sidebar-title">Категория</h4>
+                                    <h4 class="sidebar-title">@lang('blog.category')</h4>
                                     <div class="sidebar-module-inner">
                                         <ul class="sidebar-category">
                                             @foreach($categories as $key=> $category)
@@ -330,7 +330,7 @@
                                 <div class="clear"></div>
 
                                 <div class="sidebar-module">
-                                    <h4 class="sidebar-title">Popular Posts</h4>
+                                    <h4 class="sidebar-title">@lang('blog.popular_posts')</h4>
                                     <div class="sidebar-module-inner">
 
                                         <ul class="sidebar-post">
@@ -338,11 +338,11 @@
                                                 <li class="clearfix">
                                                     <a href="{{route('blog.show', $post->slug)}}">
                                                         <div class="image">
-                                                            <img src="{{asset('storage/'.$post->thumbnail('small'))}}" alt="Popular Post" />
+                                                            <img src="{{asset('storage/'.$post->thumbnail('small'))}}" alt="@lang('blog.popular_posts')" />
                                                         </div>
                                                         <div class="content">
                                                             <h6>{{$post->getTranslatedAttribute('title',\App::getLocale(),'ru')}}</h6>
-                                                            <p class="recent-post-sm-meta"><i class="fa fa-comments mr-5"></i>{{$post->commentsCount()}} comments</p>
+                                                            <p class="recent-post-sm-meta"><i class="fa fa-comments mr-5"></i>{{$post->commentsCount()}} {{ trans_choice('day.comments', $post->commentsCount())}}</p>
                                                         </div>
                                                     </a>
                                                 </li>
@@ -372,7 +372,7 @@
                                 <div class="clear"></div>
 
                                 <div class="sidebar-module">
-                                    <h4 class="sidebar-title">Tags</h4>
+                                    <h4 class="sidebar-title">@lang('blog.tags')</h4>
                                     <div class="sidebar-module-inner">
                                         <div class="tag-cloud clearfix">
                                             @foreach($relatedcategories as $category)
@@ -409,13 +409,14 @@
                                 <div class="clear"></div>
 
                                 <div class="sidebar-module">
-                                    <h4 class="sidebar-title">Meta</h4>
+                                    <h4 class="sidebar-title">@lang('blog.meta')</h4>
                                     <div class="sidebar-module-inner">
                                         <ul class="sidebar-list">
-                                            <li><a href="#">Log in</a></li>
-                                            <li><a href="#">Entries RSS</a></li>
-                                            <li><a href="#">Comments RSS</a></li>
-                                            <li><a href="#">WordPress.org</a></li>
+                                           <li><a href="#">silkroadasiatravel.uz</a></li>
+                                            <li><a href="#">тур агенства</a></li>
+                                            <li><a href="#">tour agency</a></li>
+                                            <li><a href="#">tourism</a></li>
+                                            <li><a href="#">travel</a></li>
                                         </ul>
                                     </div>
                                 </div>

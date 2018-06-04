@@ -13,11 +13,11 @@
 					
 						<div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
 						
-							<h1 class="hero-title">Frequently asked questions</h1>
+							<h1 class="hero-title">@lang('faq.frequently_asked_question')</h1>
 							
 							<ol class="breadcrumb-list">
-								<li><a href="index-2.html">Homepage</a></li>
-								<li><span>FAQ</span></li>
+								<li><a href="{{route('home')}}">@lang('faq.homepage')</a></li>
+								<li><span>@lang('faq.FAQ')</span></li>
 							</ol>
 							
 						</div>
@@ -948,7 +948,7 @@
 
 								<div class="call-to-action mt-50">
 									
-									Can't find a question you wanted? <a href="#" class="btn btn-primary btn-sm btn-inverse">Contact Us</a> for your privilege question.
+									@lang('faq.find_question') <a href="#" class="btn btn-primary btn-sm btn-inverse">@lang('faq.contact_us')</a> @lang('faq.privilege')
 								
 								</div>
 								

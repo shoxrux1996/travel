@@ -26183,7 +26183,7 @@
             style_formats: [
                 {title: 'Поправить Лист', selector: 'ul', classes:'list-with-icon with-heading'}
             ],
-            toolbar: "styleselect bold italic underline | forecolor backcolor | alignleft aligncenter alignright | bullist numlist outdent indent | link image table youtube giphy | code | blockquote | mybutton1 mybutton2",
+            toolbar: "styleselect bold italic underline | forecolor backcolor | alignleft aligncenter alignright | bullist numlist outdent indent | link image table youtube giphy | code | blockquote | mybutton1 mybutton2 | removeformat",
             setup: function (editor) {
                 editor.addButton('mybutton1', {
                     icon: false,

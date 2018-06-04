@@ -3,7 +3,7 @@
     @foreach($children as $child)
     <li>
         <div class="comment-header">
-            <a href="#" onclick="myFunction(this, '{{$child->id}}','{{$child->name}}')" class="comment-reply">reply</a>
+            <a href="#" onclick="myFunction(this, '{{$child->id}}','{{$child->name}}')" class="comment-reply">@lang('blog.reply')</a>
             <h6 class="heading mt-0">{{$child->name}}</h6>
             <span class="comment-time">{{$child->created_at}}</span>
         </div>

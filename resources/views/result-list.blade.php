@@ -14,13 +14,12 @@
 					
 						<div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
 						
-							<h1 class="hero-title">Result list</h1>
+							<h1 class="hero-title">@lang('result-list.tour_list')</h1>
 							
 							<ol class="breadcrumb-list">
-								<li><a href="index-2.html">Homepage</a></li>
-								<li><a href="#">Desinations</a></li>
-								<li><a href="#">City</a></li>
-								<li><span>Result list</span></li>
+								<li><a href="index-2.html">@lang('result-list.homepage')</a></li>
+								<li><a>@lang('result-list.destinations')</a></li>
+								<li><span>@lang('result-list.tour_list')</span></li>
 							</ol>
 							
 						</div>
@@ -45,14 +44,14 @@
 								<div class="sidebar-search-wrapper bg-light-2">
 								
 									<div class="sidebar-search-header">
-										<h4>Search Again</h4>
+										<h4>@lang('result-list.search_again')</h4>
 									</div>
 									
 									<div class="sidebar-search-content">
 										<div class="form-group">
 											
-											<select name="destinations[]" class="select2-multi form-control" data-placeholder="Choose a Destination" multiple>
-												<option value="">Choose a Destination</option>
+											<select name="destinations[]" class="select2-multi form-control" data-placeholder="@lang('result-list.choose_destination')" multiple>
+												<option value="">@lang('result-list.choose_destination')</option>
 												@foreach($destinations as $key => $destination)
 													<option value="{{$destination->name}}" 
 														{{(collect(Request::get('destinations'))->contains($destination->name)) ? "selected" : ""}}>{{$destination->getTranslatedAttribute('name', \App::getLocale(),'ru') }}
@@ -61,41 +60,41 @@
 											</select>
 
 										</div>
-									
+								
 										<div class="form-group">
 														
-											<select name="months[]" class="select2-multi form-control" data-placeholder="Choose a Departure Month" multiple>
-												<option value=""> Choose a Departure Month</option>
-												<option value="1" {{(collect(Request::get('months'))->contains(1)) ? "selected" : ""}}>January</option>
-												<option value="2" {{(collect(Request::get('months'))->contains(2)) ? "selected" : ""}} >February</option>
-												<option value="3" {{(collect(Request::get('months'))->contains(3)) ? "selected" : ""}}>March</option>
-												<option value="4" {{(collect(Request::get('months'))->contains(4)) ? "selected" : ""}} >April</option>
-												<option value="5" {{(collect(Request::get('months'))->contains(5)) ? "selected" : ""}} >May</option>
-												<option value="6"  {{(collect(Request::get('months'))->contains(6)) ? "selected" : ""}} >June</option>
-												<option value="7" {{(collect(Request::get('months'))->contains(7)) ? "selected" : ""}} >July</option>
-												<option value="8" {{(collect(Request::get('months'))->contains(8)) ? "selected" : ""}} >August</option>
-												<option value="9" {{(collect(Request::get('months'))->contains(9)) ? "selected" : ""}} >September</option>
-												<option value="10" {{(collect(Request::get('months'))->contains(10)) ? "selected" : ""}} >October</option>
-												<option value="11" {{(collect(Request::get('months'))->contains(11)) ? "selected" : ""}} >November</option>
-												<option value="12" {{(collect(Request::get('months'))->contains(12)) ? "selected" : ""}} >December</option>
+											<select name="months[]" class="select2-multi form-control" data-placeholder="@lang('result-list.choose_departure_month')" multiple>
+												<option value=""> @lang('result-list.choose_departure_month')</option>
+												<option value="1" {{(collect(Request::get('months'))->contains(1)) ? "selected" : ""}}>@lang('result-list.January')</option>
+												<option value="2" {{(collect(Request::get('months'))->contains(2)) ? "selected" : ""}} >@lang('result-list.February')</option>
+												<option value="3" {{(collect(Request::get('months'))->contains(3)) ? "selected" : ""}}>@lang('result-list.March')</option>
+												<option value="4" {{(collect(Request::get('months'))->contains(4)) ? "selected" : ""}} >@lang('result-list.April')</option>
+												<option value="5" {{(collect(Request::get('months'))->contains(5)) ? "selected" : ""}} >@lang('result-list.May')</option>
+												<option value="6"  {{(collect(Request::get('months'))->contains(6)) ? "selected" : ""}} >@lang('result-list.June')</option>
+												<option value="7" {{(collect(Request::get('months'))->contains(7)) ? "selected" : ""}} >@lang('result-list.July')</option>
+												<option value="8" {{(collect(Request::get('months'))->contains(8)) ? "selected" : ""}} >@lang('result-list.August')</option>
+												<option value="9" {{(collect(Request::get('months'))->contains(9)) ? "selected" : ""}} >@lang('result-list.September')</option>
+												<option value="10" {{(collect(Request::get('months'))->contains(10)) ? "selected" : ""}} >@lang('result-list.October')</option>
+												<option value="11" {{(collect(Request::get('months'))->contains(11)) ? "selected" : ""}} >@lang('result-list.November')</option>
+												<option value="12" {{(collect(Request::get('months'))->contains(12)) ? "selected" : ""}} >@lang('result-list.December')</option>
 											</select>
 											
 										</div>
 									
-										<button href="#" class="btn btn-primary btn-block">Search</button>
+										<button href="#" class="btn btn-primary btn-block">@lang('result-list.search')</button>
 									
 									</div>
 									
 								</div>
 								
 								<div class="sidebar-header clearfix">
-									<h4>Filter Results</h4>
-									<a href="{{ route('tour.list') }}" class="sidebar-reset-filter"><i class="fa fa-times"></i> reset filter</a>
+									<h4>@lang('result-list.filter_results')</h4>
+									<a href="{{ route('tour.list') }}" class="sidebar-reset-filter"><i class="fa fa-times"></i> @lang('result-list.reset_filter')</a>
 								</div>
 								
 								<div class="sidebar-inner">
 									<div class="sidebar-module">
-										<h6 class="sidebar-title">Price Range</h6>
+										<h6 class="sidebar-title">@lang('result-list.price_range')</h6>
 										<div class="sidebar-module-inner">
 											<input type="text" id="price_range"/>
 											<input type="hidden" name="price_from" class="price-from" value="" />
@@ -106,7 +105,7 @@
 									<div class="clear"></div>
 									
 									<div class="sidebar-module">
-										<h6 class="sidebar-title">Star Range</h6>
+										<h6 class="sidebar-title">@lang('result-list.star_range')</h6>
 										<div class="sidebar-module-inner">
 											<input id="star_range" />
 											<input type="hidden" name="star_from" class="star-from" value="" />
@@ -116,12 +115,12 @@
 									<div class="clear"></div>
 
 									<div class="sidebar-module">
-										<h6 class="sidebar-title">Name Contain</h6>
+										<h6 class="sidebar-title">@lang('result-list.name_contain')</h6>
 										<div class="sidebar-module-inner">
 											<div class="sidebar-mini-search">
 												<div class="input-group">
 													
-													<input type="text" name="search" class="form-control" placeholder="Search for..." value="{{Request::get('search')}}">
+													<input type="text" name="search" class="form-control" placeholder="@lang('result-list.search_for')" value="{{Request::get('search')}}">
 													<span class="input-group-btn">
 														<button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
 													</span>
@@ -312,8 +311,8 @@
 							<div class="sorting-wrappper">
 			
 								<div class="sorting-header">
-									<h3 class="sorting-title uppercase">3 Countries: Germany, France, Austria</h3>
-									<p class="sorting-lead">{{$tours->total()}} results found</p>
+									<h3 class="sorting-title uppercase">{{$tourDestinations->count()}} {{trans_choice('day.destinations', $tourDestinations->count())}}: @foreach ($tourDestinations as $key =>$destination) {{$destination->getTranslatedAttribute('name', \App::getLocale(),'ru') }}{{$key < ($tourDestinations->count()-1) ? "," : ""}} @endforeach</h3>
+									<p class="sorting-lead">{{$tours->total()}} {{trans_choice('day.results_found',$tours->total())}}</p>
 								</div>
 								
 								<div class="sorting-content">
@@ -322,13 +321,13 @@
 									
 										<div class="col-sm-12 col-md-8">
 											<div class="sort-by-wrapper">
-												<label class="sorting-label">Sort by: </label> 
+												<label class="sorting-label">@lang('result-list.sort_by'): </label> 
 												<div class="sorting-middle-holder">
 													<ul class="sort-by">
 														{{-- --}}
 														<li class={{Request::get('filter') =="name" ? "active up" : ""}}>
 															<button type="submit" name="filter" value="name"> 
-																<a>Name
+																<a>@lang('result-list.name')
 																	@if(Request::get('filter')=="name")
 																	<i class="fa fa-long-arrow-{{Session::get('sort') ? "down" :"up" }}"></i>
 																	@endif
@@ -338,7 +337,7 @@
 														</li>
 														<li class={{Request::get('filter') =="price" ? "active up" : ""}}>
 															<button type="submit" name="filter" value="price">
-																<a>Price 
+																<a>@lang('result-list.price') 
 																	@if(Request::get('filter')=="price")
 																	<i class="fa fa-long-arrow-{{Session::get('sort') ? "down" :"up" }}"></i>
 																	@endif
@@ -346,7 +345,7 @@
 															</button>
 														</li>
 														<li class={{Request::get('filter') =="location" ? "active up" : ""}}>
-															<button type="submit" name="filter" value="location"><a>Location 
+															<button type="submit" name="filter" value="location"><a>@lang('result-list.location') 
 																@if(Request::get('filter')=="location")
 																<i class="fa fa-long-arrow-{{Session::get('sort') ? "down" :"up" }}"></i>
 																@endif
@@ -355,7 +354,7 @@
 														</li>
 														<li class={{Request::get('filter') =="rating" ? "active up" : ""}}>
 															<button type="submit" name="filter" value="rating">
-																<a>Rating 
+																<a>@lang('result-list.rating')
 																@if(Request::get('filter')=="rating")
 																<i class="fa fa-long-arrow-{{Session::get('sort') ? "down" :"up" }}"></i>
 																@endif
@@ -371,7 +370,7 @@
 										
 										<div class="col-sm-12 col-md-4">
 											<div class="sort-by-wrapper mt pull-right pull-left-sm mt-10-sm">
-												<label class="sorting-label">View as: </label> 
+												<label class="sorting-label">@lang('result-list.view_as'): </label> 
 												<div class="sorting-middle-holder">
 													<button type="submit" name="result" value="list">
 														<a class="btn btn-sorting active"><i class="fa fa-th-list"></i></a>
@@ -394,9 +393,22 @@
 							
 								<div class="package-list-item clearfix">
 									<div class="image">
+										@if(json_decode($tour->images) != null)
 										<img src="{{asset('storage/'.json_decode($tour->images)[0])}}" alt="Tour Package" style="height: 184px !important;" />
+                                        @else
+                                        <img src="{{asset('default.jpg')}}" alt="Tour Package" style="height: 184px !important;" />
+                                        @endif
 										<div class="absolute-in-image">
-											<div class="duration"><span>{{$tour->days}} days {{$tour->nights}} nights</span></div>
+											<div class="duration">
+												<span>
+												@if($tour->days != 0)
+													{{$tour->days}} {{trans_choice('day.days',$tour->days)}}
+												@endif 
+												@if($tour->nights != 0)
+													{{$tour->nights}} {{trans_choice('day.nights',$tour->nights)}}
+												@endif
+                                            	</span>
+                                            </div>
 										</div>
 									</div>
 									
@@ -409,9 +421,9 @@
 												</p>
 												
 												<ul class="list-info">
-													<li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Country: </span> {{$tour->destination->getTranslatedAttribute('name', \App::getLocale(),'ru')}}</li>
-													@if($tour->startingPoint)<li><span class="icon"><i class="fa fa-flag"></i></span> <span class="font600">Starting Point:</span>{{$tour->startingPoint->getTranslatedAttribute('name', \App::getLocale(),'ru')}} </li>@endif
-													@if($tour->endingPoint)<li><span class="icon"><i class="fa fa-flag"></i></span> <span class="font600">Ending Point:</span> {{$tour->endingPoint->getTranslatedAttribute('name', \App::getLocale(),'ru')}}</li>@endif
+													<li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">@lang('result-list.country'): </span> {{$tour->destination->getTranslatedAttribute('name', \App::getLocale(),'ru')}}</li>
+													@if($tour->startingPoint)<li><span class="icon"><i class="fa fa-flag"></i></span> <span class="font600">@lang('result-list.starting_point'):</span>{{$tour->startingPoint->getTranslatedAttribute('name', \App::getLocale(),'ru')}} </li>@endif
+													@if($tour->endingPoint)<li><span class="icon"><i class="fa fa-flag"></i></span> <span class="font600">@lang('result-list.ending_point'):</span> {{$tour->endingPoint->getTranslatedAttribute('name', \App::getLocale(),'ru')}}</li>@endif
 												</ul>
 												
 											</div>
@@ -419,13 +431,13 @@
 												
 												<div class="rating-wrapper">
 													<div class="raty-wrapper">
-														<div class="star-rating-12px" data-rating-score="{{$tour->rating()}}"></div> <span> / {{$tour->comments->count()}} review</span>
+														<div class="star-rating-12px" data-rating-score="{{$tour->rating()}}"></div> <span> / {{$tour->comments->count()}} {{trans_choice('day.reviews', $tour->comments->count())}}</span>
 													</div>
 												</div>
 												
 												<div class="price">${{$tour->price}}</div>
 												
-												<a href="{{route('tour.show', $tour->slug)}}" class="btn btn-primary btn-sm">view</a>
+												<a href="{{route('tour.show', $tour->slug)}}" class="btn btn-primary btn-sm">@lang('result-list.view')</a>
 												
 											</div>
 										</div>
@@ -444,7 +456,7 @@
 									<div class="flex-row flex-align-middle">
 										@if($tours->total() > $tours->perPage())
 										<div class="flex-column flex-sm-12">
-											Showing reslut {{$tours->currentPage()}} to {{$tours->perPage()}} from {{$tours->total()}} 
+											@lang('result-list.showing_result') {{$tours->currentPage()}} @lang('result-list.to') {{$tours->perPage()}} @lang('result-list.from') {{$tours->total()}} 
 										</div>
 										@endif
 										
